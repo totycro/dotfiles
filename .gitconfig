@@ -5,32 +5,15 @@
 
 [diff "sqlite"]
 	textconv = sqlite3dump
-[core]
-	autocrlf = input
-[giggle]
-	main-window-maximized = false
-	main-window-geometry = 1024x768+1280+0
-	main-window-view = HistoryView
-	history-view-vpane-position = 243
 
 [alias]
 		lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 
-[color "diff"]
-	meta = bold
-	frag = magenta bold
-	old = red bold
-	new = blue bold
-	whitespace = red reverse
-[color "status"]
-	added = blue bold
-	changed = blue reverse
-	untracked = blue dim
 [push]
 	default = simple
-#[http]
-#	proxy = socks5h://127.0.0.1:2828
-#[https]
-#	proxy = socks5h://127.0.0.1:2828
+
 [diff]
 	noprefix = true
+
+[pull]
+	rebase = true
