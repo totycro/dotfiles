@@ -1,0 +1,112 @@
+# fluxbox startup-script:
+#
+# Lines starting with a '#' are ignored.
+
+# You can set your favourite wallpaper here if you don't want
+# to do it from your style.
+#
+
+#(cd ~/style/bgs; fbsetbg "$(~/bin/rand)"; ~/bin/start_osd) &
+#(fbsetroot -solid black; ~/bin/start_osd) &
+#(fbsetbg -a ~/style/bgs/DSCF0611.JPG ; ~/bin/start_osd ) &
+#(fbsetbg -a ~/style/bgs/18434.jpg ; ~/bin/start_osd ) &
+#(fbsetbg -a ~/style/bgs/87637.jpg ; ~/bin/start_osd ) &
+#fbsetroot -solid black
+#(fbsetbg -a /home/totycro/style/bgs/01602_sandringhambeach_1600x1200.jpg; ~/bin/start_osd)&
+#(fbsetbg -a /home/totycro/fotos/Herbst.08/HPIM1483.jpg; ~/bin/start_osd)&
+(/usr/local/bin/set_random_wallpaper.sh; ~/bin/restart_osd)&
+
+#(cd /home/totycro/public/callnotify/; python2 daemon.py)&
+
+
+#echo '.fb/startup' >>/tmp/startup
+
+#
+# Turn off beeps:
+# xset -b
+#
+# Increase the keyboard repeat-rate:
+# xset r rate 195 35
+#
+# Your own fonts-dir:
+# xset +fp /home/totycro/.font
+#
+# Your favourite mouse cursor:
+# xsetroot -cursor_name right_ptr
+#
+# Change your keymap:
+# xmodmap ~/.Xmodmap
+
+xset +fp /usr/share/fonts/local
+
+
+/home/totycro/bin/setup_trackpoint.sh &
+
+
+# Applications you want to run with fluxbox.
+# MAKE SURE THAT APPS THAT KEEP RUNNING HAVE AN ''&'' AT THE END.
+#
+# unclutter -idle 2 &
+# wmnd &
+# wmsmixer -w &
+# idesk &
+#kmousetool &
+unclutter -idle 2 -root &
+#numlockx on &
+#sudo tleds -qwd 50 wlan0
+
+xmodmap ~/.Xmodmap &
+xrdb ~/.Xdefaults &
+
+# mouse acceleration
+#xset m 4 1
+# xset m default
+xset m 1 1
+
+# blank timeout
+xset -dpms
+xset s 9000
+
+# disable touchscreen while typing 
+syndaemon -k -i 2 &
+
+#pgrep urxvtd >/dev/null
+#[ $? -ne 0 ] && urxvtd -q -f
+
+#/usr/local/bin/mcd &
+
+
+
+#sudo -n ntpdate -s pool.ntp.org &
+
+#synergys
+
+# there are some strange issues concerning locale, sometimes POSIX is assumed, allthough i specified en_US.UTF-8 in gentoo env-vars, this could fix it:
+#source /etc/profile
+
+# And last but not least we start fluxbox.
+# Because it is the last app you have to run it with ''exec'' before it.
+
+cd $HOME
+
+urxvt &
+
+nm-applet &
+
+#/home/totycro/bin/touchpad_disable.sh &
+/home/totycro/bin/setup_screens.sh &
+#/home/totycro/bin/dead_pixel_cover.sh &
+
+#firefox &
+
+/usr/bin/dropbox start &
+
+
+# in case of problems, possibly checkout compton, it seems to be better maintained
+xcompmgr &
+#xcompmgr -cCfF -r7 -o.65 -t-8 -D7 &
+
+#exec /usr/bin/fluxbox
+# or if you want to keep a log:
+#exec /usr/local/bin/fluxbox -log ~/.fluxbox/log
+exec /usr/bin/fluxbox -log ~/.fluxbox/log 

@@ -1,0 +1,197 @@
+
+##
+#[nop] () </home/totycro/.fluxbox/icons/top.xpm>
+
+#[exec] (kwrite) {kwrite} </home/totycro/.fluxbox/icons/kwrite.xpm>
+
+#[submenu] (Main Apps) {...}
+#	  [exec] (konqueror) {konqueror}
+#      [exec] (firefox) {firefox}
+#      [exec] (amule) {amule}
+#      [exec] (utorrent) {wine ~/.wine/drive_c/utorrent.exe}
+#      [exec] (nicotine) {nicotine}
+#      [exec] (xmms) {xmms}
+#      [exec] (konversation) {konversation}
+#[end]
+
+#[submenu] (Systools) {...}
+#	[exec] (g-nettool) {gnome-nettool}
+#	[exec] (g-system-log) {gnome-system-log}
+#	[exec] (g-app-install) {gnome-app-install}
+#	[exec] (g-controlcenter) {gnome-control-center}
+#	[exec] (Kcontrolcenter) {kcontrol}
+#	[exec] (Kfloppy) {kfloppy}
+#	[exec] (Kmousetool)	{kmousetool}
+#	[exec] (Kpackage) {kpackage}
+#	[exec] (Kinfocenter) {kinfocenter}
+#	[exec] (time-admin) {time-admin}
+#[end]
+
+#[submenu] (Terminals)
+#      [exec] (xterm) {xterm}
+#      [exec] (gnome-terminal) {gnome-terminal}
+#      [exec] (konsole) {konsole}
+#	[exec] (eterm1) {eterm1}
+#	[exec] (eterm2) {eterm2}
+#	[exec] (eterm3) {eterm3}
+#	[exec] (eterm4) {eterm4}
+#	[exec] (eterm5) {eterm5}
+#	[exec] (eterm6) {eterm6}
+#[end]
+
+
+#[submenu] (Net)
+
+#[submenu] (Browsers)
+#      [exec] (firefox) {firefox}
+#      [exec] (mozilla) {mozilla}
+#      [exec] (konqueror) {kfmclient openProfile webbrowsing}
+#      [exec] (w3m) {xterm -e w3m fluxbox.org}
+#[end]
+
+
+#[submenu] (IM)
+#      [exec] (gaim) {gaim}
+#      [exec] (kopete) {kopete}
+#[end]
+
+
+#[submenu] (Mail)
+#      [exec] (kmail) {kmail}
+#      [exec] (evolution) {evolution}
+#[end]
+
+
+#[submenu] (IRC)
+#      [exec] (konverstion) {konversation}
+#      [exec] (ksirc) {ksirc}
+#      [exec] (irssi) {xterm -e irssi}
+#[end]
+
+
+#[submenu] (ftp)
+#      [exec] (pftp) {xterm -e pftp}
+#      [exec] (ftp) {xterm -e ftp}
+#      [exec] (lftp) {xterm -e lftp}
+#[end]
+#[end]
+
+#[submenu] (Editors)
+#      [exec] (gedit) {gedit}
+#      [exec] (kwrite) {kwrite}
+#      [exec] (kate) {kate}
+#      [exec] (nano) {xterm -e nano}
+#      [exec] (vim) {xterm -e vimg}
+#      [exec] (KDevelop) {kdevelop3}
+#[end]
+
+
+#[submenu] (File utils)
+#      [exec] (konqueror) {konqueror}
+#      [exec] (nautilus) {nautilus --no-desktop}
+#[end]
+
+
+#[submenu] (Multimedia)
+
+#[submenu] (Graphics)
+#      [exec] (gimp) {gimp}
+#      [exec] (kiconedit) {kiconedit}
+#[end]
+
+
+#[submenu] (Audio)
+#      [exec] (xmms) {xmms}
+#      [exec] (noatun) {noatun}
+#      [exec] (kmix) {kmix}
+#      [exec] (kscd) {kscd}
+#      [exec] (rhythmbox) {rhythmbox}
+#      [exec] (kaboodle) {kaboodle}
+#      [exec] (AlsaMixer) {xterm -e alsamixer}
+#[end]
+
+
+#[submenu] (Video)
+#      [exec] (VLC) {vlc}
+#      [exec] (GXine) {gxine}
+#      [exec] (Totem) {totem}
+#      [exec] (Kaffeine) {kaffeine}
+#      [exec] (MPlayer) {gmplayer}
+#[end]
+
+
+#[submenu] (X-utils)
+#      [exec] (xfontsel) {xfontsel}
+#      [exec] (xman) {xman}
+#      [exec] (xload) {xload}
+#      [exec] (editres) {editres}
+#      [exec] (viewres) {viewres}
+#      [exec] (xclock) {xclock}
+#      [exec] (xmag) {xmag}
+#[end]
+
+#[end]
+
+
+#[submenu] (Office)
+#	  [exec] (kile) {kile}
+#      [exec] (kcalc) {kcalc}
+#      [exec] (Open Office) {ooffice}
+#      [exec] (OO Calc) {oocalc}
+#      [exec] (OO Writer) {oowriter}
+#      [exec] (OO Impress) {ooimpress}
+#      [exec] (OO Draw) {oodraw}
+#      [exec] (OO Math) {oomath}
+#      [exec] (xclock) {xclock}
+#[end]
+
+
+#[submenu] (fluxbox menu)
+#      [config] (Configure)
+#[submenu] (System Styles) {Choose a style...}
+#      [stylesdir] (/usr/share/fluxbox/styles)
+#      [stylesdir] (/usr/share/commonbox/styles/)
+#[end]
+#[submenu] (User Styles) {Choose a style...}
+#      [stylesdir] (~/.fluxbox/styles)
+#[end]
+#      [workspaces]   (Workspace List)
+#[submenu] (Tools)
+#      [exec]   (fluxconf) {fluxconf}
+#      [exec]   (fluxkeys) {fluxkeys}
+#      [exec]   (fluxmenu) {fluxmenu}
+#      [exec] (Window name) {xprop WM_CLASS|cut -d \" -f 2|xmessage -file - -center}
+#      [exec] (Screenshot) {import screenshot.png && qiv -W 50 screenshot.png}
+#      [exec] (Run) {fbrun }
+#[end]
+#      [commanddialog] (Fluxbox Command)
+#      [reconfig] (Reload config)
+#      [restart] (Restart)
+#      [separator]
+#      [exit] (Exit)
+#[end]
+
+[begin] (Fluxbox)
+	[exec] (XTerm) {xterm}
+	[exec] (URxvt) {urxvt}
+#	[separator]
+#	[include] (~/.fluxbox/cal)
+	[separator]
+	#[submenu] (Fluxbox)
+	[config] (Configuration)
+	[workspaces]   (Workspaces)
+	[submenu] (Styles) 
+		[submenu] (User Styles) {Choose a style...}
+			[stylesdir] (~/.fluxbox/styles)
+		[end]
+		[submenu] (Fluxmod Styles)
+			[stylesdir] (/usr/share/fluxbox/fluxmod/styles)
+		[end]
+	[end]
+	[reconfig] (Reload config)
+	[restart] (Restart)
+	[separator]
+	[exit] (Exit)
+
+[end]
+
