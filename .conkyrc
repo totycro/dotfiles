@@ -1,91 +1,134 @@
 # Conky sample configuration
 # Check http://conky.sf.net for an up-to-date-list.
 
+
 background yes
+#background no
 
 use_xft yes
 
 # Xft font when Xft is enabled
 #xftfont Bitstream Vera Sans Mono:size=8
-#xftfont Bitstream Vera Monospace Mono:size=7
-xftfont Nice:size=6
+#xftfont Bitstream Vera Monospace Mono:size=3
+#xftfont Nice:size=4
+#xftfont Nice:size=5
+xftfont Nice:size=8
+#xftalpha 9
 #font -*-snap-*-*-*-*-*-*-*-*-*-*-*-*
-#font  -lfp-gamow-medium-r-semicondensed--7-70-75-75-c-60-*-*
+#font  -lfp-gamow-medium-r-semicondensed--6-70-75-75-c-60-*-*
+#font -lfp-gamow-*-*-*-*-5-*-*-*-*-*-*-*
+#font -lfp-asimov-*-*-*-*-6-*-*-*-*-*-*-*
+#font -artwiz-anorexia-*-*-*-*-11-*-*-*-*-*-*-*
+#font -artwiz-gelly-*-*-*-*-10-*-*-*-*-*-*-*
+#font -artwiz-lime-*-*-*-*-10-*-*-*-*-*-*-*
 
-# Text alpha when using Xft
-xftalpha 0.8
-
-out_to_console no
-update_interval 1.5
+update_interval 2
 total_run_times 0
-own_window no
+own_window yes
 own_window_transparent yes
 own_window_type desktop
-# If own_window_transparent is set to no, you can set the background colour here
+# own_window_class conky
 #own_window_colour hotpink
 
 double_buffer yes
-#minimum_size 280 5
 draw_shades no
 draw_outline no
 # Draw borders around text
 draw_borders no
 
-#default_color df902a
+#default_color 553311
+# default_color df902a
 #default_color db8020
-#default_color 000000
+#black:
+default_color 000000
+#default_color 151515
+#default_color 101010
+#greys:
+#default_color ababab
+#default_color 898989
 #default_color cccccc
-default_color ffffff
+#default_color dddddd
+#white:
+# default_color ffffff
+#violet:
+#default_color 6b0f6b
+#default_color ad89b4
+#default_color ff0000
 
-alignment bottom_right
+
+#alignment top_right
+#alignment bottom_right
+#alignment bottom_left
+alignment top_left
 
 # Gap between borders of screen and text
-# same thing as passing -x at command line
-gap_x 15
-gap_y 10
+gap_x 10
+#gap_y 510 # normal font
+#gap_y 450
+#gap_y 545
+#gap_y 507
+#gap_y 540 # 5 mails 
+#gap_y 520 # 7 mails
+
+#gap_y 920 # 7 mails ( + 400 for big screen compared to above )
+
+#gap_y 770 # 7 mails ( + 400 for big screen compared to above -150 new laptop)
+gap_y 705 # 7 mails ( + 400 for big screen compared to above -150 new laptop + larger font)
+gap_y 650 # 
+gap_y 600 # +last.fm
+gap_y 590 # +last.fm2
+gap_y 740 # nothing
+gap_y 750
 
 # Subtract file system buffers from used memory?
-no_buffers no
+no_buffers yes
 uppercase no
 cpu_avg_samples 2
 net_avg_samples 2
 override_utf8_locale yes
-maximum_width 112
-minimum_size  112
+maximum_width 195
+minimum_size  190
 
-mpd_host 192.168.0.100
-
-#${exec np}
-#${exec xmms-trackkbps}${alignr}${exec xmmsctrl print "vol:%v%% "}
-#${exec xmmsctrl print "%m/%M"}$alignr${exec xmmsctrl print "%p "}
-#$hr
+#mpd_host 127.0.0.1
+#mpd_host 192.168.0.18
+#mpd_host 10.0.0.10
+#mpd_host localhost
+#mpd_port 6600
 
 # °C
+# ${cpugraph 000000 FCD116}
+#
 
-#${fs_bar 6,18 /}${offset 3}${fs_bar 6,33 /home}${offset 3}${fs_bar 6,32 /mnt}
-#${exec np}
+
+#${execi 60 (grep -v "\[last.fm\] OK" /var/log/mpdscribble.log | tail -n3 | cut -d' ' -f3-)}
+
+# $alignr${execi 20 netstat -s | grep "connections est" | awk '{ print $1 }'}
+
+#${execi 200 /home/totycro/bin/cm.sh}
+#ppp0 ${addr ppp0}$alignr${downspeed ppp0}${upspeed ppp0}
+#${execi 1200 /home/totycro/bin/weather.sh tomorrow_temp_low} - ${execi 1200 /home/totycro/bin/weather.sh tomorrow_temp_high}${alignr}${execi 1200 /home/totycro/bin/weather.sh tomorrow_text}
+#${execi 1200 /home/totycro/bin/weather.sh current_temp}${alignc}  ${execi 1200 /home/totycro/bin/weather.sh speed}${alignr}${execi 1200 /home/totycro/bin/weather.sh current_text}
 TEXT
-$alignc$kernel
-$hr
-${time %H:%M}$alignr$uptime_short up
-${time %a}$alignr${time %d.%m.%y}
-$hr
-$alignc$loadavg | ${exec check_cpu_temp}
-CPU ${offset 7}$cpubar
-Mem ${offset 2}$membar
-Swap $swapbar
-$hr
-HDD-IO${alignr}$diskio
-sda$alignr${hddtemp /dev/sda}
-  /$alignr${fs_free /}
-  /home$alignr${fs_free /home}
-sdb$alignr${hddtemp /dev/sdb}
-  /mnt$alignr${if_mounted /mnt}${fs_free /mnt}${else}n/a$endif
-$hr
-NW$alignr${downspeed wlan0} | ${upspeed wlan0} | ${tcp_portmon 1 65535 count}
-IP$alignr${addr wlan0}
-$hr
-MPD${alignr}$mpd_status
-${mpd_elapsed}/$mpd_length${alignr}v:$mpd_vol%
-$hr
-${voffset 45}
+${time %H:%M:%S}$alignr${time %A}
+${time %d.%m.%y}${alignr}$uptime_short
+
+$loadavg$alignr$freq | ${acpitemp}^C
+
+CPU${offset 10}$cpubar
+MEM${offset 10}$membar
+SWAP${offset 5}$swapbar
+$diskio${alignr}${fs_free /}
+
+${battery}$alignr${battery_time}
+
+eth$alignr${downspeed enp0s25} / ${upspeed enp0s25}
+wlan: ${wireless_essid wlp2s0}$alignr${downspeed wlp2s0} / ${upspeed wlp2s0}
+
+$mpd_status${alignc -23}${mpd_elapsed}/$mpd_length${alignr}vol:${mpd_vol}%
+rate:${mpd_bitrate}${alignr}rand:${mpd_random}
+
+$alignc$mpd_artist
+$alignc$mpd_title
+$alignc$mpd_album
+
+${mpd_bar 4}
