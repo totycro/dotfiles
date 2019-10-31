@@ -1,0 +1,130 @@
+# Conky sample configuration
+#
+# Check http://conky.sf.net for an up-to-date-list.
+
+background yes
+use_xft yes
+on_bottom yes
+
+# Xft font when Xft is enabled
+#xftfont Bitstream Vera Sans Mono:size=8
+xftfont Bitstream Vera Monospace Mono:size=8
+
+# Text alpha when using Xft
+xftalpha 0.8
+
+out_to_console no
+
+update_interval 1
+total_run_times 0
+own_window no
+own_window_transparent yes
+# If own_window_transparent is set to no, you can set the background colour here
+own_window_colour hotpink
+
+# Use double buffering (reduces flicker, may not work for everyone)
+double_buffer yes
+
+minimum_size 280 5
+draw_shades no
+draw_outline no
+# Draw borders around text
+draw_borders no 
+stippled_borders 8
+border_margin 4
+border_width 1
+
+default_color black 
+default_shade_color black
+default_outline_color black
+
+# Text alignment, other possible values are commented
+alignment top_left
+
+# Gap between borders of screen and text
+# same thing as passing -x at command line
+gap_x 12
+gap_y 12
+
+# Subtract file system buffers from used memory?
+no_buffers yes
+
+# set to yes if you want all text to be in uppercase
+uppercase no
+
+# number of cpu samples to average
+# set to 1 to disable averaging
+cpu_avg_samples 2
+
+# number of net samples to average
+# set to 1 to disable averaging
+net_avg_samples 2
+
+# Force UTF8? note that UTF8 support required XFT
+override_utf8_locale no
+
+# boinc (seti) dir
+# seti_dir /opt/seti
+
+# Allow for the creation of at least this number of port monitors (if 0 or not set, default is 16) 
+#min_port_monitors 16
+
+maximum_width 180
+
+# variable is given either in format $variable or in ${variable}. Latter
+# allows characters right after the variable and must be used in network
+# stuff because of an argument
+
+# stuff after 'TEXT' will be formatted on screen
+TEXT
+${color 000000}$nodename $alignr $sysname $kernel
+${color 000000}$hr
+${color 202020}Time:${color 000000} ${time %H:%M   (%s)}
+${color 202020}Date:${color 000000} ${time %A, %d. %B %y}
+${color 202020}Uptime:${color 000000} $uptime
+${color 000000}$hr
+ ${color 000000}System:
+${color 000000}${cpugraph 505050 000000}
+${color 202020}CPU Freq:${color 000000} $freq_dyn MHz
+${color 202020}CPU Usage:${color 000000} $cpu% ${cpubar} 
+${color 202020}Load:${color 000000} $loadavg
+${color 202020}RAM:${color 000000}  $mem - $memperc% ${membar}
+${color 202020}Swap:${color 000000} $swap - $swapperc% ${swapbar}
+${color 202020}Processes:${color 000000} $processes  ${color 202020202020}Running:${color 000000} $running_processes
+${color 202020}Temperature:${color 000000} ${exec /usr/bin/conky-temperature}
+${color 000000}$hr
+${color 000000}Networking: 
+ ${color 202020}Connections:${color 000000} $alignr ${tcp_portmon 1 65535 count} bzw. ${exec connections}     
+ ${color 202020}lan-ip:${color 000000} $alignr ${addr eth0}     
+ ${color 202020}wlan-ip:${color 000000} $alignr${addr rausb0}     
+ ${color 202020}wan-ip:${color 000000} $alignr ${exec cat /tmp/ip}     
+${color 505050}${downspeedgraph rausb0 35,87 505050 000000 240} ${upspeedgraph rausb0 35,87 505050 000000 40}
+${color 202020}Down:${color 000000} ${downspeedf rausb0} k/s${color 202020}   ${offset 7}Up:${color 000000} ${upspeedf rausb0} k/s
+${color 000000}$hr
+${color 000000}HDD:
+ ${diskiograph 505050 000000 80000}
+ ${color 202020}Disk IO: ${color 000000}$diskio
+${color 000000}$hr
+${color 202020}Now Playing:
+ ${color 000000}${exec np}
+ ${color 000000}Pos: ${exec xmms-time} ${alignr}Vol: ${exec xmms-volume}%
+ ${color 202020}Trackinfo: ${color 000000}${exec xmms-trackinfo}
+${color 000000}$hr
+${color 000000}File systems:
+ ${color 202020} ${alignr}free       size   
+ ${color 202020}/${alignr}${color 000000} ${fs_free /}   ${fs_size /}
+ ${color 202020}/home${alignr}${color 000000}${fs_free /home/totycro/}  ${fs_size /home/totycro}
+ ${color 202020}/mnt${alignr}${color 000000} ${fs_free /mnt/}  ${fs_size /mnt/}
+${color 000000}$hr
+${color 000000}CPU tops          CPU%   MEM%
+${color 202020} ${top name 1} ${alignr}${top cpu 1} ${top mem 1}
+${color 202020} ${top name 2} ${alignr}${top cpu 2} ${top mem 2}
+${color 202020} ${top name 3} ${alignr}${top cpu 3} ${top mem 3}
+${color 202020} ${top name 4} ${alignr}${top cpu 4} ${top mem 4}
+${color 202020} ${top name 5} ${alignr}${top cpu 5} ${top mem 5}
+${color 000000}Mem tops          CPU%   MEM%
+${color 202020} ${top_mem name 1} ${alignr}${top_mem cpu 1} ${top_mem mem 1}
+${color 202020} ${top_mem name 2} ${alignr}${top_mem cpu 2} ${top_mem mem 2}
+${color 202020} ${top_mem name 3} ${alignr}${top_mem cpu 3} ${top_mem mem 3}
+${color 202020} ${top_mem name 4} ${alignr}${top_mem cpu 4} ${top_mem mem 4}
+${color 202020} ${top_mem name 5} ${alignr}${top_mem cpu 5} ${top_mem mem 5}

@@ -1,0 +1,91 @@
+# Conky sample configuration
+# Check http://conky.sf.net for an up-to-date-list.
+
+background yes
+
+use_xft yes
+
+# Xft font when Xft is enabled
+#xftfont Bitstream Vera Sans Mono:size=8
+#xftfont Bitstream Vera Monospace Mono:size=7
+xftfont Nice:size=6
+#font -*-snap-*-*-*-*-*-*-*-*-*-*-*-*
+#font  -lfp-gamow-medium-r-semicondensed--7-70-75-75-c-60-*-*
+
+# Text alpha when using Xft
+xftalpha 0.8
+
+out_to_console no
+update_interval 1.5
+total_run_times 0
+own_window no
+own_window_transparent yes
+own_window_type desktop
+# If own_window_transparent is set to no, you can set the background colour here
+#own_window_colour hotpink
+
+double_buffer yes
+#minimum_size 280 5
+draw_shades no
+draw_outline no
+# Draw borders around text
+draw_borders no
+
+#default_color df902a
+#default_color db8020
+#default_color 000000
+#default_color cccccc
+default_color ffffff
+
+alignment bottom_right
+
+# Gap between borders of screen and text
+# same thing as passing -x at command line
+gap_x 15
+gap_y 10
+
+# Subtract file system buffers from used memory?
+no_buffers no
+uppercase no
+cpu_avg_samples 2
+net_avg_samples 2
+override_utf8_locale yes
+maximum_width 112
+minimum_size  112
+
+mpd_host 192.168.0.100
+
+#${exec np}
+#${exec xmms-trackkbps}${alignr}${exec xmmsctrl print "vol:%v%% "}
+#${exec xmmsctrl print "%m/%M"}$alignr${exec xmmsctrl print "%p "}
+#$hr
+
+# °C
+
+#${fs_bar 6,18 /}${offset 3}${fs_bar 6,33 /home}${offset 3}${fs_bar 6,32 /mnt}
+#${exec np}
+TEXT
+$alignc$kernel
+$hr
+${time %H:%M}$alignr$uptime_short up
+${time %a}$alignr${time %d.%m.%y}
+$hr
+$alignc$loadavg | ${exec check_cpu_temp}
+CPU ${offset 7}$cpubar
+Mem ${offset 2}$membar
+Swap $swapbar
+$hr
+HDD-IO${alignr}$diskio
+sda$alignr${hddtemp /dev/sda}
+  /$alignr${fs_free /}
+  /home$alignr${fs_free /home}
+sdb$alignr${hddtemp /dev/sdb}
+  /mnt$alignr${if_mounted /mnt}${fs_free /mnt}${else}n/a$endif
+$hr
+NW$alignr${downspeed wlan0} | ${upspeed wlan0} | ${tcp_portmon 1 65535 count}
+IP$alignr${addr wlan0}
+$hr
+MPD${alignr}$mpd_status
+${mpd_elapsed}/$mpd_length${alignr}v:$mpd_vol%
+$hr
+${voffset 45}
