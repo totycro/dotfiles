@@ -7,6 +7,7 @@ Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
 Plug 'elmcast/elm-vim'
 Plug 'vim-airline/vim-airline'
 Plug 'Valloric/YouCompleteMe'  " NOTE: futher manual installation necessary!
+Plug 'iCyMind/NeoSolarized'
 call plug#end()
 
 
@@ -18,6 +19,8 @@ set shiftwidth=4
 set tabstop=4
 set expandtab
 set list  " show tabs as '>'
+colorscheme NeoSolarized
+set termguicolors  " necessary for NeoSolarized
 
 
 """"""""""""""""""""""""""""""""""""""""
