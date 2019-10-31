@@ -14,7 +14,7 @@
 #fbsetroot -solid black
 #(fbsetbg -a /home/totycro/style/bgs/01602_sandringhambeach_1600x1200.jpg; ~/bin/start_osd)&
 #(fbsetbg -a /home/totycro/fotos/Herbst.08/HPIM1483.jpg; ~/bin/start_osd)&
-(/usr/local/bin/set_random_wallpaper.sh; ~/bin/restart_osd)&
+(/usr/local/bin/set_random_wallpaper.sh; ~/bin/restart_osd.sh)&
 
 #(cd /home/totycro/public/callnotify/; python2 daemon.py)&
 
