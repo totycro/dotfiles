@@ -18,6 +18,7 @@ filetype plugin on
 set shiftwidth=4
 set tabstop=4
 set expandtab
+set ignorecase
 set list  " show tabs as '>'
 colorscheme NeoSolarized
 set termguicolors  " necessary for NeoSolarized
