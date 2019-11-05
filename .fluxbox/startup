@@ -14,7 +14,7 @@
 #fbsetroot -solid black
 #(fbsetbg -a /home/totycro/style/bgs/01602_sandringhambeach_1600x1200.jpg; ~/bin/start_osd)&
 #(fbsetbg -a /home/totycro/fotos/Herbst.08/HPIM1483.jpg; ~/bin/start_osd)&
-(/usr/local/bin/set_random_wallpaper.sh; ~/bin/restart_osd.sh)&
+(/home/totycro/bin/set_random_wallpaper.sh; ~/bin/restart_osd.sh)&
 
 #(cd /home/totycro/public/callnotify/; python2 daemon.py)&
 
@@ -40,7 +40,7 @@
 xset +fp /usr/share/fonts/local
 
 
-/home/totycro/bin/setup_trackpoint.sh &
+# /home/totycro/bin/setup_trackpoint.sh &
 
 
 # Applications you want to run with fluxbox.
@@ -68,7 +68,8 @@ xset -dpms
 xset s 9000
 
 # disable touchscreen while typing 
-syndaemon -k -i 2 &
+# NOTE: seems to not work out of the box on manjaro 2019-11-04
+# syndaemon -k -i 2 &
 
 #pgrep urxvtd >/dev/null
 #[ $? -ne 0 ] && urxvtd -q -f
@@ -89,12 +90,12 @@ syndaemon -k -i 2 &
 
 cd $HOME
 
-urxvt &
+kitty &
 
 nm-applet &
 
 #/home/totycro/bin/touchpad_disable.sh &
-/home/totycro/bin/setup_screens.sh &
+# /home/totycro/bin/setup_screens.sh &
 #/home/totycro/bin/dead_pixel_cover.sh &
 
 #firefox &

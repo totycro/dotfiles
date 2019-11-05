@@ -40,14 +40,14 @@ draw_borders no
 # default_color df902a
 #default_color db8020
 #black:
-default_color 000000
+#default_color 000000
 #default_color 151515
 #default_color 101010
 #greys:
 #default_color ababab
 #default_color 898989
 #default_color cccccc
-#default_color dddddd
+default_color dddddd
 #white:
 # default_color ffffff
 #violet:
@@ -79,6 +79,7 @@ gap_y 600 # +last.fm
 gap_y 590 # +last.fm2
 gap_y 740 # nothing
 gap_y 750
+gap_y 369 # matches new background image
 
 # Subtract file system buffers from used memory?
 no_buffers yes
