@@ -10,15 +10,5 @@ keysym e = e E eacute Eacute
 keysym i = i I iacute Iacute
 
 clear Lock
+! caps lock -> escape
 keycode 0x42 = Escape
-
-
-keycode 234 = XF86Back
-keycode 233 = XF86Forward
-keycode 159 = XF86Start
-keycode 162 = XF86AudioPlay
-keycode 164 = XF86AudioStop
-keycode 153 = XF86AudioNext
-keycode 144 = XF86AudioPrev
-keycode 227 = XF86LaunchF
-keycode 249 = XF86ZoomIn
