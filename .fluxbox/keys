@@ -153,9 +153,6 @@ Shift Mod1 Y	:ExecCommand /home/totycro/bin/kodi-cmd.sh play_youtube
 #
 
 
+none XF86MonBrightnessUp :Exec xbacklight -inc 10%
+none XF86MonBrightnessDown :Exec xbacklight -dec 10%
 
-
-# NOTE: commented the brightness control because it seems to reject the Up::
-# "Keys: Invalid key/modifier on line 158): none XF86MonBrightnessUp :Exec xbacklight -inc 10%"
-# none XF86MonBrightnessUp :Exec xbacklight -inc 10%
-# none XF86MonBrightnessDown :Exec xbacklight -dec 10%
