@@ -67,10 +67,6 @@ xset m 1 1
 xset -dpms
 xset s 9000
 
-# disable touchscreen while typing 
-# NOTE: seems to not work out of the box on manjaro 2019-11-04
-# syndaemon -k -i 2 &
-
 #pgrep urxvtd >/dev/null
 #[ $? -ne 0 ] && urxvtd -q -f
 
