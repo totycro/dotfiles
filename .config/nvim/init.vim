@@ -31,6 +31,7 @@ set tabstop=4
 set expandtab
 set ignorecase
 set list  " show tabs as '>'
+set gdefault
 colorscheme NeoSolarized
 set termguicolors  " necessary for NeoSolarized
 
@@ -84,8 +85,6 @@ map <Leader>le :call LanguageClient#explainErrorAtPoint()<CR>
 " for debugging
 let g:LanguageClient_loggingFile =  expand('~/.local/share/nvim/LanguageClient.log')
 let g:LanguageClient_serverStderr = expand('~/.local/share/nvim/LanguageServer.log')
-
-
 
 
 """"""""""""""""""""""""""""""""""""""""
