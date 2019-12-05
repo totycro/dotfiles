@@ -86,7 +86,7 @@ xset s 9000
 
 cd $HOME
 
-kitty &
+# kitty &
 
 nm-applet &
 
