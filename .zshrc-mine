@@ -1,0 +1,354 @@
+export PATH="/usr/lib/ccache/bin:$PATH:/home/totycro/bin:/usr/sbin:/sbin:/usr/local/sbin:/usr/local/bin:/usr/bin:/sbin:/bin"
+export PATH="$PATH:/home/totycro/node_modules/.bin"
+
+export MAVEN_OPTS="-Xmx1024M -Xss128M -XX:MaxPermSize=1024M -XX:+CMSClassUnloadingEnabled -XX:-UseGCOverheadLimit"
+
+
+alias stream_youtube="kodi-cmd.sh play_youtube"
+alias ls="exa --git"
+alias ll="exa -l --git"
+alias cat="bat"
+
+alias vim="nvim"
+
+alias dotfiles-git='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+
+alias docker-images-by-size="docker images --format '{{.Size}}\t{{.Repository}}\t{{.Tag}}\t{{.ID}}' | sed 's/ //' | sort -h -r | column -t"
+
+
+#cd ~/wc/dist/local ; source setup.sh >/dev/null ; cd - > /dev/null
+
+export PYTHONSTARTUP="$HOME/.pythonrc.py"
+
+fignore=( .o .pyc ) # extensions to ignore concerning auto compl.
+
+setopt CLOBBER  # overwrite file if output is redirected into file
+setopt AUTO_PARAM_SLASH # Make directories pretty.
+setopt CHASE_LINKS      # if you pwd from a symlink, you get the actual path
+setopt autocd # cd without cd
+setopt correctall # correct typos
+setopt hashlistall # keep all commands in hash
+setopt nobgnice # run forked processes with same niceness 
+setopt nohup  # don't kill background jobs when exiting
+setopt completeinword # auto completition also starting from end of word
+setopt automenu # sounds good - doesn't work
+setopt auto_list # list ambiguous completition entries automatically
+setopt interactivecomments # allow comments with '#' in interactive shells
+setopt shortloops
+setopt vi # no explanation...
+setopt append_history
+setopt BAD_PATTERN
+setopt EXTENDED_HISTORY
+setopt HIST_FIND_NO_DUPS
+setopt INC_APPEND_HISTORY
+#setopt SHARE_HISTORY
+#setopt printexitvalue 
+
+bindkey '^R' history-incremental-search-backward
+
+
+# http://chneukirchen.org/blog/archive/2013/03/10-fresh-zsh-tricks-you-may-not-know.html
+nbsp=$'\u00A0'
+bindkey -s $nbsp '^u'
+
+
+autoload -U promptinit # colorful prompts
+promptinit
+prompt sorintotycro
+
+setopt prompt_subst # Enable parameter expansion, command substitution, and arithmetic expansion in the prompt
+#setopt transient_rprompt # only show the rprompt on the current prompt
+
+autoload -U compinit
+compinit
+autoload -U url-quote-magic # automatically quote '?' and '=' within urls
+zle -N self-insert url-quote-magic
+
+#setopt extendedglob 
+# DEACTIVATED: because: "eix ^qt$" doesn't work with it
+# ^ for negation: ls ^file
+# <200-300> range of integers
+# (a|b)
+# *.c~foo.c  not foo.c
+# (r) readable, write, exec
+# (.) plain file
+# (U) my files
+
+zstyle ':completion:*:*:cd:*' tag-order local-directories
+zstyle ':completion:*:*:lp*:*' tag-order jobs
+zstyle ':completion:*:*:(kill|wait):*' tag-order 'jobs processes'
+zstyle ':completion:*:*:(kill|wait):*' group-order jobs
+# wtf is this? limits completion..
+#zstyle ':completion:*' use-compctl false
+zstyle ':completion:*:match:*' original only
+zstyle ':completion:incremental:*' list yes
+zstyle ':completion:incremental:*' prompt 'incremental (%c): %u%s%a  %l'
+zstyle ':completion:*:oldlist:*' menu verbose
+zstyle ':completion:predict:*' completer _complete
+zstyle ':completion:predict:*' list always
+zstyle ':completion:predict:*' cursor key
+zstyle ':completion:predict:*' special-dirs yes
+zstyle ':completion:*:default' menu yes select
+zstyle ':completion:*:*:xdvi:*' file-sort time
+zstyle ':completion:*:rm:*' ignore-line yes
+zstyle ':completion:*:apt-get:*' ignore-line yes
+zstyle ':completion:*:(correct|approximate):*' max-errors 2 numeric
+zstyle ':completion:*:(correct|approximate)-*:*' original yes
+zstyle ':completion:*:paths' expand prefix
+zstyle ':completion:*:option(-*|s)' auto-description 'specify %d'
+zstyle ':completion:*:processes' command ps --forest -u $EUID -o pid,cmd
+zstyle ':completion:*' verbose yes
+zstyle ':completion:*' prefix-needed yes
+zstyle ':completion:*' prefix-hidden no
+zstyle ':completion:*' last-prompt yes
+zstyle ':completion:*' users totycro root
+zstyle ':completion:*:*:*:users' ignored-patterns \
+    adm apache bin daemon games gdm halt ident junkbust lp mail mailnull \
+		    named news nfsnobody nobody nscd ntp operator pcap postgres radvd    \
+				    rpc rpcuser rpm shutdown squid sshd sync uucp vcsa xfs backup  bind  \
+						    dictd  gnats  identd  irc  man  messagebus  postfix  proxy  sys  www-data
+zstyle ':completion:*:complete:*:(local|path)-directories' ignored-patterns '(|*/)CVS'
+zstyle ':completion:*:functions' ignored-patterns '_*'
+zstyle ':completion:*:cd:*' ignore-parents parent pwd
+zstyle ':completion:*:cd:*' ignored-patterns '(*/)#lost+found'
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*:jobs' prefix-needed no
+zstyle ':completion:*' ignore-parents pwd parent
+zstyle ':jompletion:*:complete:*:(functions|parameters|association-keys)' ignored-patterns '_*'
+zstyle ':completion:::::' completer _complete _match _ignored _correct _approximate _prefix
+zstyle ':completion:*' matcher-list '' 'm:{a-z-}={A-Z_} r:|[-_./]=* r:|=*' 'm:{a-z-}={A-Z_} l:|=* r:|=*'
+zstyle ':completion:*:*:diff:*:version' command =diff -v
+zstyle ':completion:*:*:(p|gview|xdvi|kill|psnup):*' menu yes select
+zstyle ':completion:*' file-sort name
+zstyle ':completion:*:*:(p|gview|xdvi|psnup|pdflatex|acroread|xpdf):*' file-sort time
+zstyle ':completion:*:default' list-prompt 'Line %l  Continue?                                                                       %b'
+zstyle ':completion:*:default' select-prompt 'Match %m  Line %l  %p                                                                                  %b'
+zstyle ':completion:*:(cp|mv|rm):*' ignore-line yes
+zstyle ':completion:*:kill:*' force-list always
+#zstyle ':completion:*:*:*make:*:targets' command awk \''/^[a-zA-Z0-9][^\/\t=]+:/ {print $1}'\' \$file
+zstyle ':completion:*history*' remove-all-dups yes
+zstyle ':completion:*history*' stop yes
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path ~/.zsh/cache
+
+zstyle ':completion:*:*:ogg123:*' file-patterns '*.(ogg|OGG):ogg\ files *(-/):directories'
+zstyle ':completion:*:*:xine:argument-rest:*' file-patterns '%p|*.m3u(-.):globbed-files *(-/):directories' '*:all-files'
+compdef _mplayer xine
+compdef _screen	 sc
+zstyle ':completion:*:*:wine:*' file-patterns '*.exe: *(-/):directories'
+zstyle ':completion:*:*:cedega:*' file-patterns '*.exe: *.EXE: *.Exe:  *(-/):directories'
+zstyle ':completion:*:*:mid:*' file-patterns '*.mid: *.MID: *.kar: *.KAR: *(-/):directories'
+#zstyle ':completion:*:*:btc:*' file-patterns '*.torrent: *(-/):directories'
+
+# allow one error for every three characters typed in approximate completer
+zstyle -e ':completion:*:approximate:*' max-errors \
+    'reply=( $(( ($#PREFIX+$#SUFFIX)/3 )) numeric )'
+zstyle ':completion:*' verbose yes
+zstyle ':completion:*:descriptions' format '%B%d%b'
+zstyle ':completion:*:messages' format '%d'
+zstyle ':completion:*:warnings' format 'No matches for: %d'
+zstyle ':completion:*:corrections' format '%B%d (errors: %e)%b'
+zstyle ':completion:*' group-name ''
+
+
+
+ff () {
+	find . -iname "*$1*" | grep -v ".svn"
+}
+grepr () {
+	DIR=$2
+	if [ -z "$DIR" ] ; then
+		DIR="."
+	fi
+	grep -riIn "$1" "$DIR" | grep -v "\.svn"
+}
+
+export LESSCOLOR=yes
+
+alias calc="noglob _calc"
+function _calc () {
+awk "BEGIN { print $* ; }"
+}
+kalc() {
+	zmodload zsh/mathfunc
+	print $(( $@ ))
+}
+function mycalc () {
+	# spaces in $@ are interpreted as EOF
+	python3 -c "print($@)"
+}
+
+
+alias yt="kodi-cmd.sh play_youtube"
+alias gd="git diff"
+alias gl="git log"
+alias gs="git status"
+alias gco="git checkout"
+alias gso="git show"
+
+alias wodim="wodim -v"
+
+alias audacity="PULSE_LATENCY_MSEC=30 audacity"
+
+# new mpd 
+# ncmpcpp doesn't seem to work without host, mpc does
+alias ncm="ncmpcpp -h $(/home/totycro/bin/get_mpd_host.sh)"
+#alias mpc="MPD_HOST=$(/home/totycro/bin/get_mpd_host.sh) mpc"
+
+
+alias '?=noglob _calc'
+
+alias urxvt-large-font="urxvt  -fn \"xft:Dejavu Sans Mono:size=11:style=book\" -fb \"xft:Dejavu Sans Mono:size=11:style=bold\""
+alias urxvt-medium-font="urxvt  -fn \"xft:Dejavu Sans Mono:size=10:style=book\" -fb \"xft:Dejavu Sans Mono:size=10:style=bold\""
+
+alias mkdir="nocorrect mkdir" 
+alias sudo="nocorrect sudo" # http://unix.stackexchange.com/questions/34390/zsh-wants-to-correct-vim-to-vim
+
+alias sl="ls"
+
+alias sp="sudo pacman"
+alias sps="sudo pacman -Ss"
+
+alias pdflatex="pdflatex -file-line-error"
+
+alias ses="setup_screens.sh"
+alias w3m_html="w3m -T text/html"
+
+#alias 'ssh-megatron'='ssh bernhard@parteizentrale.dyndns.org -p 55557 \
+#-L2222:127.0.0.1:22 -L3389:127.0.0.1:3389 -L8888:127.0.0.1:80 \
+#-L5911:192.168.0.111:5900 -L5912:192.168.0.112:5900 \
+#-L5913:192.168.0.113:5900 -L5914:192.168.0.114:5900 \
+#3-L5915:192.168.0.115:5900 -L5916:192.168.0.116:5900'
+
+alias 'ssh-megatron'='ssh bernhard@slp.at -XY -p 55557 \
+-L2222:127.0.0.1:22 -L3389:127.0.0.1:3389 -L8888:127.0.0.1:80 \
+-L5911:192.168.0.111:5900 -L5912:192.168.0.112:5900 \
+-L5913:192.168.0.113:5900 -L5914:192.168.0.114:5900 \
+-L5915:192.168.0.115:5900 -L5916:192.168.0.116:5900 \
+-L5917:192.168.0.117:5900 -L5918:192.168.0.118:5900'
+
+
+alias tempdir="cd $(mktemp -d)"
+#eval_helper () { bc -l|perl -pe 's/(\.[^0]+)0+$|\.0+$/$1/'; }
+
+alias mn="mvn -o -T4"
+
+alias qp=qpdfview
+alias p="ping"
+alias lf="leo -fr"
+alias li="leo -it"
+alias le="leo -es"
+alias v="vim"
+alias setup_gtcad="cd ~/wc/dist/local && source setup.sh && cd -"
+alias m_v="make VERBOSE=1" # works with cmake
+alias note="cat >/dev/null"
+#alias l='/home/totycro/code/cpp/dict/build/dict'
+alias l='/home/totycro/bin/leo'
+alias rtorrent='really_nice rtorrent'
+alias sq3='sqlite3'
+
+#new
+#alias other_screen="DISPLAY=192.168.0.101:0"
+#alias mcc_other_screen="mcc v -display 192.168.0.101:0"
+#alias world_up_pretend='emerge -DNpvu world'
+#alias world_up='sudo emerge -DNvu --keep-going -1 world'
+alias sqlite3='sqlite3 -header -column'
+alias revdep-rebuild="really_nice revdep-rebuild --no-order"
+#alias kdev4="kdeinit4 2>/dev/null& kbuildsycoca4 & sleep 1; kdevelop-4"
+#alias kdev4="kdeinit4 2>/dev/null; kbuildsycoca4 ; kdevelop-4"
+#alias tuxguitar="aoss tuxguitar"
+function mkcd () { mkdir -p "$@" && eval cd "\"\$$#\""; }
+alias tovid_my='tovid -dvd -ffmpeg -pal -abitrate 384'
+alias bc='bc -ql'
+alias gdb='gdb -silent'
+alias -g rn=really_nice
+alias -g nice2=really_nice
+alias -g really_nice='nice -n 19 ionice -c 3'
+alias mpc_file="mpc --format \"%file%\""
+alias cal='cal -m'
+
+#alias kdevelop3="export KDEDIRS="$KDEDIRS:/usr" && kbuildsycoca && /usr/kde/3.5/bin/kdevelop"
+#alias kdevelop="echo \"kde-messages are hidden\";kdeinit 2>/dev/null& kbuildsycoca & sleep 1; kdevelop 2>/dev/null"
+#alias suw="really_nice sudo /home/totycro/bin/update-world-dev"
+#alias cplay='cplay-dev'
+alias -g L="|less"
+#alias -g V="|view -"
+alias -g G="|grep --colour=auto"
+alias -g S="|sort -g" 
+alias -g T="|tail"
+alias -g V="|/usr/share/vim/vim81/macros/less.sh"
+alias ccache_stats="CCACHE_DIR=/var/tmp/ccache ccache -s"
+alias ccache_stats_watch="CCACHE_DIR=/var/tmp/ccache watch --interval 2 ccache -s"
+
+#middle-age
+#wien: alias ctw="ctw AUXX0025"
+#oö: alias ctw="ctw AUXX0003"
+alias ctw="ctw AUXX0025"
+#alias se="really_nice sudo emerge "
+#alias sef="EMERGE_DEFAULT_OPTS=\"`source /etc/make.conf && echo "$EMERGE_DEFAULT_OPTS"|sed -e 's/--ask//g'`\" sudo emerge"
+
+alias lwc='TeXcount.pl'
+
+#old
+alias mm='mplayer -af volume=-200 -osdlevel 0 -subfont-text-scale 2 -subfont-osd-scale 2'
+
+#very old
+alias m='make'
+#alias ll='ls -lh'
+alias cp='nocorrect cp -i'
+alias mv='nocorrect mv -i'
+# alias ls='ls -F --dereference-command-line-symlink-to-dir'
+alias top='top -d 1'
+alias mx="alsamixer"
+alias c='clear && ';
+alias cls='clear && ls';
+
+
+#if [ "$PS1" ] ; then
+#
+#	if [ -d /sys/fs/cgroup ] ; then
+#		cdir=/sys/fs/cgroup
+#	else
+#		cdir=/dev/cgroup
+#	fi
+#	mkdir -p -m 0700 $cdir/user/$$ > /dev/null 2>&1
+#	/bin/echo $$ > $cdir/user/$$/tasks
+#	/bin/echo '1' > $cdir/user/$$/notify_on_release
+#	unset -v cdir
+#fi
+
+zstyle ':completion:*:*:ok:*' file-patterns '*.(pdf|PDF|ps|PS|djvu|pdf.gz):pdf\ files *(-/):directories'
+zstyle ':completion:*:*:qpdfview:*' file-patterns '*.(pdf|PDF): *(-/):directories'
+
+
+
+#compctl -/ -g "*.pdf *.ps " ok
+#compctl -/ -g "*.pdf" qpdfview
+function mccCompl() {
+	ls | while read f ; do
+		if `file --mime "$f" | egrep -q  "audio/|video/"`; then
+			echo -n $f
+		fi	
+	done
+		echo
+}
+#compctl -/ -K mccCompl mcc
+
+
+
+
+
+PATH="/home/totycro/perl5/bin${PATH+:}$PATH"; export PATH;
+PERL5LIB="/home/totycro/perl5/lib/perl5${PERL5LIB+:}$PERL5LIB"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/home/totycro/perl5${PERL_LOCAL_LIB_ROOT+:}$PERL_LOCAL_LIB_ROOT"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/home/totycro/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/home/totycro/perl5"; export PERL_MM_OPT;
+
+
+
+# quote pasted URLs
+autoload -U url-quote-magic
+zle -N self-insert url-quote-magic
+
+
+#/usr/bin/virtualenvwrapper.sh

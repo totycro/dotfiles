@@ -1,0 +1,225 @@
+export NOSPLASH=0
+export NOWELCOME=0
+HISTSIZE=10000000
+SAVEHIST=20000000
+HISTFILE=~/.zsh_history
+#DIRSTACKSIZE=1000
+cdpath=(. ~ ~/code/purescript )
+
+source /home/totycro/.nix-profile/etc/profile.d/nix.sh
+
+
+# path modifications and stuff probly should be placed in /etc/profile (which is systemwide)
+#export CCACHE_PREFIX="distcc" 
+#export PATH="/usr/lib/ccache/bin:$PATH:/usr/local/bin:/home/totycro/bin:/sbin:/usr/sbin:/opt/bin"
+#WHITE=`print -P "%{\e[0;37m%}"`
+#BLACK=`print -P "%{\e[0;30m%}"`
+#RED=`print -P "%{\e[0;31m%}"`
+#GREEN=`print -P "%{\e[0;32m%}"`
+#YELLOW=`print -P "%{\e[0;33m%}"`
+#BLUE=`print -P "%{\e[0;34m%}"`
+#PURPLE=`print -P "%{\e[0;35m%}"`
+#CYAN=`print -P "%{\e[0;36m%}"`
+#export WHITE BLACK RED GREEN YELLOW BLUE PURPLE CYAN
+#function precmd {
+#export PS1="$? | %{${YELLOW}%}[%(!.%{${RED}%}%n. %{${GREEN}%}%n)%{${YELLOW}%}@%{${CYAN}%}%m%{${YELLOW}%} ] %{${GREEN}%}%~        %{${BLUE}%}-=%{${GREEN}%}%D{%a %d.%m.%Y} %*%{${BLUE}%}=-%{${WHITE}%}
+#{ "}
+
+# colored:
+#export PS1="$? | %(!.%n.%n)%{${YELLOW}%}@%{${CYAN}%}%m%{${YELLOW}%} ] %{${GREEN}%}%~        %{${BLUE}%}-=%{${GREEN}%}%D{%a %d.%m.%Y} %*%{${BLUE}%}=-%{${WHITE}%}
+
+# white:
+#export PS1="$? | [ %n@%m ] %~          %D{%a %d.%m.%Y} %*
+#{ "}
+
+# small:
+#export PS1="$? %B[>]%b "}
+
+#HOSTNAME_IF_DIFFERENT="$(if [ "thinkpad" != "`hostname`" ] ; then hostname ; fi)" 
+
+function parse_git_branch() {
+  #(git symbolic-ref -q HEAD || git name-rev --name-only --no-undefined --always HEAD) 2> /dev/null
+	BRANCH_NAME=$(git name-rev --name-only --no-undefined --always HEAD 2> /dev/null)
+	if [ -z "$BRANCH_NAME" ] ; then 
+		echo ""
+	else
+		echo "[$BRANCH_NAME]"
+	fi
+}
+	 
+
+#function precmd {
+#export PS1="$? %m [>] " }
+#
+#RPS1='$(parse_git_branch) %~ %D{%H:%M}'
+RPROMPT='$(parse_git_branch) %~ %D{%H:%M}'
+
+# last char must be U+00A0, see .zshenv nbsp
+PROMPT='$? %m [>] '
+
+#%D{%a %d.%m.%Y}"
+
+#export RPS1="}  "
+# alte cfg:
+#export PS1="%{${YELLOW}%}[%(!.%{${RED}%}%n. %{${GREEN}%}%n)%{${YELLOW}%}@%{${CYAN}%}%m%{${YELLOW}%} ] %{${GREEN}%}%~${INFO} 
+#{"}
+#export RPS1="}  %{${BLUE}%}-=%{${GREEN}%}%D{%a %d.%m.%Y} %*%{${BLUE}%}=-%{${WHITE}%}"
+export SPROMPT='%R - WTF???? : %r '
+export PS2="%{${CYAN}%}<--%_-->%"
+#preexec () {
+#	emulate -L zsh # wieso eigene shell emulieren?
+#	#local -a cmd; cmd=(${(z)1})
+#        #title $cmd[1]:t "$cmd[2,-1]"
+#}
+
+SELECTMIN=5
+ZLS_COLOURS='ma=7:di=0:ex=0:bd=0:cd=0:ln=0:so=0'
+
+export PGPPATH=~/.gnupg
+
+#typeset -xUT LS_COLORS ls_colors
+#ls_colors=(
+#    "no=00"
+#    "fi=00"
+#    "di=00;36"
+#    "ln=00;37"
+#    "pi=40;33"
+#    "so=00;35"
+#    "bd=40;33;01"
+#    "cd=40;33;01"
+#    "or=01;05;37;41"
+#    "mi=01;05;37;41"
+#    "ex=00;32"
+#
+#    "*.cmd=00;32"
+#    "*.exe=00;32"
+#    "*.sh=00;32"
+#    "*.csh=00;32"
+#    "*.bash=00;32"
+#    "*.zsh=00;32"
+#
+#    "*.tar=00;31"
+#    "*.tgz=00;31"
+#    "*.arj=00;31"
+#    "*.taz=00;31"
+#    "*.lzh=00;31"
+#    "*.zip=00;31"
+#    "*.z=00;31"
+#    "*.Z=00;31"
+#    "*.gz=00;31"
+#    "*.bz2=00;31"
+#    "*.bz=00;31"
+#    "*.tz=00;31"
+#
+#    "*.rpm=00;31"
+#    "*.cpio=00;31"
+#
+#    "*.jpg=00;35"
+#    "*.gif=00;35"
+#    "*.bmp=00;35"
+#    "*.xbm=00;35"
+#    "*.xpm=00;35"
+#    "*.png=00;35"
+#    "*.tif=00;35"
+#
+#    "*#=4"
+#    "*%=4"
+#    "*~=4"
+#
+#    "*README*=31;4"
+#    "*eadme*=31;4"
+#    "*eadme.jp*=31;4"
+#    "*EADME.jp*=31;4"
+#
+#    "*.c=31"
+#    "*.cc=31"
+#    "*.cpp=31"
+#    "*.C=31"
+#    "*.cxx=31"
+#    "*.o=34"
+#    "*.h=33"
+#    "*.java=31"
+#    "*.class=35"
+#
+#    "*akefile=31;43"
+#    "*akefile.linux=31;43"
+#    "*akefile.in=31;43"
+#    "*akefile.am=31;43"
+#    "*onfigure.in=31;43"
+#
+#    "*.html=31"
+#    "*.htm=31"
+#    "*.shtml=31"
+#    "*.tex=31"
+#    "*.lyx=31"
+#    "*.mgp=31"
+#    "*.pl=31"
+#    "*.eps=35"
+#    "*.ppm=35"
+#    "*.tif=35"
+#
+#    "*.ogg=33;4"
+#    "*.flac=33;4"
+#    "*.mp3=33;4"
+#    "*.wav=35;4"
+#    "*.mpg=35;4"
+#    "*.MPG=35;4"
+#    "*.mpeg=35;4"
+#    "*.MPEG=35;4"
+#    "*.avi=35;4"
+#    "*.AVI=35;4"
+#    "*.rm=35;4"
+#    "*.RM=35;4"
+#    "*.ram=35;4"
+#    "*.RAM=35;4"
+#    "*.wmv=35;4"
+#    "*.WMV=35;4"
+#
+##    ${ls_colors}
+#)
+
+typeset -x PAGER=less
+typeset -x MANPAGER=${PAGER}
+typeset -x READNULLCMD=${PAGER}
+typeset -x NULLCMD=cat
+typeset -x EDITOR="vim"
+typeset -x VISUAL="vim"
+typeset -x MALLOC_CHECK=2
+typeset -x USER=${USERNAME}
+typeset -x HOSTNAME=${HOST}
+
+alias -g ...='../..' 
+alias -g ....='../../..' 
+alias -g DN=/dev/null
+
+alias   -s txt=vim
+alias   -s url=vim
+alias   -s dvi=xdvi
+alias   -s pdf=okular
+alias   -s ps=gv
+alias   -s chm=xchm
+alias   -s tex=vim
+alias 	-s cpp=vim
+alias 	-s c=vim
+alias 	-s c=vim
+alias 	-s java=vim
+alias 	-s Makefile=vim
+alias 	-s nfo=vim
+
+alias   -s ogg=mplayer
+alias   -s mp3=mplayer
+alias   -s flac=mplayer
+alias   -s wav=mplayer
+alias   -s wmv=mplayer
+alias   -s mpg=mplayer
+alias   -s mpeg=mplayer
+alias   -s avi=mplayer
+alias   -s mp4=mplayer
+alias   -s mkv=mplayer
+
+alias   -s jpg=gqview
+alias   -s jpeg=gqview
+alias   -s xpm=gqview
+alias   -s xbm=gqview
+alias   -s png=gqview
+alias   -s gif=gqview
