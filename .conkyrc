@@ -133,4 +133,5 @@ $alignc$mpd_title
 $alignc$mpd_album
 
 ${mpd_bar 4}
-$alignc${exec /bin/cat ~/.config/dispatch_to_some_player/player}
+
+${exec /bin/cat ~/.config/dispatch_to_some_player/player}

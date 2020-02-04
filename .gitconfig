@@ -7,7 +7,7 @@
 	textconv = sqlite3dump
 
 [alias]
-		lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 
 [push]
 	default = simple
@@ -20,5 +20,10 @@
 
 [rebase]
 	autosquash = true
+
 [core]
 	editor = nvim
+[cola]
+	spellcheck = false
+[gui]
+	recentrepo = /home/totycro/tmp/project1
