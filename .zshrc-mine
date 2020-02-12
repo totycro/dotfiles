@@ -186,9 +186,7 @@ alias gs="git status"
 alias gco="git checkout"
 alias gso="git show"
 
-alias wodim="wodim -v"
-
-alias audacity="PULSE_LATENCY_MSEC=30 audacity"
+alias git_clean_branches='git branch -r --merged | grep -vE "origin/master|origin/HEAD" | cut -d'/' -f2- | while read br; do echo "git push --delete origin \"$br\"" ; done'
 
 # new mpd 
 # ncmpcpp doesn't seem to work without host, mpc does
