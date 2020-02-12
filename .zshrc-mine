@@ -190,7 +190,7 @@ alias git_clean_branches='git branch -r --merged | grep -vE "origin/master|origi
 
 # new mpd 
 # ncmpcpp doesn't seem to work without host, mpc does
-alias ncm="ncmpcpp -h $(/home/totycro/bin/get_mpd_host.sh)"
+# alias ncm="ncmpcpp -h $(/home/totycro/bin/get_mpd_host.sh)"
 #alias mpc="MPD_HOST=$(/home/totycro/bin/get_mpd_host.sh) mpc"
 
 
@@ -263,7 +263,7 @@ alias -g rn=really_nice
 alias -g nice2=really_nice
 alias -g really_nice='nice -n 19 ionice -c 3'
 alias mpc_file="mpc --format \"%file%\""
-alias cal='cal -m'
+# alias cal='cal -m'
 
 #alias kdevelop3="export KDEDIRS="$KDEDIRS:/usr" && kbuildsycoca && /usr/kde/3.5/bin/kdevelop"
 #alias kdevelop="echo \"kde-messages are hidden\";kdeinit 2>/dev/null& kbuildsycoca & sleep 1; kdevelop 2>/dev/null"

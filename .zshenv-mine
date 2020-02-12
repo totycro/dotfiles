@@ -6,7 +6,7 @@ HISTFILE=~/.zsh_history
 #DIRSTACKSIZE=1000
 cdpath=(. ~ ~/code/purescript )
 
-source /home/totycro/.nix-profile/etc/profile.d/nix.sh
+# source /home/totycro/.nix-profile/etc/profile.d/nix.sh
 
 
 # path modifications and stuff probly should be placed in /etc/profile (which is systemwide)
