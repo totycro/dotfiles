@@ -95,7 +95,7 @@ session.styleOverlay:	~/.fluxbox/overlay
 session.tabs:	true
 session.menuSearch:	itemstart
 session.forcePseudoTransparency:	true
-session.styleFile:	/home/totycro/.fluxbox/styles/TwoAM
+session.styleFile:	/home/mallinger/.fluxbox/styles/TwoAM
 session.slitlistFile:	~/.fluxbox/slitlist
 session.autoRaiseDelay:	250
 session.focusTabMinWidth:	0

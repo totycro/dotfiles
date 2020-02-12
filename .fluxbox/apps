@@ -1,6 +1,5 @@
 [app] (name=kitty) (class=kitty) (transient=no)
   [Dimensions]	{49% 44%}
-  [Deco]	{NONE}
   [Close]	{no}
 [end]
 [app] (name=xterm) (class=XTerm) (transient=no)

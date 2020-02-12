@@ -34,6 +34,7 @@ set list  " show tabs as '>'
 set gdefault
 colorscheme NeoSolarized
 set termguicolors  " necessary for NeoSolarized
+set bg=dark
 
 " remember last file position
 if has("autocmd")

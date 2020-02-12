@@ -102,6 +102,9 @@ nm-applet &
 # in case of problems, possibly checkout compton, it seems to be better maintained
 xcompmgr &
 #xcompmgr -cCfF -r7 -o.65 -t-8 -D7 &
+#
+#
+/home/mallinger/.screenlayout/work.sh &
 
 #exec /usr/bin/fluxbox
 # or if you want to keep a log:
