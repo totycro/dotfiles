@@ -16,6 +16,7 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ 'do': './install.sh'
     \ }
 Plug 'airblade/vim-gitgutter'
+Plug 'leafgarland/typescript-vim'
 
 " Nice Multi-entry selection UI for LanguageClient
 Plug 'junegunn/fzf'
