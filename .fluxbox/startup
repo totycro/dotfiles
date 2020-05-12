@@ -14,7 +14,8 @@
 #fbsetroot -solid black
 #(fbsetbg -a /home/totycro/style/bgs/01602_sandringhambeach_1600x1200.jpg; ~/bin/start_osd)&
 #(fbsetbg -a /home/totycro/fotos/Herbst.08/HPIM1483.jpg; ~/bin/start_osd)&
-(/home/totycro/bin/set_random_wallpaper.sh; ~/bin/restart_osd.sh)&
+# (/home/totycro/bin/set_random_wallpaper.sh; ~/bin/restart_osd.sh)&
+fbsetbg ~/style/bgs/17-01-03\ Uyuni\ 106.JPG  &
 
 #(cd /home/totycro/public/callnotify/; python2 daemon.py)&
 
@@ -61,7 +62,9 @@ xrdb ~/.Xdefaults &
 # mouse acceleration
 #xset m 4 1
 # xset m default
-xset m 1 1
+# xset m 1 1
+# xset m 3/2 0
+# xset m 0 0
 
 # blank timeout
 xset -dpms
@@ -102,9 +105,10 @@ nm-applet &
 # in case of problems, possibly checkout compton, it seems to be better maintained
 xcompmgr &
 #xcompmgr -cCfF -r7 -o.65 -t-8 -D7 &
-#
-#
-/home/mallinger/.screenlayout/work.sh &
+
+xscreensaver &
+
+/home/mallinger/bin/setup_screens.sh  &
 
 #exec /usr/bin/fluxbox
 # or if you want to keep a log:

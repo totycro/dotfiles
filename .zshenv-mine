@@ -4,7 +4,7 @@ HISTSIZE=10000000
 SAVEHIST=20000000
 HISTFILE=~/.zsh_history
 #DIRSTACKSIZE=1000
-cdpath=(. ~ ~/code/purescript )
+cdpath=(. ~ ~/git ~/git/flux-config/workloads)
 
 # source /home/totycro/.nix-profile/etc/profile.d/nix.sh
 

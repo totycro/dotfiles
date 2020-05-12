@@ -79,6 +79,7 @@ Control Mod1 R 			:ExecCommand /bin/sh /home/totycro/bin/toggle_resolution.sh
 #Control Mod1 u :RaiseLayer
 #Control Mod1 l :LowerLayer
 
+Shift Control Mod1 A			:ExecCommand aws eks get-token --cluster-name eoxhub-v1 | jq .status.token -r | xclip
 
 # fbcommands
 Mod1 F9 				:Reconfigure
@@ -117,11 +118,11 @@ Control Mod1 Shift d :ToggleCmd {ShowDesktop} {DeIconify All}
 #Mod4 KP_Subtract	:ExecCommand aumix -v -5
 
 # media
-Shift Mod1 Q 	:ExecCommand /home/totycro/bin/dispatch_to_some_player.sh next
-Shift Mod1 A	:ExecCommand /home/totycro/bin/dispatch_to_some_player.sh prev
-Shift Mod1 W	:ExecCommand /home/totycro/bin/dispatch_to_some_player.sh vol +4
-Shift Mod1 S	:ExecCommand /home/totycro/bin/dispatch_to_some_player.sh vol -4
-Shift Mod1 Z	:ExecCommand /home/totycro/bin/dispatch_to_some_player.sh toggle
+Shift Mod1 Q 	:ExecCommand mpc next
+Shift Mod1 A	:ExecCommand mpc prev
+Shift Mod1 W	:ExecCommand mpc vol +4
+Shift Mod1 S	:ExecCommand mpc vol -4
+Shift Mod1 Z	:ExecCommand mpc toggle
 Shift Mod1 Y	:ExecCommand /home/totycro/bin/kodi-cmd.sh play_youtube
 Shift Mod1 X	:ExecCommand /home/totycro/bin/dispatch_to_some_player.sh switch_player
 

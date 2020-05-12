@@ -3,6 +3,8 @@ export PATH="$PATH:/home/totycro/node_modules/.bin"
 
 export MAVEN_OPTS="-Xmx1024M -Xss128M -XX:MaxPermSize=1024M -XX:+CMSClassUnloadingEnabled -XX:-UseGCOverheadLimit"
 
+export FLUX_FORWARD_NAMESPACE=flux
+
 
 alias stream_youtube="kodi-cmd.sh play_youtube"
 alias ls="exa --git"
@@ -190,7 +192,7 @@ alias git_clean_branches='git branch -r --merged | grep -vE "origin/master|origi
 
 # new mpd 
 # ncmpcpp doesn't seem to work without host, mpc does
-# alias ncm="ncmpcpp -h $(/home/totycro/bin/get_mpd_host.sh)"
+alias ncm="ncmpcpp"
 #alias mpc="MPD_HOST=$(/home/totycro/bin/get_mpd_host.sh) mpc"
 
 
@@ -239,11 +241,23 @@ alias le="leo -es"
 alias v="vim"
 alias setup_gtcad="cd ~/wc/dist/local && source setup.sh && cd -"
 alias m_v="make VERBOSE=1" # works with cmake
-alias note="cat >/dev/null"
+#alias note="cat >/dev/null"
 #alias l='/home/totycro/code/cpp/dict/build/dict'
 alias l='/home/totycro/bin/leo'
 alias rtorrent='really_nice rtorrent'
 alias sq3='sqlite3'
+
+function note_old() {
+    file=$(tempfile --prefix=note_)
+    echo "pasting to ${file}"
+    cat > $file
+}
+function note() {
+    if [ -z "$1" ] ; then echo "Specify note name"; return; fi
+    file="${HOME}/notes/$(date +'%Y-%m-%d')-$1"
+    echo "Opening new note file ${file}"
+    vim "${file}"
+}
 
 #new
 #alias other_screen="DISPLAY=192.168.0.101:0"

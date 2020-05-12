@@ -17,6 +17,8 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ }
 Plug 'airblade/vim-gitgutter'
 Plug 'leafgarland/typescript-vim'
+Plug 'mustache/vim-mustache-handlebars'
+Plug 'Glench/Vim-Jinja2-Syntax'
 
 " Nice Multi-entry selection UI for LanguageClient
 Plug 'junegunn/fzf'
@@ -36,6 +38,7 @@ set gdefault
 colorscheme NeoSolarized
 set termguicolors  " necessary for NeoSolarized
 set bg=dark
+"set bg=light
 
 " remember last file position
 if has("autocmd")
@@ -95,6 +98,4 @@ let g:LanguageClient_serverStderr = expand('~/.local/share/nvim/LanguageServer.l
 let g:ycm_semantic_triggers = {
      \ 'elm' : ['.'],
      \}
-
-
 
