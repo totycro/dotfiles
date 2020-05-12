@@ -34,7 +34,7 @@ set gdefault
 colorscheme NeoSolarized
 set termguicolors  " necessary for NeoSolarized
 set bg=dark
-"set bg=light
+set bg=light
 
 " remember last file position
 if has("autocmd")
