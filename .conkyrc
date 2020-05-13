@@ -1,115 +1,118 @@
-# Conky sample configuration
-# Check http://conky.sf.net for an up-to-date-list.
+conky.config = {
+-- Conky sample configuration
+-- Check http://conky.sf.net for an up-to-date-list.
 
 
-background yes
-#background no
+	background = true,
+--background no
 
-use_xft yes
+	use_xft = true,
 
-# Xft font when Xft is enabled
-#xftfont Bitstream Vera Sans Mono:size=8
-#xftfont Bitstream Vera Monospace Mono:size=3
-#xftfont Nice:size=4
-#xftfont Nice:size=5
-xftfont Nice:size=8
-#xftalpha 9
-#font -*-snap-*-*-*-*-*-*-*-*-*-*-*-*
-#font  -lfp-gamow-medium-r-semicondensed--6-70-75-75-c-60-*-*
-#font -lfp-gamow-*-*-*-*-5-*-*-*-*-*-*-*
-#font -lfp-asimov-*-*-*-*-6-*-*-*-*-*-*-*
-#font -artwiz-anorexia-*-*-*-*-11-*-*-*-*-*-*-*
-#font -artwiz-gelly-*-*-*-*-10-*-*-*-*-*-*-*
-#font -artwiz-lime-*-*-*-*-10-*-*-*-*-*-*-*
+-- Xft font when Xft is enabled
+--xftfont Bitstream Vera Sans Mono:size=8
+--xftfont Bitstream Vera Monospace Mono:size=3
+--xftfont Nice:size=4
+--xftfont Nice:size=5
+	font = 'Nice:size=8',
+--xftalpha 9
+--font -*-snap-*-*-*-*-*-*-*-*-*-*-*-*
+--font  -lfp-gamow-medium-r-semicondensed--6-70-75-75-c-60-*-*
+--font -lfp-gamow-*-*-*-*-5-*-*-*-*-*-*-*
+--font -lfp-asimov-*-*-*-*-6-*-*-*-*-*-*-*
+--font -artwiz-anorexia-*-*-*-*-11-*-*-*-*-*-*-*
+--font -artwiz-gelly-*-*-*-*-10-*-*-*-*-*-*-*
+--font -artwiz-lime-*-*-*-*-10-*-*-*-*-*-*-*
 
-update_interval 2
-total_run_times 0
-own_window yes
-own_window_transparent yes
-own_window_type desktop
-# own_window_class conky
-#own_window_colour hotpink
+	update_interval = 2,
+	total_run_times = 0,
+	own_window = true,
+	own_window_transparent = true,
+	own_window_type = 'desktop',
+-- own_window_class conky
+--own_window_colour hotpink
 
-double_buffer yes
-draw_shades no
-draw_outline no
-# Draw borders around text
-draw_borders no
+	double_buffer = true,
+	draw_shades = false,
+	draw_outline = false,
+-- Draw borders around text
+	draw_borders = false,
 
-#default_color 553311
-# default_color df902a
-#default_color db8020
-#black:
-#default_color 000000
-#default_color 151515
-#default_color 101010
-#greys:
-#default_color ababab
-#default_color 898989
-#default_color cccccc
-default_color dddddd
-#white:
-# default_color ffffff
-#violet:
-#default_color 6b0f6b
-#default_color ad89b4
-#default_color ff0000
-
-
-#alignment top_right
-#alignment bottom_right
-#alignment bottom_left
-alignment top_left
-
-# Gap between borders of screen and text
-gap_x 10
-#gap_y 510 # normal font
-#gap_y 450
-#gap_y 545
-#gap_y 507
-#gap_y 540 # 5 mails 
-#gap_y 520 # 7 mails
-
-#gap_y 920 # 7 mails ( + 400 for big screen compared to above )
-
-#gap_y 770 # 7 mails ( + 400 for big screen compared to above -150 new laptop)
-gap_y 705 # 7 mails ( + 400 for big screen compared to above -150 new laptop + larger font)
-gap_y 650 # 
-gap_y 600 # +last.fm
-gap_y 590 # +last.fm2
-gap_y 740 # nothing
-gap_y 750
-gap_y 369 # matches new background image
-
-# Subtract file system buffers from used memory?
-no_buffers yes
-uppercase no
-cpu_avg_samples 2
-net_avg_samples 2
-override_utf8_locale yes
-maximum_width 195
-minimum_size  190
-
-#mpd_host 127.0.0.1
-#mpd_host 192.168.0.18
-#mpd_host 10.0.0.10
-#mpd_host localhost
-#mpd_port 6600
-
-# °C
-# ${cpugraph 000000 FCD116}
-#
+--default_color 553311
+-- default_color df902a
+--default_color db8020
+--black:
+--default_color 000000
+--default_color 151515
+--default_color 101010
+--greys:
+--default_color ababab
+--default_color 898989
+--default_color cccccc
+	default_color = '#dddddd',
+--white:
+-- default_color ffffff
+--violet:
+--default_color 6b0f6b
+--default_color ad89b4
+--default_color ff0000
 
 
-#${execi 60 (grep -v "\[last.fm\] OK" /var/log/mpdscribble.log | tail -n3 | cut -d' ' -f3-)}
+--alignment top_right
+--alignment bottom_right
+--alignment bottom_left
+	alignment = 'top_left',
 
-# $alignr${execi 20 netstat -s | grep "connections est" | awk '{ print $1 }'}
+-- Gap between borders of screen and text
+	gap_x = 10,
+--gap_y 510 # normal font
+--gap_y 450
+--gap_y 545
+--gap_y 507
+--gap_y 540 # 5 mails 
+--gap_y 520 # 7 mails
 
-#${execi 200 /home/totycro/bin/cm.sh}
-#ppp0 ${addr ppp0}$alignr${downspeed ppp0}${upspeed ppp0}
-#${execi 1200 /home/totycro/bin/weather.sh tomorrow_temp_low} - ${execi 1200 /home/totycro/bin/weather.sh tomorrow_temp_high}${alignr}${execi 1200 /home/totycro/bin/weather.sh tomorrow_text}
-#${execi 1200 /home/totycro/bin/weather.sh current_temp}${alignc}  ${execi 1200 /home/totycro/bin/weather.sh speed}${alignr}${execi 1200 /home/totycro/bin/weather.sh current_text}
-TEXT
+--gap_y 920 # 7 mails ( + 400 for big screen compared to above )
+
+--gap_y 770 # 7 mails ( + 400 for big screen compared to above -150 new laptop)
+	gap_y = 705,-- 7 mails ( + 400 for big screen compared to above -150 new laptop + larger font)
+	gap_y = 650,-- 
+	gap_y = 600,-- +last.fm
+	gap_y = 590,-- +last.fm2
+	gap_y = 740,-- nothing
+	gap_y = 750,
+	gap_y = 369,-- matches new background image
+
+-- Subtract file system buffers from used memory?
+	no_buffers = true,
+	uppercase = false,
+	cpu_avg_samples = 2,
+	net_avg_samples = 2,
+	override_utf8_locale = true,
+	maximum_width = 195,
+	minimum_width = 190,
+
+--mpd_host 127.0.0.1
+--mpd_host 192.168.0.18
+--mpd_host 10.0.0.10
+--mpd_host localhost
+--mpd_port 6600
+
+-- °C
+-- ${cpugraph 000000 FCD116}
+
+
+
+--${execi 60 (grep -v "\[last.fm\] OK" /var/log/mpdscribble.log | tail -n3 | cut -d' ' -f3-)}
+
+-- $alignr${execi 20 netstat -s | grep "connections est" | awk '{ print $1 }'}
+
+--${execi 200 /home/totycro/bin/cm.sh}
+--ppp0 ${addr ppp0}$alignr${downspeed ppp0}${upspeed ppp0}
+--${execi 1200 /home/totycro/bin/weather.sh tomorrow_temp_low} - ${execi 1200 /home/totycro/bin/weather.sh tomorrow_temp_high}${alignr}${execi 1200 /home/totycro/bin/weather.sh tomorrow_text}
+--${execi 1200 /home/totycro/bin/weather.sh current_temp}${alignc}  ${execi 1200 /home/totycro/bin/weather.sh speed}${alignr}${execi 1200 /home/totycro/bin/weather.sh current_text}
+};
+
+conky.text = [[
 ${time %H:%M:%S}$alignr${time %A}
 ${time %d.%m.%y}${alignr}$uptime_short
 
@@ -135,3 +138,4 @@ $alignc$mpd_album
 ${mpd_bar 4}
 
 ${exec /bin/cat ~/.config/dispatch_to_some_player/player}
+]];
