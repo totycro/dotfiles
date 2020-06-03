@@ -106,7 +106,7 @@ nm-applet &
 xcompmgr &
 #xcompmgr -cCfF -r7 -o.65 -t-8 -D7 &
 
-xscreensaver &
+xscreensaver -no-splash &
 
 /home/mallinger/bin/setup_screens.sh  &
 

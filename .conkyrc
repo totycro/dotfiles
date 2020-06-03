@@ -3,7 +3,7 @@ conky.config = {
 -- Check http://conky.sf.net for an up-to-date-list.
 
 
-	background = true,
+	background = false,
 --background no
 
 	use_xft = true,
