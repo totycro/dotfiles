@@ -25,5 +25,3 @@
 	editor = nvim
 [cola]
 	spellcheck = false
-[gui]
-	recentrepo = /home/totycro/tmp/project1
