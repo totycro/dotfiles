@@ -1,0 +1,7 @@
+# this makes the grid legible
+--theme="OneHalfDark"
+
+
+# Use italic text on the terminal (not supported on all terminals)
+--italic-text=always
+
