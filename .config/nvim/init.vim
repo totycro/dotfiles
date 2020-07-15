@@ -49,8 +49,11 @@ endif
 " NOTE: one of the commands running on save makes vim think that
 "       haskell files actually changed after saving, so these shortcuts
 "       don't work without ! here
-map <C-n> :n!<CR>
-map <C-p> :prev!<CR>
+"map <C-n> :n!<CR>
+"map <C-p> :prev!<CR>
+" NOTE: since not working on haskell, use the safe versions to avoid data loss
+map <C-n> :n<CR>
+map <C-p> :prev<CR>
 
 nnoremap <C-l> <Esc>:w<CR>:make!<CR>
 

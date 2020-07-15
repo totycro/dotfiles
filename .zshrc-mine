@@ -17,6 +17,7 @@ alias dotfiles-git='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 alias docker-images-by-size="docker images --format '{{.Size}}\t{{.Repository}}\t{{.Tag}}\t{{.ID}}' | sed 's/ //' | sort -h -r | column -t"
 
+alias gpuflux="git push && fluxctl sync"
 
 #cd ~/wc/dist/local ; source setup.sh >/dev/null ; cd - > /dev/null
 
