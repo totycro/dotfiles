@@ -110,6 +110,8 @@ xscreensaver -no-splash &
 
 /home/mallinger/bin/setup_screens.sh  &
 
+/usr/bin/volumeicon &
+
 #exec /usr/bin/fluxbox
 # or if you want to keep a log:
 #exec /usr/local/bin/fluxbox -log ~/.fluxbox/log
