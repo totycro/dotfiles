@@ -6,6 +6,15 @@ export MAVEN_OPTS="-Xmx1024M -Xss128M -XX:MaxPermSize=1024M -XX:+CMSClassUnloadi
 export FLUX_FORWARD_NAMESPACE=flux
 
 
+function mundi_enter() {
+    export KUBECONFIG=/home/mallinger/.kube/mundi-kubeconfig.json
+    export PS1="%F{6}[mundi]%f ${PS1}"
+}
+function enter_mundi() {
+    mundi_enter
+}
+
+
 alias stream_youtube="kodi-cmd.sh play_youtube"
 alias ls="exa --git"
 alias ll="exa -l --git"
