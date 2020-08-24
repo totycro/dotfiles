@@ -14,6 +14,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'leafgarland/typescript-vim'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'Glench/Vim-Jinja2-Syntax'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Nice Multi-entry selection UI for LanguageClient
 Plug 'junegunn/fzf'
