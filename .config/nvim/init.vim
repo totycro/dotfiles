@@ -10,11 +10,6 @@ Plug 'iCyMind/NeoSolarized'
 Plug 'neovimhaskell/haskell-vim'
 " Using neomake for liting for python
 Plug 'neomake/neomake'
-" Using LanguageClient-neovim for haskell linting
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': './install.sh'
-    \ }
 Plug 'airblade/vim-gitgutter'
 Plug 'leafgarland/typescript-vim'
 Plug 'mustache/vim-mustache-handlebars'
@@ -67,32 +62,6 @@ set clipboard=unnamedplus
 """"""""""""""""""""""""""""""""""""""""
 " run when writing a buffer (no delay).
 call neomake#configure#automake('w')
-
-
-""""""""""""""""""""""""""""""""""""""""
-" LanguageClient
-" (mostly in use for haskell)
-""""""""""""""""""""""""""""""""""""""""
-let g:LanguageClient_serverCommands = {
-    \ 'haskell': ['hie-wrapper'],
-\}
-" Auto-format on save for .hs files
-autocmd BufWritePre *.hs :call LanguageClient#textDocument_formatting()
-
-nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-nnoremap <silent> U :call LanguageClient#textDocument_references()<CR>
-nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-
-" TODO: needs hoogle db?
-nnoremap <leader>lp :call LanguageClient#textDocument_completion()<CR>
-
-map <Leader>lr :call LanguageClient#textDocument_rename()<CR>
-map <Leader>lc :call LanguageClient_contextMenu()<CR>
-map <Leader>le :call LanguageClient#explainErrorAtPoint()<CR>
-
-" for debugging
-let g:LanguageClient_loggingFile =  expand('~/.local/share/nvim/LanguageClient.log')
-let g:LanguageClient_serverStderr = expand('~/.local/share/nvim/LanguageServer.log')
 
 
 """"""""""""""""""""""""""""""""""""""""
