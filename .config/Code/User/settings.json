@@ -5,10 +5,10 @@
   "[python]": {},
   "terminal.integrated.inheritEnv": false,
   "python.formatting.provider": "black",
-  "editor.formatOnSave": false,
-  "editor.formatOnType": false,
+  "editor.formatOnSave": true,
+  "editor.formatOnType": true,
   "python.linting.flake8Enabled": true,
-  "editor.formatOnPaste": false,
+  "editor.formatOnPaste": true,
   "editor.fontLigatures": true,
   "files.autoSave": "onFocusChange",
   "editor.renderWhitespace": "none",
@@ -56,5 +56,6 @@
   "editor.defaultFormatter": "esbenp.prettier-vscode"
 },
 "editor.semanticHighlighting.enabled": true,
-"workbench.colorTheme": "Better Solarized Light"
+"workbench.colorTheme": "Better Solarized Light",
+"editor.formatOnSaveMode": "modifications"
 }
