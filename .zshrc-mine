@@ -5,6 +5,7 @@ export MAVEN_OPTS="-Xmx1024M -Xss128M -XX:MaxPermSize=1024M -XX:+CMSClassUnloadi
 
 export FLUX_FORWARD_NAMESPACE=flux
 
+alias kbu="kubectl -n 0c0a0ef4-8d0d-4e70-b002-033c7cbb41fd"
 
 function mundi_enter() {
     export KUBECONFIG=/home/mallinger/.kube/mundi-kubeconfig.json
