@@ -60,5 +60,6 @@
   "--max-line-length",
   "90"
 ],
-"editor.formatOnSave": false
+"editor.formatOnSave": false,
+"window.menuBarVisibility": "toggle"
 }

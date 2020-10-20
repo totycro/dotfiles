@@ -6,6 +6,7 @@ export MAVEN_OPTS="-Xmx1024M -Xss128M -XX:MaxPermSize=1024M -XX:+CMSClassUnloadi
 export FLUX_FORWARD_NAMESPACE=flux
 
 alias kbu="kubectl -n 0c0a0ef4-8d0d-4e70-b002-033c7cbb41fd"
+alias kbp="kubectl -n eb7fa88c-36a4-4b5f-959f-c7869d5acda8"
 
 function mundi_enter() {
     export KUBECONFIG=/home/mallinger/.kube/mundi-kubeconfig.json
@@ -19,7 +20,7 @@ function enter_mundi() {
 alias stream_youtube="kodi-cmd.sh play_youtube"
 alias ls="exa --git"
 alias ll="exa -l --git"
-alias cat="bat"
+alias cat="batcat"
 
 alias vim="nvim"
 
