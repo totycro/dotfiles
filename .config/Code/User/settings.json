@@ -13,12 +13,12 @@
   "editor.renderWhitespace": "none",
   "editor.wordWrapColumn": 90,
   "editor.rulers": [
+
     90
   ],
   "window.zoomLevel": 0,
   "workbench.editor.enablePreviewFromQuickOpen": false,
   "workbench.editor.enablePreview": false,
-  "editor.fontSize": 13,
   "python.linting.mypyEnabled": true,
   "python.jediEnabled": false,
   "python.testing.pytestEnabled": true,
@@ -61,5 +61,7 @@
   "90"
 ],
 "editor.formatOnSave": false,
-"window.menuBarVisibility": "toggle"
+"window.menuBarVisibility": "toggle",
+"editor.glyphMargin": false,
+"editor.minimap.enabled": false
 }

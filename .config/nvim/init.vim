@@ -77,3 +77,6 @@ let g:ycm_semantic_triggers = {
 " 2 spaces indent for yaml
 " https://stackoverflow.com/questions/26962999/wrong-indentation-when-editing-yaml-in-vim
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab indentkeys-=0# indentkeys-=<:>
+
+
+autocmd BufReadPost Dockerfile* set syntax=dockerfile

@@ -76,7 +76,7 @@ session.screen0.edgeSnapThreshold:	7
 session.screen0.strftimeFormat:	%Y-%m-%d %H:%M
 session.screen0.userFollowModel:	Follow
 session.screen0.sloppywindowgrouping:	true
-session.screen0.windowPlacement:	RowSmartPlacement
+session.screen0.windowPlacement:	UnderMousePlacement
 session.screen0.focusLastWindow:	true
 session.screen0.windowScrollReverse:	false
 session.screen0.workspacewarping:	true
