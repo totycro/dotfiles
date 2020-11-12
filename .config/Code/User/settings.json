@@ -63,5 +63,6 @@
 "editor.formatOnSave": false,
 "window.menuBarVisibility": "toggle",
 "editor.glyphMargin": false,
-"editor.minimap.enabled": false
+"editor.minimap.enabled": false,
+"diffEditor.codeLens": true
 }

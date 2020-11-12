@@ -16,6 +16,24 @@ function enter_mundi() {
     mundi_enter
 }
 
+function k8sexec() {
+    set -x
+    NAMESPACE=$1
+    POD_NAME=$2
+    COMMAND=${3:-bash}
+    kubectl -n "$NAMESPACE" exec -it `kubectl -n "$NAMESPACE" get po | grep "$POD_NAME" |  awk '{print $1}' ` -- $COMMAND
+    set +x
+}
+
+function k8slogs() {
+    set -x
+    NAMESPACE=$1
+    POD_NAME=$2
+    CONTAINER_NAME=$3
+    kubectl -n "$NAMESPACE" logs --tail=1000 -f `kubectl -n "$NAMESPACE" get po | grep "$POD_NAME" |  awk '{print $1}' ` $CONTAINER_NAME
+    set +x
+}
+
 
 alias stream_youtube="kodi-cmd.sh play_youtube"
 alias ls="exa --git"

@@ -16,6 +16,7 @@ Plug 'mustache/vim-mustache-handlebars'
 Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'wellle/context.vim'
+Plug 'towolf/vim-helm'
 
 " Nice Multi-entry selection UI for LanguageClient
 Plug 'junegunn/fzf'
