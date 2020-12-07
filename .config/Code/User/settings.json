@@ -64,5 +64,18 @@
 "window.menuBarVisibility": "toggle",
 "editor.glyphMargin": false,
 "editor.minimap.enabled": false,
-"diffEditor.codeLens": true
+"diffEditor.codeLens": true,
+"files.exclude": {
+  "**/.classpath": true,
+  "**/.project": true,
+  "**/.settings": true,
+  "**/.factorypath": true
+},
+"workbench.editorAssociations": [
+  {
+    "viewType": "jupyter.notebook.ipynb",
+    "filenamePattern": "*.ipynb"
+  }
+],
+"editor.fontFamily": "JetBrains Mono"
 }
