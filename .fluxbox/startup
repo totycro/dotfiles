@@ -112,6 +112,8 @@ xscreensaver -no-splash &
 
 /usr/bin/volumeicon &
 
+xfce4-power-manager &
+
 #exec /usr/bin/fluxbox
 # or if you want to keep a log:
 #exec /usr/local/bin/fluxbox -log ~/.fluxbox/log

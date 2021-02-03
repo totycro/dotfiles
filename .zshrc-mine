@@ -19,12 +19,26 @@ function enter_mundi() {
     mundi_enter
 }
 
+function enter_k3s() {
+    export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
+    export PS1="%F{6}[k3s]%f ${PS1}"
+}
+
+function enter_eoepca() {
+    export KUBECONFIG=/home/mallinger/.kube/config-eoepca
+    export PS1="%F{6}[eoepca]%f ${PS1}"
+}
+function eoepca() {
+    enter_eoepca
+}
+
+
 function kbe() {
     set -x
     NAMESPACE=$1
     POD_NAME=$2
     COMMAND=${3:-bash}
-    kubectl -n "$NAMESPACE" exec -it `kubectl -n "$NAMESPACE" get po | grep "$POD_NAME" |  awk '{print $1}' | head -n1` -- $COMMAND
+    kubectl -n "$NAMESPACE" exec -it `kubectl -n "$NAMESPACE" get po -o name | grep "$POD_NAME" | head -n1` -- $COMMAND
     set +x
 }
 
@@ -33,7 +47,7 @@ function kbl() {
     NAMESPACE=$1
     POD_NAME=$2
     CONTAINER_NAME=$3
-    kubectl -n "$NAMESPACE" logs --tail=1000 -f `kubectl -n "$NAMESPACE" get po | grep "$POD_NAME" |  awk '{print $1}' | head -n1 ` $CONTAINER_NAME
+    kubectl -n "$NAMESPACE" logs --tail=1000 -f `kubectl -n "$NAMESPACE" get po -o name | grep "$POD_NAME" | head -n1 ` $CONTAINER_NAME
     set +x
 }
 
@@ -54,7 +68,8 @@ alias vim="nvim"
 
 alias dotfiles-git='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
-alias docker-images-by-size="docker images --format '{{.Size}}\t{{.Repository}}\t{{.Tag}}\t{{.ID}}' | sed 's/ //' | sort -h -r | column -t"
+alias docker-images-by-size="docker images --format '{{.Size}}\t{{.Repository}}\t{{.Tag}}\t{{.ID}}' | sed 's/ //' | sort -h | column -t"
+alias docker-images-by-size-remove-command="docker-images-by-size | awk '{print \$2,\":\",\$3} ' | sed 's/ : /:/' | while read i ; do echo \"docker image rm \$i\" ; done"
 
 alias gpuflux="git push && fluxctl sync"
 

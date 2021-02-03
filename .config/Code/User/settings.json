@@ -71,11 +71,6 @@
   "**/.settings": true,
   "**/.factorypath": true
 },
-"workbench.editorAssociations": [
-  {
-    "viewType": "jupyter.notebook.ipynb",
-    "filenamePattern": "*.ipynb"
-  }
-],
+"workbench.editorAssociations": [],
 "editor.fontFamily": "JetBrains Mono"
 }
