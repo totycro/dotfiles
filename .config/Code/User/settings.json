@@ -52,7 +52,7 @@
 },
 "python.analysis.typeCheckingMode": "basic",
 "[typescript]": {
-  "editor.defaultFormatter": "esbenp.prettier-vscode"
+  "editor.defaultFormatter": "vscode.typescript-language-features"
 },
 "editor.semanticHighlighting.enabled": true,
 "workbench.colorTheme": "Better Solarized Light",
@@ -71,6 +71,11 @@
   "**/.settings": true,
   "**/.factorypath": true
 },
-"workbench.editorAssociations": [],
+"workbench.editorAssociations": [
+    {
+        "viewType": "jupyter.notebook.ipynb",
+        "filenamePattern": "*.ipynb"
+    }
+],
 "editor.fontFamily": "JetBrains Mono"
 }
