@@ -5,8 +5,6 @@ call plug#begin()
 Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
 Plug 'elmcast/elm-vim'
 Plug 'vim-airline/vim-airline'
-Plug 'Valloric/YouCompleteMe'  " NOTE: futher manual installation necessary!
-Plug 'iCyMind/NeoSolarized'
 Plug 'neovimhaskell/haskell-vim'
 " Using neomake for liting for python
 Plug 'neomake/neomake'
@@ -14,12 +12,24 @@ Plug 'airblade/vim-gitgutter'
 Plug 'leafgarland/typescript-vim'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'Glench/Vim-Jinja2-Syntax'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'wellle/context.vim'
 Plug 'towolf/vim-helm'
+Plug 'sheerun/vim-polyglot'
 
-" Nice Multi-entry selection UI for LanguageClient
+" completion:
+" coc seems to work with some language server to enable k8s completions, so use this
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"Plug 'Valloric/YouCompleteMe'  " NOTE: futher manual installation necessary!
+
+" color:
+Plug 'drewtempelmeyer/palenight.vim'
+Plug 'iCyMind/NeoSolarized'
+Plug 'ayu-theme/ayu-vim'
+Plug 'arcticicestudio/nord-vim'
+
+
 Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
 
 call plug#end()
 
@@ -33,10 +43,16 @@ set expandtab
 set ignorecase
 set list  " show tabs as '>'
 set gdefault
-colorscheme NeoSolarized
-set termguicolors  " necessary for NeoSolarized
+"colorscheme NeoSolarized
+"colorscheme palenight
+"let ayucolor="dark"   " for dark version of theme
+"let ayucolor="light"  " for light version of theme
+"let ayucolor="mirage" " for mirage version of theme
+"colorscheme ayu
+set termguicolors
+set bg=light
 set bg=dark
-"set bg=light
+colorscheme nord
 
 " remember last file position
 if has("autocmd")
@@ -81,3 +97,6 @@ autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab indentkeys-=0# indentke
 
 
 autocmd BufReadPost Dockerfile* set syntax=dockerfile
+
+" fzf
+nnoremap <c-f> :Files<cr>
