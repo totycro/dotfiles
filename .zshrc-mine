@@ -12,16 +12,19 @@ alias kbp="kubectl -n eb7fa88c-36a4-4b5f-959f-c7869d5acda8"
 alias watch='watch '
 alias watchd='watch -d '
 
+function enter_loose() {
     export KUBECONFIG=/home/mallinger/.kube/loose-mundi-kubeconfig.json
     export PS1="%F{6}[loose-mundi]%f ${PS1}"
-}
-function enter_mundi() {
-    mundi_enter
 }
 
 function enter_k3s() {
     export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
     export PS1="%F{6}[k3s]%f ${PS1}"
+}
+
+function enter_k3d() {
+    export KUBECONFIG=/home/mallinger/.kube/config-k3d
+    export PS1="%F{6}[k3d]%f ${PS1}"
 }
 
 function enter_eoepca() {
@@ -38,7 +41,11 @@ function kbe() {
     NAMESPACE=$1
     POD_NAME=$2
     COMMAND=${3:-bash}
-    kubectl -n "$NAMESPACE" exec -it `kubectl -n "$NAMESPACE" get po -o name | grep "$POD_NAME" | head -n1` -- $COMMAND
+    CONTAINER=${4}
+    if [ -n "${CONTAINER}" ] ; then
+        CONTAINER="-c ${CONTAINER}"
+    fi
+    kubectl -n "$NAMESPACE" exec -it ${=CONTAINER} `kubectl -n "$NAMESPACE" get po -o name | grep "$POD_NAME" | fzf --select-1` -- $COMMAND
     set +x
 }
 
@@ -47,8 +54,16 @@ function kbl() {
     NAMESPACE=$1
     POD_NAME=$2
     CONTAINER_NAME=$3
-    kubectl -n "$NAMESPACE" logs --tail=1000 -f `kubectl -n "$NAMESPACE" get po -o name | grep "$POD_NAME" | head -n1 ` $CONTAINER_NAME
+    kubectl -n "$NAMESPACE" logs --tail=1000 -f `kubectl -n "$NAMESPACE" get po -o name | grep "$POD_NAME" | fzf --select-1 ` $CONTAINER_NAME
     set +x
+}
+
+function kbllatest() {
+    set -x
+    NAMESPACE=$1
+    CONTAINER_NAME=$2
+    LATEST_POD=$(kubectl -n "$NAMESPACE" get pod --sort-by=.metadata.creationTimestamp -o name | tail -n1 )
+    kubectl -n "$NAMESPACE" logs --tail=1000 -f ${LATEST_POD} $CONTAINER_NAME
 }
 
 function kb-nodes() {
@@ -56,6 +71,15 @@ function kb-nodes() {
 }
 function kb-pods-on-node() {
     kubectl get pods --all-namespaces  --no-headers --field-selector spec.nodeName=$1
+}
+
+alias decode_secret_json="jq '.data | map_values(@base64d)'"
+
+alias -g k8s-sort-created="--sort-by=.metadata.creationTimestamp"
+
+function cdd() {
+    set -x
+    cd "$(find . -type d -iname "*${1}*" -print | fzf --select-1)"
 }
 
 
@@ -338,6 +362,8 @@ alias mpc_file="mpc --format \"%file%\""
 #alias kdevelop="echo \"kde-messages are hidden\";kdeinit 2>/dev/null& kbuildsycoca & sleep 1; kdevelop 2>/dev/null"
 #alias suw="really_nice sudo /home/totycro/bin/update-world-dev"
 #alias cplay='cplay-dev'
+alias -g B="|cat"
+alias -g By="|cat --language yaml"
 alias -g L="|less"
 #alias -g V="|view -"
 alias -g G="|grep --colour=auto"
