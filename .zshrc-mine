@@ -3,6 +3,8 @@ export PATH="$PATH:/home/totycro/node_modules/.bin"
 
 export MAVEN_OPTS="-Xmx1024M -Xss128M -XX:MaxPermSize=1024M -XX:+CMSClassUnloadingEnabled -XX:-UseGCOverheadLimit"
 
+alias pav=pavucontrol
+
 export FLUX_FORWARD_NAMESPACE=flux
 
 alias kbu="kubectl -n 0c0a0ef4-8d0d-4e70-b002-033c7cbb41fd"

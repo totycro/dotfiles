@@ -3,20 +3,20 @@ conky.config = {
 -- Check http://conky.sf.net for an up-to-date-list.
 
 
-	background = true,
+	--background = true,
 --background no
 
 	use_xft = true,
 
 -- Xft font when Xft is enabled
 --xftfont Bitstream Vera Sans Mono:size=8
---xftfont Bitstream Vera Monospace Mono:size=3
+--font = 'Bitstream Vera Monospace Mono:size=8',
 --xftfont Nice:size=4
 --xftfont Nice:size=5
-	font = 'Nice:size=8',
+font = 'Nice:size=8',
 --xftalpha 9
 --font -*-snap-*-*-*-*-*-*-*-*-*-*-*-*
---font  -lfp-gamow-medium-r-semicondensed--6-70-75-75-c-60-*-*
+-- font =  '-lfp-gamow-medium-r-semicondensed--6-70-75-75-c-60-*-*',
 --font -lfp-gamow-*-*-*-*-5-*-*-*-*-*-*-*
 --font -lfp-asimov-*-*-*-*-6-*-*-*-*-*-*-*
 --font -artwiz-anorexia-*-*-*-*-11-*-*-*-*-*-*-*
@@ -25,11 +25,17 @@ conky.config = {
 
 	update_interval = 2,
 	total_run_times = 0,
-	own_window = true,
-	own_window_transparent = true,
-	own_window_type = 'desktop',
+	--own_window = true,
+	--own_window_transparent = true,
+	--own_window_type = 'dock',
+    
+    own_window = true,
+    own_window_transparent = true,
+    --own_window_argb_visual = true,
+    own_window_type = 'override',
+    -- or 'desktop' or 'panel' or 'dock' or 'override'
 -- own_window_class conky
---own_window_colour hotpink
+-- own_window_colour = 'hotpink',
 
 	double_buffer = true,
 	draw_shades = false,
@@ -81,6 +87,7 @@ conky.config = {
 	gap_y = 740,-- nothing
 	gap_y = 750,
 	gap_y = 369,-- matches new background image
+	gap_y = 280,-- font somehow different now?
 
 -- Subtract file system buffers from used memory?
 	no_buffers = true,
@@ -126,8 +133,8 @@ $diskio${alignr}${fs_free /}
 ${battery}$alignr${battery_time}
 
 eth$alignr${downspeed enp0s31f6} / ${upspeed enp0s31f6}
-wlan: $alignr${downspeed wlp0s20f3} / ${upspeed wlp0s20f3}
-${wireless_essid wlp0s20f3}
+wlan: $alignr${downspeed wlp5s0} / ${upspeed wlp5s0}
+${wireless_essid wlp5s0}
 
 $mpd_status${alignc -23}${mpd_elapsed}/$mpd_length${alignr}vol:${mpd_vol}%
 rate:${mpd_bitrate}${alignr}rand:${mpd_random}
@@ -137,6 +144,5 @@ $alignc$mpd_title
 $alignc$mpd_album
 
 ${mpd_bar 4}
-
-${exec /bin/cat ~/.config/dispatch_to_some_player/player}
+${exec /bin/cat /home/totycro/.config/dispatch_to_some_player/player}
 ]];

@@ -38,7 +38,7 @@ fbsetbg ~/style/bgs/17-01-03\ Uyuni\ 106.JPG  &
 # Change your keymap:
 # xmodmap ~/.Xmodmap
 
-xset +fp /usr/share/fonts/local
+# xset +fp /usr/share/fonts/local
 
 
 # /home/totycro/bin/setup_trackpoint.sh &
@@ -57,7 +57,7 @@ unclutter -idle 2 -root &
 #sudo tleds -qwd 50 wlan0
 
 xmodmap ~/.Xmodmap &
-xrdb ~/.Xdefaults &
+# xrdb ~/.Xdefaults &
 
 # mouse acceleration
 #xset m 4 1
@@ -99,20 +99,22 @@ nm-applet &
 
 #firefox &
 
-/usr/bin/dropbox start &
+# /usr/bin/dropbox start &
 
 
 # in case of problems, possibly checkout compton, it seems to be better maintained
 xcompmgr &
 #xcompmgr -cCfF -r7 -o.65 -t-8 -D7 &
 
-xscreensaver -no-splash &
+# xscreensaver -no-splash &
 
+# only work
 /home/mallinger/bin/setup_screens.sh  &
 
 /usr/bin/volumeicon &
 
 xfce4-power-manager &
+/home/totycro/bin/fix_stuff.sh&
 
 #exec /usr/bin/fluxbox
 # or if you want to keep a log:

@@ -1,6 +1,6 @@
 [user]
 	name = Bernhard Mallinger
-	email = bernhard.mallinger@eox.at
+	email = b.mallinger@gmx.at
 
 
 [diff "sqlite"]
@@ -15,13 +15,16 @@
 [diff]
 	noprefix = true
 
-[pull]
-	rebase = true
+#[pull] rebase = true
 
 [rebase]
 	autosquash = true
 
 [core]
-	editor = nvim
+	editor = vim
 [cola]
 	spellcheck = false
+[init]
+	defaultBranch = main
+[gui]
+	recentrepo = /home/totycro/git/git-test

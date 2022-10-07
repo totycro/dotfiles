@@ -74,6 +74,9 @@ Control Mod1 E 			:MacroCmd { ToggleDecor } { ShadeWindow } { ToggleDecor }
 
 Control Mod1 R 			:ExecCommand /bin/sh /home/totycro/bin/toggle_resolution.sh
 
+
+Mod1 Shift E			:ExecCommand /bin/sh /home/totycro/bin/switch-xmodmap.sh
+
 # 			shades windows without decoration (needs to set decoration first to be able to shade, so decor has to be disabled when window is restored from shading)
 #Shift Control Mod1 Q 	:Close
 #Control Mod1 u :RaiseLayer
@@ -118,19 +121,19 @@ Control Mod1 Shift d :ToggleCmd {ShowDesktop} {DeIconify All}
 #Mod4 KP_Subtract	:ExecCommand aumix -v -5
 
 # media
-Shift Mod1 Q 	:ExecCommand mpc next
-Shift Mod1 A	:ExecCommand mpc prev
-Shift Mod1 W	:ExecCommand mpc vol +4
-Shift Mod1 S	:ExecCommand mpc vol -4
-Shift Mod1 Z	:ExecCommand mpc toggle
+#Shift Mod1 Q 	:ExecCommand mpc next
+#Shift Mod1 A	:ExecCommand mpc prev
+#Shift Mod1 W	:ExecCommand mpc vol +4
+#Shift Mod1 S	:ExecCommand mpc vol -4
+#Shift Mod1 Z	:ExecCommand mpc toggle
 Shift Mod1 Y	:ExecCommand /home/totycro/bin/kodi-cmd.sh play_youtube
 Shift Mod1 X	:ExecCommand /home/totycro/bin/dispatch_to_some_player.sh switch_player
 
-#Shift Mod1 Q 	:ExecCommand /home/totycro/bin/kodi-cmd.sh next
-#Shift Mod1 A	:ExecCommand /home/totycro/bin/kodi-cmd.sh prev
-#Shift Mod1 W	:ExecCommand /home/totycro/bin/kodi-cmd.sh vol +
-#Shift Mod1 S	:ExecCommand /home/totycro/bin/kodi-cmd.sh vol -
-#Shift Mod1 Z	:ExecCommand /home/totycro/bin/kodi-cmd.sh toggle
+Shift Mod1 Q 	:ExecCommand /home/totycro/bin/dispatch_to_some_player.sh next
+Shift Mod1 A	:ExecCommand /home/totycro/bin/dispatch_to_some_player.sh prev
+Shift Mod1 W	:ExecCommand /home/totycro/bin/dispatch_to_some_player.sh vol +4
+Shift Mod1 S	:ExecCommand /home/totycro/bin/dispatch_to_some_player.sh vol -4
+Shift Mod1 Z	:ExecCommand /home/totycro/bin/dispatch_to_some_player.sh toggle
 
 #Shift Mod1 Q 	:ExecCommand /usr/local/bin/mcc.sh next
 #Shift Mod1 A	:ExecCommand /usr/local/bin/mcc.sh prev
