@@ -121,9 +121,9 @@ font = 'Nice:size=8',
 
 conky.text = [[
 ${time %H:%M:%S}$alignr${time %A}
-${time %d.%m.%y}${alignr}$uptime_short
+${time %Y-%m-%d}${alignr}$uptime_short
 
-$loadavg$alignr$freq | ${acpitemp}^C
+$loadavg$alignr$freq | ${acpitemp}°C
 
 CPU${offset 10}$cpubar
 MEM${offset 10}$membar

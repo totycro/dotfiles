@@ -1,5 +1,5 @@
 export PATH="/usr/lib/ccache/bin:$PATH:/home/totycro/bin:/usr/sbin:/sbin:/usr/local/sbin:/usr/local/bin:/usr/bin:/sbin:/bin"
-export PATH="$PATH:/home/totycro/node_modules/.bin"
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH:/home/totycro/node_modules/.bin"
 
 export MAVEN_OPTS="-Xmx1024M -Xss128M -XX:MaxPermSize=1024M -XX:+CMSClassUnloadingEnabled -XX:-UseGCOverheadLimit"
 
@@ -7,11 +7,31 @@ alias pav=pavucontrol
 
 export FLUX_FORWARD_NAMESPACE=flux
 
+alias cal="ncal -C"  # otherwise today is not highlighted?
+
 alias kbu="kubectl -n 0c0a0ef4-8d0d-4e70-b002-033c7cbb41fd"
 alias kbp="kubectl -n eb7fa88c-36a4-4b5f-959f-c7869d5acda8"
+function kb-cycle() {
+    file=$1
+    set -x
+    kb delete -f $1
+    kb apply -f $1
+    set +x
+
+}
+
+function watch-pods() {
+    NS=$1
+    POD_PARTIAL=$2
+    watch kubectl get po -n $NS \| grep $POD_PARTIAL
+}
+
+alias nb="jupyter notebook"
 
 # sourcery https://unix.stackexchange.com/a/25329/462277
 alias watch='watch '
+alias watch5='watch -n 5 '
+alias watch100='watch -n 100 '
 alias watchd='watch -d '
 
 function enter_loose() {
@@ -19,23 +39,69 @@ function enter_loose() {
     export PS1="%F{6}[loose-mundi]%f ${PS1}"
 }
 
+function k3s_fenrir() {
+    export KUBECONFIG=/home/mallinger/.kube/config-fenrir-k3s
+    export PS1="%F{6}[k3s]%f ${PS1}"
+}
+
 function enter_k3s() {
     export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
     export PS1="%F{6}[k3s]%f ${PS1}"
 }
 
-function enter_k3d() {
-    export KUBECONFIG=/home/mallinger/.kube/config-k3d
-    export PS1="%F{6}[k3d]%f ${PS1}"
+function enter_vnext() {
+    export KUBECONFIG=/home/mallinger/.kube/config-vnext
+    export PS1="%F{6}[vnext]%f ${PS1}"
 }
 
-function enter_eoepca() {
-    export KUBECONFIG=/home/mallinger/.kube/config-eoepca
-    export PS1="%F{6}[eoepca]%f ${PS1}"
+
+#function enter_k3d() {
+#    export KUBECONFIG=/home/mallinger/.kube/config-k3d
+#    export PS1="%F{6}[k3d]%f ${PS1}"
+#}
+
+function eoepca_dev() {
+    export KUBECONFIG=/home/mallinger/.kube/config-eoepca-dev
+    export PS1="%F{6}[eoepca-dev]%f ${PS1}"
 }
-function eoepca() {
-    enter_eoepca
+
+function eoepca_demo() {
+    export KUBECONFIG=/home/mallinger/.kube/config-eoepca-demo
+    export PS1="%F{6}[eoepca-demo]%f ${PS1}"
 }
+
+function enter_minikube() {
+    export KUBECONFIG=/home/mallinger/.kube/config-minikube
+    export PS1="%F{6}[minikube]%f ${PS1}"
+}
+
+function enter_eoxhub_v2() {
+    export KUBECONFIG=/home/mallinger/.kube/config-eoxhub-v2
+    export PS1="%F{6}[eoxhub-v2]%f ${PS1}"
+}
+
+function enter_deepesdl() {
+    export KUBECONFIG=/home/mallinger/.kube/config-deepesdl
+    export PS1="%F{6}[deepesdl]%f ${PS1}"
+}
+
+function enter_deepesdl_prod() {
+    export KUBECONFIG=/home/mallinger/.kube/config-deepesdl-prod
+    export PS1="%F{6}[deepesdl-prod]%f ${PS1}"
+}
+
+function enter_hub_test_core() {
+    export KUBECONFIG=/home/mallinger/.kube/config-hub-test-core
+    export PS1="%F{6}[hub-test-core]%f ${PS1}"
+}
+
+function enter_hub_core_PROD() {
+    export KUBECONFIG=/home/mallinger/.kube/config-hub-core-prod
+    export PS1="%F{6}[hub-core-prod]%f ${PS1}"
+}
+
+
+
 
 
 function kbe() {
@@ -47,7 +113,15 @@ function kbe() {
     if [ -n "${CONTAINER}" ] ; then
         CONTAINER="-c ${CONTAINER}"
     fi
-    kubectl -n "$NAMESPACE" exec -it ${=CONTAINER} `kubectl -n "$NAMESPACE" get po -o name | grep "$POD_NAME" | fzf --select-1` -- $COMMAND
+    kubectl -n "$NAMESPACE" exec -it ${=CONTAINER} `kubectl -n "$NAMESPACE" get po -o name | grep "$POD_NAME" | fzf --select-1 --exit-0` -- $COMMAND
+    set +x
+}
+
+function kbd() {
+    set -x
+    NAMESPACE=$1
+    POD_NAME=$2
+    kubectl -n "$NAMESPACE" describe `kubectl -n "$NAMESPACE" get po -o name | grep "$POD_NAME" | fzf --select-1 --exit-0 `
     set +x
 }
 
@@ -56,7 +130,7 @@ function kbl() {
     NAMESPACE=$1
     POD_NAME=$2
     CONTAINER_NAME=$3
-    kubectl -n "$NAMESPACE" logs --tail=1000 -f `kubectl -n "$NAMESPACE" get po -o name | grep "$POD_NAME" | fzf --select-1 ` $CONTAINER_NAME
+    kubectl -n "$NAMESPACE" logs --tail=1000 -f `kubectl -n "$NAMESPACE" get po -o name | grep "$POD_NAME" | fzf --select-1 --exit-0 ` $CONTAINER_NAME
     set +x
 }
 
@@ -69,7 +143,7 @@ function kbllatest() {
 }
 
 function kb-nodes() {
-    kubectl get node -o custom-columns=NAME:.metadata.name,NODE-PURPOSE:.metadata.labels.hub\\.eox\\.at/node-purpose,CREATION:.metadata.creationTimestamp  --sort-by=.metadata.creationTimestamp
+    kubectl get node -o custom-columns=NAME:.metadata.name,NODE-OLD:.metadata.labels.hub\\.eox\\.at/node-purpose,NODE-NEW:.metadata.labels.eks\\.amazonaws\\.com/nodegroup,INSTANCE-TYPE:.metadata.labels.node\\.kubernetes\\.io/instance-type,NODE:.metadata.labels.node-lifecycle,CREATION:.metadata.creationTimestamp  --sort-by=.metadata.creationTimestamp
 }
 function kb-pods-on-node() {
     kubectl get pods --all-namespaces  --no-headers --field-selector spec.nodeName=$1
@@ -78,13 +152,15 @@ function kb-pods-on-node() {
 alias decode_secret_json="jq '.data | map_values(@base64d)'"
 
 alias -g k8s-sort-created="--sort-by=.metadata.creationTimestamp"
+alias -g SC="--sort-by=.metadata.creationTimestamp"
 
 function cdd() {
     set -x
-    cd "$(find . -type d -iname "*${1}*" -print | fzf --select-1)"
+    cd "$(find . -type d -iname "*${1}*" -print | fzf --select-1 --exit-0)"
 }
 
 
+alias pav="pavucontrol"
 alias stream_youtube="kodi-cmd.sh play_youtube"
 alias ls="exa --git"
 alias ll="exa -l --git"
@@ -236,7 +312,7 @@ zstyle ':completion:*' group-name ''
 
 
 ff () {
-	find . -iname "*$1*" | grep -v ".svn"
+	find . -iname "*$1*"
 }
 grepr () {
 	DIR=$2
@@ -269,7 +345,7 @@ alias gs="git status"
 alias gco="git checkout"
 alias gso="git show"
 
-alias git_clean_branches='git branch -r --merged | grep -vE "origin/master|origin/HEAD" | cut -d'/' -f2- | while read br; do echo "git push --delete origin \"$br\"" ; done'
+alias git_clean_branches='git branch -r --merged | grep -vE "origin/main|origin/master|origin/HEAD" | cut -d'/' -f2- | while read br; do echo "git push --delete origin \"$br\"" ; done'
 
 # new mpd 
 # ncmpcpp doesn't seem to work without host, mpc does
@@ -371,7 +447,7 @@ alias -g L="|less"
 alias -g G="|grep --colour=auto"
 alias -g S="|sort -g" 
 alias -g T="|tail"
-alias -g V="|/usr/share/vim/vim81/macros/less.sh"
+alias -g V="|nvim"
 alias ccache_stats="CCACHE_DIR=/var/tmp/ccache ccache -s"
 alias ccache_stats_watch="CCACHE_DIR=/var/tmp/ccache watch --interval 2 ccache -s"
 
@@ -447,3 +523,10 @@ zle -N self-insert url-quote-magic
 
 
 #/usr/bin/virtualenvwrapper.sh
+
+
+export MCFLY_KEY_SCHEME=vim
+# export MCFLY_FUZZY=true
+export MCFLY_RESULTS=45
+export MCFLY_INTERFACE_VIEW=BOTTOM
+eval "$(mcfly init zsh)"

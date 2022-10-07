@@ -91,10 +91,10 @@ Mod1 F12				:Quit
 
 
 # cool new shit
-#Mod1 Left :FocusLeft
-#Mod1 Right :FocusRight
-#Mod1 Up :FocusUp
-#Mod1 Down :FocusDown
+Mod1 Left :FocusLeft
+Mod1 Right :FocusRight
+Mod1 Up :FocusUp
+Mod1 Down :FocusDown
 
 # newer, cooler shit
 #Mod1 FocusIn   :If {Matches (urxvt)} {Raise (urxvt)} {}

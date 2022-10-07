@@ -4,7 +4,7 @@ HISTSIZE=10000000
 SAVEHIST=20000000
 HISTFILE=~/.zsh_history
 #DIRSTACKSIZE=1000
-cdpath=(. ~ ~/git ~/git/flux-config/workloads)
+cdpath=(. ~ ~/git ~/git/vs)
 
 # source /home/totycro/.nix-profile/etc/profile.d/nix.sh
 
@@ -223,3 +223,4 @@ alias   -s xpm=gqview
 alias   -s xbm=gqview
 alias   -s png=gqview
 alias   -s gif=gqview
+

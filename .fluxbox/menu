@@ -173,7 +173,8 @@
 
 [begin] (Fluxbox)
 	[exec] (XTerm) {xterm}
-	[exec] (URxvt) {urxvt}
+	[exec] (kitty) {kitty}
+	[exec] (gnome-terminal) {gnome-terminal}
 #	[separator]
 #	[include] (~/.fluxbox/cal)
 	[separator]

@@ -1,6 +1,6 @@
 [user]
-	name = Bernhard Mallinger
-	email = b.mallinger@gmx.at
+    name = Bernhard Mallinger
+	email = bernhard.mallinger@eox.at
 
 
 [diff "sqlite"]
@@ -14,6 +14,7 @@
 
 [diff]
 	noprefix = true
+    # external = difft --background light --display inline
 
 #[pull] rebase = true
 
@@ -28,3 +29,15 @@
 	defaultBranch = main
 [gui]
 	recentrepo = /home/totycro/git/git-test
+[diff "jupyternotebook"]
+	command = git-nbdiffdriver diff
+[merge "jupyternotebook"]
+	driver = git-nbmergedriver merge %O %A %B %L %P
+	name = jupyter notebook merge driver
+[difftool "nbdime"]
+	cmd = git-nbdifftool diff \"$LOCAL\" \"$REMOTE\" \"$BASE\"
+# [difftool] prompt = false
+[mergetool "nbdime"]
+	cmd = git-nbmergetool merge \"$BASE\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\"
+[mergetool]
+	prompt = false

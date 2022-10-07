@@ -8,7 +8,7 @@
   "editor.formatOnType": false,
   "python.linting.flake8Enabled": true,
   "editor.formatOnPaste": false,
-  "editor.fontLigatures": true,
+  "editor.fontLigatures": false,
   "files.autoSave": "onFocusChange",
   "editor.renderWhitespace": "none",
   "editor.wordWrapColumn": 90,
@@ -16,7 +16,7 @@
 
     90
   ],
-  "window.zoomLevel": 0,
+  "window.zoomLevel": 2,
   "workbench.editor.enablePreviewFromQuickOpen": false,
   "workbench.editor.enablePreview": false,
   "python.linting.mypyEnabled": true,
@@ -63,7 +63,6 @@
 "editor.formatOnSave": false,
 "window.menuBarVisibility": "toggle",
 "editor.glyphMargin": false,
-"editor.minimap.enabled": false,
 "diffEditor.codeLens": true,
 "files.exclude": {
   "**/.classpath": true,
@@ -71,11 +70,21 @@
   "**/.settings": true,
   "**/.factorypath": true
 },
-"workbench.editorAssociations": [
-    {
-        "viewType": "jupyter.notebook.ipynb",
-        "filenamePattern": "*.ipynb"
-    }
-],
-"editor.fontFamily": "JetBrains Mono"
+"workbench.editorAssociations": {
+  "*.ipynb": "jupyter-notebook"
+},
+"editor.fontFamily": "JetBrains Mono",
+"editor.cursorStyle": "line",
+"editor.lineNumbers": "on",
+"editor.wordSeparators": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-",
+"editor.wordWrap": "off",
+"[html]": {
+  "editor.defaultFormatter": "vscode.html-language-features"
+},
+"redhat.telemetry.enabled": true,
+"notebook.cellToolbarLocation": {
+  "default": "right",
+  "jupyter-notebook": "left"
+},
+"editor.fontSize": 32
 }
