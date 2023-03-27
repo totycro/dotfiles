@@ -24,7 +24,7 @@ Plug 'kyazdani42/nvim-tree.lua'
 " black is now called from pyright
 "Plug 'a-vrma/black-nvim', {'do': ':UpdateRemotePlugins'}
 
-let g:coc_global_extensions = ['coc-pyright', 'coc-yaml', 'coc-json', 'coc-tsserver']
+let g:coc_global_extensions = ['coc-pyright', 'coc-yaml', 'coc-json', 'coc-tsserver', 'coc-vetur', 'coc-prettier']
 " Plug 'fannheyward/coc-pyright'
 
 " completion:
@@ -56,7 +56,7 @@ let g:fzf_action = {
 
 " Plug 'liuchengxu/vim-which-key'
 
-Plug 'easymotion/vim-easymotion'
+" Plug 'easymotion/vim-easymotion'
 
 call plug#end()
 
@@ -181,6 +181,15 @@ require'nvim-tree'.setup({
       highlight_opened_files = '3',
   },
 })
+local function open_nvim_tree(data)
+  -- https://github.com/nvim-tree/nvim-tree.lua/wiki/Open-At-Startup
+  local directory = vim.fn.isdirectory(data.file) == 1
+  if directory then
+    vim.cmd.cd(data.file)
+    require("nvim-tree.api").tree.open()
+  end
+end
+vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
 EOF
 
 " vim-which-key: press lead, wait 1  sec, get popup with available commands
@@ -191,18 +200,18 @@ EOF
 " vim-easymotion
 
 " <Leader>f{char} to move to {char}
-map  <Leader>f <Plug>(easymotion-bd-f)
-nmap <Leader>f <Plug>(easymotion-overwin-f)
+" map  <Leader>f <Plug>(easymotion-bd-f)
+" nmap <Leader>f <Plug>(easymotion-overwin-f)
 
 " s{char}{char} to move to {char}{char}
 "nmap s <Plug>(easymotion-overwin-f2)
 
 " Move to line
-map <Leader>l <Plug>(easymotion-bd-jk)
-nmap <Leader>l <Plug>(easymotion-overwin-line)
+" map <Leader>l <Plug>(easymotion-bd-jk)
+" nmap <Leader>l <Plug>(easymotion-overwin-line)
 
 " Move to word
-map  <Leader>w <Plug>(easymotion-bd-w)
-nmap <Leader>w <Plug>(easymotion-overwin-w)
+" map  <Leader>w <Plug>(easymotion-bd-w)
+" nmap <Leader>w <Plug>(easymotion-overwin-w)
 
 

@@ -16,7 +16,6 @@
 
     90
   ],
-  "window.zoomLevel": 2,
   "workbench.editor.enablePreviewFromQuickOpen": false,
   "workbench.editor.enablePreview": false,
   "python.linting.mypyEnabled": true,
@@ -86,5 +85,6 @@
   "default": "right",
   "jupyter-notebook": "left"
 },
-"editor.fontSize": 32
+"editor.fontSize": 12,
+"window.zoomLevel": 1
 }

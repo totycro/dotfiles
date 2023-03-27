@@ -26,7 +26,6 @@ function watch-pods() {
     watch kubectl get po -n $NS \| grep $POD_PARTIAL
 }
 
-alias nb="jupyter notebook"
 
 # sourcery https://unix.stackexchange.com/a/25329/462277
 alias watch='watch '
@@ -80,10 +79,12 @@ function enter_eoxhub_v2() {
     export PS1="%F{6}[eoxhub-v2]%f ${PS1}"
 }
 
-function enter_deepesdl() {
-    export KUBECONFIG=/home/mallinger/.kube/config-deepesdl
-    export PS1="%F{6}[deepesdl]%f ${PS1}"
-}
+
+# not active right now?
+# function enter_deepesdl() {
+#     export KUBECONFIG=/home/mallinger/.kube/config-deepesdl
+#     export PS1="%F{6}[deepesdl]%f ${PS1}"
+# }
 
 function enter_deepesdl_prod() {
     export KUBECONFIG=/home/mallinger/.kube/config-deepesdl-prod
@@ -98,6 +99,21 @@ function enter_hub_test_core() {
 function enter_hub_core_PROD() {
     export KUBECONFIG=/home/mallinger/.kube/config-hub-core-prod
     export PS1="%F{6}[hub-core-prod]%f ${PS1}"
+}
+
+function enter_dafm() {
+    export KUBECONFIG=/home/mallinger/.kube/config-agri-dafm-core
+    export PS1="%F{6}[agri-dafm-core]%f ${PS1}"
+}
+
+function enter_osc() {
+    export KUBECONFIG=/home/mallinger/.kube/config-osc
+    export PS1="%F{6}[osc]%f ${PS1}"
+}
+
+function enter_agri_ama() {
+    export KUBECONFIG=/home/mallinger/.kube/config-agri-ama
+    export PS1="%F{6}[agri-ama]%f ${PS1}"
 }
 
 
@@ -133,6 +149,16 @@ function kbl() {
     kubectl -n "$NAMESPACE" logs --tail=1000 -f `kubectl -n "$NAMESPACE" get po -o name | grep "$POD_NAME" | fzf --select-1 --exit-0 ` $CONTAINER_NAME
     set +x
 }
+
+function kbld() {
+    set -x
+    NAMESPACE=$1
+    DEPLOYMENT_NAME=$2
+    kubectl -n "$NAMESPACE" logs --tail=1000 --all-containers=true -f `kubectl -n "$NAMESPACE" get deployment -o name | grep "$DEPLOYMENT_NAME" | fzf --select-1 --exit-0 ` 
+    set +x
+}
+
+
 
 function kbllatest() {
     set -x
@@ -530,3 +556,5 @@ export MCFLY_KEY_SCHEME=vim
 export MCFLY_RESULTS=45
 export MCFLY_INTERFACE_VIEW=BOTTOM
 eval "$(mcfly init zsh)"
+
+eval "$(zoxide init zsh)"
