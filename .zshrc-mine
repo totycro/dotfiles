@@ -558,3 +558,5 @@ export MCFLY_INTERFACE_VIEW=BOTTOM
 eval "$(mcfly init zsh)"
 
 eval "$(zoxide init zsh)"
+
+eval "$(stern --completion zsh)"

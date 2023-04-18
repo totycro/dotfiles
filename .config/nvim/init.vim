@@ -100,7 +100,7 @@ endif
 map <C-n> :n<CR>
 map <C-p> :prev<CR>
 
-nnoremap <C-l> <Esc>:w<CR>:make!<CR>
+" nnoremap <C-l> <Esc>:w<CR>:make!<CR>
 
 " use global clipboard
 " http://stackoverflow.com/questions/9166328/how-to-copy-selected-lines-to-clipboard-in-vim

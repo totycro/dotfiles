@@ -41,7 +41,8 @@ Shift Mod1 Mod4 K :Kill
 # 	<shells>
 #Mod1 space 		:ExecCommand urxvt
 # Mod1 space 		:ExecCommand urxvt  -fn "xft:Dejavu Sans Mono:size=11:style=book" -fb "xft:Dejavu Sans Mono:size=11:style=bold"
-Mod1 space 		:ExecCommand kitty
+Control Mod1 space 		:ExecCommand kitty
+Mod1 space 		:ExecCommand alacritty
 Mod1 m 		:ExecCommand urxvt  -fn "xft:Dejavu Sans Mono:size=11:style=book" -fb "xft:Dejavu Sans Mono:size=11:style=bold"
 #Control space	:ExecCommand xterm
 # 	</shells>

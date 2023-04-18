@@ -17,8 +17,7 @@
   [Layer]	{4}
 [end]
 [app] (transient=no)
-  [Dimensions]	{35% 40%}
-  [Deco]	{NONE}
+  [Dimensions]	{27% 29%}
   [Jump]	{yes}
 [end]
 [app] (name=OpenAnno)

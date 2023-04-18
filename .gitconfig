@@ -15,16 +15,21 @@
 [diff]
 	noprefix = true
     # external = difft --background light --display inline
+    colorMoved = default
 
-#[pull] rebase = true
+
+[delta]
+    line-numbers = true
+    navigate = true    # use n and N to move between diff sections
+   hyperlinks = true
 
 [rebase]
 	autosquash = true
 
 [core]
 	editor = vim
-[cola]
-	spellcheck = false
+    pager = delta
+
 [init]
 	defaultBranch = main
 [gui]
