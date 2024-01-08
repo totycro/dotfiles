@@ -1,0 +1,16 @@
+import = ["/home/mallinger/.config/alacritty/themes/themes/afterglow.toml"]
+
+[font]
+size = 7.7
+
+[shell]
+program = "/usr/bin/zsh"
+
+[window]
+decorations = "none"
+dynamic_title = true
+opacity = 0.96
+
+[window.padding]
+x = 2
+y = 2
