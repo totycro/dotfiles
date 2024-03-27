@@ -528,8 +528,8 @@
 #active_window_border = red
 
 
-visualizer_fifo_path = "/tmp/mpd.fifo"
-visualizer_type = "spectrum"
+# visualizer_fifo_path = "/tmp/mpd.fifo"
+# visualizer_type = "spectrum"
 
 
 
@@ -564,3 +564,5 @@ locked_screen_width_part = 60
 ask_for_locked_screen_width_part = no
 
 user_interface = classic
+
+lyrics_fetchers = musixmatch, sing365, metrolyrics, jahlyrics, plyrics, tekstowo, zeneszoveg, internet

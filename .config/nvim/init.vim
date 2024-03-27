@@ -19,12 +19,14 @@ Plug 'sheerun/vim-polyglot'
 Plug 'kyazdani42/nvim-web-devicons' " for file icons
 Plug 'kyazdani42/nvim-tree.lua'
 
+Plug 'f-person/git-blame.nvim'
+Plug 'rhysd/git-messenger.vim'
 "Plug 'duane9/nvim-rg'
 
 " black is now called from pyright
 "Plug 'a-vrma/black-nvim', {'do': ':UpdateRemotePlugins'}
 
-let g:coc_global_extensions = ['coc-pyright', 'coc-yaml', 'coc-json', 'coc-tsserver', 'coc-vetur', 'coc-prettier']
+let g:coc_global_extensions = ['coc-pyright', 'coc-yaml', 'coc-json', 'coc-tsserver', 'coc-vetur', 'coc-prettier', '@yaegassy/coc-ruff']
 " Plug 'fannheyward/coc-pyright'
 
 " completion:
@@ -158,8 +160,10 @@ function! s:show_documentation()
   endif
 endfunction
 
-" Highlight the symbol and its references when holding the cursor.
+
+" Highlight the symbol and its references when holding the cursor
 autocmd CursorHold * silent call CocActionAsync('highlight')
+
 
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
@@ -178,7 +182,7 @@ require'nvim-tree'.setup({
     width = 35,
   },
   renderer = {
-      highlight_opened_files = '3',
+      highlight_opened_files = 'all',
   },
 })
 local function open_nvim_tree(data)
@@ -195,6 +199,9 @@ EOF
 " vim-which-key: press lead, wait 1  sec, get popup with available commands
 " nnoremap <silent> <leader> :WhichKey '\'<CR>
 
+
+" git blame
+let g:gitblame_message_template = '<author> • <date> • <summary> • <sha>'
 
 
 " vim-easymotion

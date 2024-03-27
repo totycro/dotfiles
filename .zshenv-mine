@@ -4,7 +4,7 @@ HISTSIZE=10000000
 SAVEHIST=20000000
 HISTFILE=~/.zsh_history
 #DIRSTACKSIZE=1000
-cdpath=(. ~ ~/git ~/git/vs)
+cdpath=(. ~ ~/git )
 
 # source /home/totycro/.nix-profile/etc/profile.d/nix.sh
 
