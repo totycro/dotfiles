@@ -176,6 +176,10 @@ set mouse=n
 
 nnoremap <C-t> :NvimTreeToggle<CR>
 
+
+set shell=/usr/bin/zsh
+autocmd TermOpen * startinsert
+
 lua << EOF
 require'nvim-tree'.setup({
   view = {
@@ -183,6 +187,9 @@ require'nvim-tree'.setup({
   },
   renderer = {
       highlight_opened_files = 'all',
+  },
+  update_focused_file = {
+    enable = true,
   },
 })
 local function open_nvim_tree(data)

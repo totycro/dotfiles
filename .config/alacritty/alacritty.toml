@@ -1,7 +1,12 @@
 import = ["/home/mallinger/.config/alacritty/themes/themes/afterglow.toml"]
+#import = ["/home/mallinger/.config/alacritty/themes/themes/solarized_osaka.toml"]
 
 [font]
 size = 7.7
+normal = { family = "terminal-font", style = "Regular" }
+bold = { family = "terminal-font", style = "Bold" }
+italic = { family = "terminal-font", style = "Italic" }
+bold_italic = { family = "terminal-font", style = "Bold Italic" }
 
 [shell]
 program = "/usr/bin/zsh"

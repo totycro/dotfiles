@@ -97,9 +97,9 @@ function enter_deepesdl_prod() {
     export PS1="%F{6}[deepesdl-prod]%f ${PS1}"
 }
 
-function enter_hub_test_core() {
-    export KUBECONFIG=/home/mallinger/.kube/config-hub-test-core
-    export PS1="%F{6}[hub-test]%f ${PS1}"
+function enter_hub_int_core() {
+    export KUBECONFIG=/home/mallinger/.kube/config-hub-int
+    export PS1="%F{6}[hub-int]%f ${PS1}"
 }
 
 function enter_hub_core_PROD() {
@@ -137,6 +137,33 @@ function enter_eotdl_otc() {
     export KUBECONFIG=/home/mallinger/.kube/kubeconfig-otc-eotdl.json
     export PS1="%F{6}[eotdl-otc]%f ${PS1}"
 }
+
+function enter_earthcode() {
+    export KUBECONFIG=/home/mallinger/.kube/kubeconfig-earthcode.json
+    export PS1="%F{6}[earthcode]%f ${PS1}"
+}
+
+function enter_eoxhub_old() {
+    export KUBECONFIG=/home/mallinger/.kube/config-eoxhub-old.json
+    export PS1="%F{6}[eoxhub-old]%f ${PS1}"
+}
+
+function enter_fairicube_core() {
+    export KUBECONFIG=/home/mallinger/.kube/config-fairicube-core
+    export PS1="%F{6}[fairicube]%f ${PS1}"
+}
+
+function enter_gtif_otc() {
+    export KUBECONFIG=/home/mallinger/.kube/config-gtif-otc
+    export PS1="%F{6}[gtif-otc]%f ${PS1}"
+}
+
+function enter_eoepca_develop() {
+    export KUBECONFIG=/home/mallinger/.kube/config-eoepca-develop
+    export PS1="%F{6}[eoepca-dev]%f ${PS1}"
+}
+
+
 
 
 
@@ -209,11 +236,13 @@ function cdd() {
     cd "$(find . -type d -iname "*${1}*" -print | fzf --select-1 --exit-0)"
 }
 
+alias twoscreens="setup_screens.sh twoscreens"
+alias onescreen="setup_screens.sh onescreen"
 
 alias pav="pavucontrol"
 alias stream_youtube="kodi-cmd.sh play_youtube"
-alias ls="eza --git"
-alias ll="eza -l --git"
+alias ls="eza --oneline --icons --git"
+alias ll="eza -l --total-size --icons --git"
 alias cat="batcat"
 
 alias vim="nvim"
@@ -445,6 +474,9 @@ function note_old() {
     file=$(tempfile --prefix=note_)
     echo "pasting to ${file}"
     cat > $file
+}
+function notes() {
+    note $@
 }
 function note() {
     if [ -z "$1" ] ; then echo "Specify note name"; return; fi
