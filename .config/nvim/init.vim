@@ -19,6 +19,12 @@ Plug 'sheerun/vim-polyglot'
 Plug 'kyazdani42/nvim-web-devicons' " for file icons
 Plug 'kyazdani42/nvim-tree.lua'
 
+
+" These 3 are only for idris
+Plug 'neovim/nvim-lspconfig'
+Plug 'MunifTanjim/nui.nvim'
+" Plug 'ShinKage/idris2-nvim'
+
 "Plug 'duane9/nvim-rg'
 
 " black is now called from pyright
@@ -183,6 +189,16 @@ require'nvim-tree'.setup({
 })
 EOF
 
+" lua << EOF
+" require('idris2').setup({})
+" EOF
+
+" require('idris2.hover').open_split()
+" require('idris2').show_implicits()
+" nnoremap <leader>cs <Cmd>lua require('idris2.semantic').start()<CR>
+" nnoremap <leader>ct <Cmd>lua require('idris2.semantic').stop()<CR>
+" nnoremap <leader>cs <Cmd>lua require('idris2.code_action').refine_hole()<CR>
+
 " vim-which-key: press lead, wait 1  sec, get popup with available commands
 " nnoremap <silent> <leader> :WhichKey '\'<CR>
 
@@ -204,5 +220,6 @@ nmap <Leader>l <Plug>(easymotion-overwin-line)
 " Move to word
 map  <Leader>w <Plug>(easymotion-bd-w)
 nmap <Leader>w <Plug>(easymotion-overwin-w)
+
 
 

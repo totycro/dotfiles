@@ -1,5 +1,5 @@
 export PATH="/usr/lib/ccache/bin:$PATH:/home/totycro/bin:/usr/sbin:/sbin:/usr/local/sbin:/usr/local/bin:/usr/bin:/sbin:/bin"
-export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH:/home/totycro/node_modules/.bin"
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH:/home/totycro/node_modules/.bin:/home/totycro/.pack/bin"
 
 export MAVEN_OPTS="-Xmx1024M -Xss128M -XX:MaxPermSize=1024M -XX:+CMSClassUnloadingEnabled -XX:-UseGCOverheadLimit"
 

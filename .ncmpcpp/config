@@ -23,6 +23,7 @@
 #
 #lyrics_directory = ~/.lyrics
 #
+#
 ##### connection settings #####
 #
 #mpd_host = localhost
@@ -528,7 +529,7 @@
 #active_window_border = red
 
 
-visualizer_fifo_path = "/tmp/mpd.fifo"
+# visualizer_fifo_path = "/tmp/mpd.fifo"
 visualizer_type = "spectrum"
 
 
@@ -562,5 +563,9 @@ regular_expressions = basic
 
 locked_screen_width_part = 60
 ask_for_locked_screen_width_part = no
+
+
+# not sure if valid config
+lyrics_fetchers = musixmatch, sing365, metrolyrics, justsomelyrics, jahlyrics, plyrics, tekstowo, zeneszoveg, internet
 
 user_interface = classic
