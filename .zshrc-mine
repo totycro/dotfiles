@@ -11,8 +11,8 @@ alias cal="ncal -C"  # otherwise today is not highlighted?
 
 alias kbu="kubectl -n 0c0a0ef4-8d0d-4e70-b002-033c7cbb41fd"
 alias kbp="kubectl -n eb7fa88c-36a4-4b5f-959f-c7869d5acda8"
+
 function kb-cycle() {
-    file=$1
     set -x
     kb delete -f $1
     kb apply -f $1
@@ -26,7 +26,6 @@ function watch-pods() {
     watch kubectl get po -n $NS \| grep $POD_PARTIAL
 }
 
-alias nb="jupyter notebook"
 
 # sourcery https://unix.stackexchange.com/a/25329/462277
 alias watch='watch '
@@ -47,6 +46,11 @@ function k3s_fenrir() {
 function enter_k3s() {
     export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
     export PS1="%F{6}[k3s]%f ${PS1}"
+}
+
+function enter_mhub_test_k3d() {
+    export KUBECONFIG=/home/mallinger/.kube/config-mhub-test-k3d
+    export PS1="%F{6}[mhub-test-k3d]%f ${PS1}"
 }
 
 function enter_vnext() {
@@ -75,30 +79,92 @@ function enter_minikube() {
     export PS1="%F{6}[minikube]%f ${PS1}"
 }
 
-function enter_eoxhub_v2() {
-    export KUBECONFIG=/home/mallinger/.kube/config-eoxhub-v2
-    export PS1="%F{6}[eoxhub-v2]%f ${PS1}"
-}
+# not active now
+# function enter_eoxhub_v2() {
+#     export KUBECONFIG=/home/mallinger/.kube/config-eoxhub-v2
+#     export PS1="%F{6}[eoxhub-v2]%f ${PS1}"
+# }
 
-function enter_deepesdl() {
-    export KUBECONFIG=/home/mallinger/.kube/config-deepesdl
-    export PS1="%F{6}[deepesdl]%f ${PS1}"
-}
+
+# not active right now?
+# function enter_deepesdl() {
+#     export KUBECONFIG=/home/mallinger/.kube/config-deepesdl
+#     export PS1="%F{6}[deepesdl]%f ${PS1}"
+# }
 
 function enter_deepesdl_prod() {
     export KUBECONFIG=/home/mallinger/.kube/config-deepesdl-prod
     export PS1="%F{6}[deepesdl-prod]%f ${PS1}"
 }
 
-function enter_hub_test_core() {
-    export KUBECONFIG=/home/mallinger/.kube/config-hub-test-core
-    export PS1="%F{6}[hub-test-core]%f ${PS1}"
+function enter_hub_int_core() {
+    export KUBECONFIG=/home/mallinger/.kube/config-hub-int
+    export PS1="%F{6}[hub-int]%f ${PS1}"
 }
 
 function enter_hub_core_PROD() {
     export KUBECONFIG=/home/mallinger/.kube/config-hub-core-prod
     export PS1="%F{6}[hub-core-prod]%f ${PS1}"
 }
+
+function enter_hub_dev_core() {
+    export KUBECONFIG=/home/mallinger/.kube/config-hub-dev
+    export PS1="%F{6}[hub-dev]%f ${PS1}"
+}
+
+
+function enter_dafm() {
+    export KUBECONFIG=/home/mallinger/.kube/config-agri-dafm-core
+    export PS1="%F{6}[agri-dafm-core]%f ${PS1}"
+}
+
+function enter_osc() {
+    export KUBECONFIG=/home/mallinger/.kube/config-osc
+    export PS1="%F{6}[osc]%f ${PS1}"
+}
+
+function enter_ama() {
+    export KUBECONFIG=/home/mallinger/.kube/config-agri-ama
+    export PS1="%F{6}[agri-ama]%f ${PS1}"
+}
+
+function enter_eotdl_terabyte() {
+    export KUBECONFIG=/home/mallinger/.kube/kubeconfig-eotdl.json
+    export PS1="%F{6}[eotdl-terabyte]%f ${PS1}"
+}
+
+function enter_eotdl_otc() {
+    export KUBECONFIG=/home/mallinger/.kube/kubeconfig-otc-eotdl.json
+    export PS1="%F{6}[eotdl-otc]%f ${PS1}"
+}
+
+function enter_earthcode() {
+    export KUBECONFIG=/home/mallinger/.kube/kubeconfig-earthcode.json
+    export PS1="%F{6}[earthcode]%f ${PS1}"
+}
+
+function enter_eoxhub_old() {
+    export KUBECONFIG=/home/mallinger/.kube/config-eoxhub-old.json
+    export PS1="%F{6}[eoxhub-old]%f ${PS1}"
+}
+
+function enter_fairicube_core() {
+    export KUBECONFIG=/home/mallinger/.kube/config-fairicube-core
+    export PS1="%F{6}[fairicube]%f ${PS1}"
+}
+
+function enter_gtif_otc() {
+    export KUBECONFIG=/home/mallinger/.kube/config-gtif-otc
+    export PS1="%F{6}[gtif-otc]%f ${PS1}"
+}
+
+function enter_eoepca_develop() {
+    export KUBECONFIG=/home/mallinger/.kube/config-eoepca-develop
+    export PS1="%F{6}[eoepca-dev]%f ${PS1}"
+}
+
+
+
 
 
 
@@ -115,7 +181,8 @@ function kbe() {
     fi
     kubectl -n "$NAMESPACE" exec -it ${=CONTAINER} `kubectl -n "$NAMESPACE" get po -o name | grep "$POD_NAME" | fzf --select-1 --exit-0` -- $COMMAND
     set +x
-}
+} 
+
 
 function kbd() {
     set -x
@@ -134,6 +201,16 @@ function kbl() {
     set +x
 }
 
+function kbld() {
+    set -x
+    NAMESPACE=$1
+    DEPLOYMENT_NAME=$2
+    kubectl -n "$NAMESPACE" logs --tail=1000 --all-containers=true -f `kubectl -n "$NAMESPACE" get deployment -o name | grep "$DEPLOYMENT_NAME" | fzf --select-1 --exit-0 ` 
+    set +x
+}
+
+
+
 function kbllatest() {
     set -x
     NAMESPACE=$1
@@ -143,7 +220,7 @@ function kbllatest() {
 }
 
 function kb-nodes() {
-    kubectl get node -o custom-columns=NAME:.metadata.name,NODE-OLD:.metadata.labels.hub\\.eox\\.at/node-purpose,NODE-NEW:.metadata.labels.eks\\.amazonaws\\.com/nodegroup,INSTANCE-TYPE:.metadata.labels.node\\.kubernetes\\.io/instance-type,NODE:.metadata.labels.node-lifecycle,CREATION:.metadata.creationTimestamp  --sort-by=.metadata.creationTimestamp
+    kubectl get node -o custom-columns=NAME:.metadata.name,NODE-OTC:.metadata.labels.cce\\.cloud\\.com/cce-nodepool,NODE-AWS:.metadata.labels.eks\\.amazonaws\\.com/nodegroup,INSTANCE-TYPE:.metadata.labels.node\\.kubernetes\\.io/instance-type,NODE:.metadata.labels.node-lifecycle,CREATION:.metadata.creationTimestamp  --sort-by=.metadata.creationTimestamp
 }
 function kb-pods-on-node() {
     kubectl get pods --all-namespaces  --no-headers --field-selector spec.nodeName=$1
@@ -159,11 +236,13 @@ function cdd() {
     cd "$(find . -type d -iname "*${1}*" -print | fzf --select-1 --exit-0)"
 }
 
+alias twoscreens="setup_screens.sh twoscreens"
+alias onescreen="setup_screens.sh onescreen"
 
 alias pav="pavucontrol"
 alias stream_youtube="kodi-cmd.sh play_youtube"
-alias ls="exa --git"
-alias ll="exa -l --git"
+alias ls="eza --oneline --icons --git"
+alias ll="eza -l --total-size --icons --git"
 alias cat="batcat"
 
 alias vim="nvim"
@@ -371,19 +450,6 @@ alias pdflatex="pdflatex -file-line-error"
 alias ses="setup_screens.sh"
 alias w3m_html="w3m -T text/html"
 
-#alias 'ssh-megatron'='ssh bernhard@parteizentrale.dyndns.org -p 55557 \
-#-L2222:127.0.0.1:22 -L3389:127.0.0.1:3389 -L8888:127.0.0.1:80 \
-#-L5911:192.168.0.111:5900 -L5912:192.168.0.112:5900 \
-#-L5913:192.168.0.113:5900 -L5914:192.168.0.114:5900 \
-#3-L5915:192.168.0.115:5900 -L5916:192.168.0.116:5900'
-
-alias 'ssh-megatron'='ssh bernhard@slp.at -XY -p 55557 \
--L2222:127.0.0.1:22 -L3389:127.0.0.1:3389 -L8888:127.0.0.1:80 \
--L5911:192.168.0.111:5900 -L5912:192.168.0.112:5900 \
--L5913:192.168.0.113:5900 -L5914:192.168.0.114:5900 \
--L5915:192.168.0.115:5900 -L5916:192.168.0.116:5900 \
--L5917:192.168.0.117:5900 -L5918:192.168.0.118:5900'
-
 
 alias tempdir="cd $(mktemp -d)"
 #eval_helper () { bc -l|perl -pe 's/(\.[^0]+)0+$|\.0+$/$1/'; }
@@ -400,14 +466,17 @@ alias setup_gtcad="cd ~/wc/dist/local && source setup.sh && cd -"
 alias m_v="make VERBOSE=1" # works with cmake
 #alias note="cat >/dev/null"
 #alias l='/home/totycro/code/cpp/dict/build/dict'
-alias l='/home/totycro/bin/leo'
-alias rtorrent='really_nice rtorrent'
+# alias l='/home/totycro/bin/leo'
+# alias rtorrent='really_nice rtorrent'
 alias sq3='sqlite3'
 
 function note_old() {
     file=$(tempfile --prefix=note_)
     echo "pasting to ${file}"
     cat > $file
+}
+function notes() {
+    note $@
 }
 function note() {
     if [ -z "$1" ] ; then echo "Specify note name"; return; fi
@@ -529,4 +598,8 @@ export MCFLY_KEY_SCHEME=vim
 # export MCFLY_FUZZY=true
 export MCFLY_RESULTS=45
 export MCFLY_INTERFACE_VIEW=BOTTOM
-# eval "$(mcfly init zsh)"
+eval "$(mcfly init zsh)"
+
+eval "$(zoxide init zsh)"
+
+eval "$(stern --completion zsh)"

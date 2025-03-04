@@ -531,6 +531,7 @@
 
 # visualizer_fifo_path = "/tmp/mpd.fifo"
 visualizer_type = "spectrum"
+# visualizer_type = "spectrum"
 
 
 
@@ -569,3 +570,5 @@ ask_for_locked_screen_width_part = no
 lyrics_fetchers = musixmatch, sing365, metrolyrics, justsomelyrics, jahlyrics, plyrics, tekstowo, zeneszoveg, internet
 
 user_interface = classic
+
+lyrics_fetchers = musixmatch, sing365, metrolyrics, jahlyrics, plyrics, tekstowo, zeneszoveg, internet

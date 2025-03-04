@@ -41,7 +41,8 @@ Shift Mod1 Mod4 K :Kill
 # 	<shells>
 #Mod1 space 		:ExecCommand urxvt
 # Mod1 space 		:ExecCommand urxvt  -fn "xft:Dejavu Sans Mono:size=11:style=book" -fb "xft:Dejavu Sans Mono:size=11:style=bold"
-Mod1 space 		:ExecCommand kitty
+Control Mod1 space 		:ExecCommand kitty
+Mod1 space 		:ExecCommand wezterm
 Mod1 m 		:ExecCommand urxvt  -fn "xft:Dejavu Sans Mono:size=11:style=book" -fb "xft:Dejavu Sans Mono:size=11:style=bold"
 #Control space	:ExecCommand xterm
 # 	</shells>
@@ -127,13 +128,16 @@ Control Mod1 Shift d :ToggleCmd {ShowDesktop} {DeIconify All}
 #Shift Mod1 S	:ExecCommand mpc vol -4
 #Shift Mod1 Z	:ExecCommand mpc toggle
 Shift Mod1 Y	:ExecCommand /home/totycro/bin/kodi-cmd.sh play_youtube
-Shift Mod1 X	:ExecCommand /home/totycro/bin/dispatch_to_some_player.sh switch_player
+#Shift Mod1 X	:ExecCommand /home/totycro/bin/dispatch_to_some_player.sh switch_player
 
 Shift Mod1 Q 	:ExecCommand /home/totycro/bin/dispatch_to_some_player.sh next
 Shift Mod1 A	:ExecCommand /home/totycro/bin/dispatch_to_some_player.sh prev
 Shift Mod1 W	:ExecCommand /home/totycro/bin/dispatch_to_some_player.sh vol +4
 Shift Mod1 S	:ExecCommand /home/totycro/bin/dispatch_to_some_player.sh vol -4
 Shift Mod1 Z	:ExecCommand /home/totycro/bin/dispatch_to_some_player.sh toggle
+
+Shift Mod1 X	:ExecCommand /home/mallinger/local/nerd-dictation/nerd-dictation begin --vosk-model-dir=/home/mallinger/local/nerd-dictation/model
+Shift Mod1 C	:ExecCommand /home/mallinger/local/nerd-dictation/nerd-dictation end
 
 #Shift Mod1 Q 	:ExecCommand /usr/local/bin/mcc.sh next
 #Shift Mod1 A	:ExecCommand /usr/local/bin/mcc.sh prev

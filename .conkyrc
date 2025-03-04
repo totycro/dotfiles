@@ -133,8 +133,8 @@ $diskio${alignr}${fs_free /}
 ${battery}$alignr${battery_time}
 
 eth$alignr${downspeed enp0s31f6} / ${upspeed enp0s31f6}
-wlan: $alignr${downspeed wlp5s0} / ${upspeed wlp5s0}
-${wireless_essid wlp5s0}
+wlan: $alignr${downspeed wlp0s20f3} / ${upspeed wlp0s20f3}
+${wireless_essid wlp0s20f3}
 
 $mpd_status${alignc -23}${mpd_elapsed}/$mpd_length${alignr}vol:${mpd_vol}%
 rate:${mpd_bitrate}${alignr}rand:${mpd_random}

@@ -16,7 +16,6 @@
 
     90
   ],
-  "window.zoomLevel": 2,
   "workbench.editor.enablePreviewFromQuickOpen": false,
   "workbench.editor.enablePreview": false,
   "python.linting.mypyEnabled": true,
@@ -55,13 +54,11 @@
   "editor.defaultFormatter": "vscode.typescript-language-features"
 },
 "editor.semanticHighlighting.enabled": true,
-"workbench.colorTheme": "Better Solarized Light",
 "python.linting.flake8Args": [
   "--max-line-length",
   "90"
 ],
 "editor.formatOnSave": false,
-"window.menuBarVisibility": "toggle",
 "editor.glyphMargin": false,
 "diffEditor.codeLens": true,
 "files.exclude": {
@@ -86,5 +83,7 @@
   "default": "right",
   "jupyter-notebook": "left"
 },
-"editor.fontSize": 32
+"workbench.colorTheme": "Default Light+",
+"window.zoomLevel": 1,
+"editor.fontSize": 12
 }

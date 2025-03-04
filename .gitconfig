@@ -16,16 +16,26 @@
 [diff]
 	noprefix = true
     # external = difft --background light --display inline
+    colorMoved = default
 
-#[pull] rebase = true
+
+[delta]
+    line-numbers = true
+    navigate = true    # use n and N to move between diff sections
+    hyperlinks = true
+    # this file link format doesn't work, but at least it doesn't
+    # open a weird editor. would need to set it up to open a terminal
+    # with nvim
+    # https://dandavison.github.io/delta/grep.html#grep
+    hyperlinks-file-link-format = "file://{path}:{line}"
 
 [rebase]
 	autosquash = true
 
 [core]
-	editor = vim
-[cola]
-	spellcheck = false
+	editor = nvim
+    pager = delta
+
 [init]
 	defaultBranch = main
 [gui]
@@ -42,3 +52,9 @@
 	cmd = git-nbmergetool merge \"$BASE\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\"
 [mergetool]
 	prompt = false
+[pull]
+	rebase = true
+[merge]
+    conflictstyle = diff3
+[branch]
+	sort = committerdate
