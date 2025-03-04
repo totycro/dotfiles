@@ -567,7 +567,7 @@ ask_for_locked_screen_width_part = no
 
 
 # not sure if valid config
-lyrics_fetchers = musixmatch, sing365, metrolyrics, justsomelyrics, jahlyrics, plyrics, tekstowo, zeneszoveg, internet
+# lyrics_fetchers = musixmatch, sing365, metrolyrics, justsomelyrics, jahlyrics, plyrics, tekstowo, zeneszoveg, internet
 
 user_interface = classic
 

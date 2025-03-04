@@ -5,7 +5,7 @@ config.font = wezterm.font 'DejaVu Sans Mono'
 config.font = wezterm.font 'Ubuntu Mono'
 config.font = wezterm.font 'JetBrains Mono'
 -- config.font_size = 13.5 -- big screen
-config.font_size = 12 -- only laptop
+config.font_size = 11 -- only laptop
 -- config.font_size = 14
 config.default_prog = { '/usr/bin/zsh' }
 config.enable_tab_bar = false
@@ -16,6 +16,7 @@ config.window_padding = {
   bottom = 2,
 }
 config.window_background_opacity = 0.96
+-- config.text_background_opacity = 0.0 -- no effect?
 config.window_decorations = "NONE"
 -- config.color_scheme = 'Mariana' -- good, but can't read completion
 config.color_scheme = 'Afterglow'
@@ -33,5 +34,11 @@ config.color_scheme = 'Obsidian (Gogh)'
 config.color_scheme = 'Ocean (base16)'
 config.color_scheme = 'nord-light'
 config.color_scheme = 'Solarized (dark) (terminal.sexy)'
+-- config.color_scheme = 'Afterglow (Gogh)' -- bg dark
+--
+config.color_scheme = 'Obsidian'
+config.color_scheme = 'Nord (base16)' -- can't read completion well
+config.color_scheme = 'Afterglow'
 config.color_scheme = 'Afterglow (Gogh)' -- bg dark
+config.color_scheme = 'WarmNeon'
 return config

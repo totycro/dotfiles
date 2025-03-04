@@ -128,7 +128,7 @@ Control Mod1 Shift d :ToggleCmd {ShowDesktop} {DeIconify All}
 #Shift Mod1 S	:ExecCommand mpc vol -4
 #Shift Mod1 Z	:ExecCommand mpc toggle
 Shift Mod1 Y	:ExecCommand /home/totycro/bin/kodi-cmd.sh play_youtube
-#Shift Mod1 X	:ExecCommand /home/totycro/bin/dispatch_to_some_player.sh switch_player
+Shift Mod1 X	:ExecCommand /home/totycro/bin/dispatch_to_some_player.sh switch_player
 
 Shift Mod1 Q 	:ExecCommand /home/totycro/bin/dispatch_to_some_player.sh next
 Shift Mod1 A	:ExecCommand /home/totycro/bin/dispatch_to_some_player.sh prev

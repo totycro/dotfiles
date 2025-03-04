@@ -16,8 +16,9 @@
   [Sticky]	{yes}
   [Layer]	{4}
 [end]
-[app] (transient=no)
-  [Jump]	{yes}
+[app] (class=org.wezfurlong.wezterm) (transient=no)
+  [Dimensions]	{840 450}
+  [Deco]	{NONE}
 [end]
 [app] (name=OpenAnno)
   [Deco]	{NORMAL}

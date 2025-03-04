@@ -602,4 +602,4 @@ eval "$(mcfly init zsh)"
 
 eval "$(zoxide init zsh)"
 
-eval "$(stern --completion zsh)"
+# eval "$(stern --completion zsh)"
