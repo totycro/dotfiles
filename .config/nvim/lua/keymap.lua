@@ -52,10 +52,10 @@ vim.keymap.set("n", '<Leader>qF', ':qa!<CR>', { desc = "Force quit all" })
 
 -- tabs ------------------------------------------------------------------------
 -- switch tabs with ][T
-vim.keymap.set("n", ']T', ':tabnext<CR>', { desc = "next tab" })
-vim.keymap.set("n", '[T', ':tabprevious<CR>', { desc = "previous tab" })
+--vim.keymap.set("n", ']T', ':tabnext<CR>', { desc = "next tab" })
+--vim.keymap.set("n", '[T', ':tabprevious<CR>', { desc = "previous tab" })
 -- close tab
-vim.keymap.set("n", '<Leader>qt', ':tabclose<CR>', { desc = "Close tab" })
+--vim.keymap.set("n", '<Leader>qt', ':tabclose<CR>', { desc = "Close tab" })
 
 -- movement --------------------------------------------------------------------
 
@@ -77,16 +77,16 @@ vim.keymap.set("x", '<S-TAB>', '<gv', { desc = "Dedent" })
 vim.keymap.set("n", 'Y', 'y$', { desc = "Yank to end of line" })
 
 -- paste from and copy to system clipboard
-vim.keymap.set("n", 'gy', '"+y', { desc = "Yank to clipboard" })
-vim.keymap.set("n", 'gp', '"+p', { desc = "Paste from clipboard to right" })
-vim.keymap.set("n", 'gP', '"+P', { desc = "Paste from clipboard to left" })
-vim.keymap.set("n", 'gY', '"+y$', { desc = "Yank to end of line to clipboard" })
+--vim.keymap.set("n", 'gy', '"+y', { desc = "Yank to clipboard" })
+--vim.keymap.set("n", 'gp', '"+p', { desc = "Paste from clipboard to right" })
+--vim.keymap.set("n", 'gP', '"+P', { desc = "Paste from clipboard to left" })
+--vim.keymap.set("n", 'gY', '"+y$', { desc = "Yank to end of line to clipboard" })
 
 -- reselect pasted text
 vim.keymap.set("n", 'gV', '`[v`]', { desc = "Reselect pasted text" })
 
 -- yank from selection to system clipboard
-vim.keymap.set("x", 'gy', '"+y', { desc = "yank selection to clipboard" })
+--vim.keymap.set("x", 'gy', '"+y', { desc = "yank selection to clipboard" })
 
 -- select all
 vim.keymap.set("n", '<Leader>sa', '<ESC>ggVG', { desc = "Select all" })

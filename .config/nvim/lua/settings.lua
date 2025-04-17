@@ -31,7 +31,7 @@ vim.opt.showtabline = 1
 -- hide mode display
 vim.opt.showmode = false
 -- enable mouse
--- vim.opt.mouse = 'a'
+vim.opt.mouse = 'a'
 -- split below/right
 vim.opt.splitbelow = true
 vim.opt.splitright = true
@@ -140,9 +140,47 @@ vim.api.nvim_create_autocmd("FileType", {
 vim.opt.list  = true
 
 vim.opt.clipboard = "unnamedplus"
+-- Copy/Paste from sytem clipboard
+vim.keymap.set('v', 'p', [["_dP]])
+vim.keymap.set('v', '<Leader>y', [["+y]])
+vim.keymap.set('n', '<Leader>y', [["+y]])
+vim.keymap.set('n', '<Leader>p', [["+p]])
 
 
 vim.keymap.set('n', '<C-n>', ":n<CR>", {})
 vim.keymap.set('n', '<C-p>', ":prev<CR>", {})
 
+
+
+
+--local function open_nvim_tree(data)
+--    -- https://github.com/nvim-tree/nvim-tree.lua/wiki/Open-At-Startup
+--    local directory = vim.fn.isdirectory(data.file) == 1
+--    if directory then
+--        vim.cmd.cd(data.file)
+--        require("nvim-tree.api").tree.open()
+--    end
+--end
+--vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
+
+
+-- open nvim-tree when opening a directory
+--vim.api.nvim_create_autocmd("VimEnter", {
+--  callback = function(data)
+--    -- `data.file` is the file/dir name passed in via `nvim … <args>`
+--    local is_dir = vim.fn.isdirectory(data.file) == 1
+--    if not is_dir then
+--      return
+--    end
+--    -- switch to that directory
+--    vim.cmd.cd(data.file)
+--    -- open the tree
+--    require("nvim-tree.api").tree.open()
+--  end,
+--})
+
+
+--vim.cmd [[
+--  autocmd VimEnter * if argc() == 1 && isdirectory(argv(1)) | NvimTreeToggle | endif
+--]]
 

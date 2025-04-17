@@ -1,14 +1,3 @@
-
-local function open_nvim_tree(data)
-    -- https://github.com/nvim-tree/nvim-tree.lua/wiki/Open-At-Startup
-    local directory = vim.fn.isdirectory(data.file) == 1
-    if directory then
-        vim.cmd.cd(data.file)
-        require("nvim-tree.api").tree.open()
-    end
-end
-vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
-
 --if vim.fn.argc(-1) == 0 then
 --  vim.cmd(":NvimTreeOpen")
 --end
@@ -28,6 +17,7 @@ local function my_on_attach(bufnr)
   vim.keymap.set('n', '<C-t>', api.tree.change_root_to_parent,        opts('Up'))
   vim.keymap.set('n', '?',     api.tree.toggle_help,                  opts('Help'))
 end
+
 
 
 return {
@@ -50,6 +40,20 @@ return {
             },
             on_attach = my_on_attach,
         }
+
+        vim.api.nvim_create_autocmd("VimEnter", {
+            callback = function(data)
+                -- data.file = argument to `nvim XXX`
+                local is_dir = vim.fn.isdirectory(data.file) == 1
+                if not is_dir then
+                    return
+                end
+                -- change to that dir, then open the tree
+                vim.cmd.cd(data.file)
+                require("nvim-tree.api").tree.open()
+            end,
+        })
+
     end
 
 }

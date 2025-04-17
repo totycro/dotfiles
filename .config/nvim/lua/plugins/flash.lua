@@ -25,7 +25,7 @@ return {
     },
     -- Jump/search default
     {
-      's',
+      'sf',
       mode = { 'n', 'x', 'o' },
       function()
         require('flash').jump()
@@ -45,7 +45,7 @@ return {
     },
     -- Select treesitter notes
     {
-      'S',
+      'Sf',
       mode = { 'n', 'o' },
       function()
         require('flash').treesitter()
