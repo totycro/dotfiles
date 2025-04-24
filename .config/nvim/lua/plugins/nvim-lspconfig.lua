@@ -89,20 +89,20 @@ return {
             end
         }
 
-        lspconfig.ruff.setup({
-            init_options = {
-                settings = {
-                    logLevel = 'trace',
-                    logFile = '/tmp/rufflsp.log',
-                    root_dir = "/home/mallinger/git/product-data/workflows",
-                    rootDir = "/home/mallinger/git/product-data/workflows",
-                    configuration = "/home/mallinger/git/product-data/workflows/pyproject.toml",
-                    organizeImports = false,
-                    organize_imports = false,
+        --lspconfig.ruff.setup({
+        --    init_options = {
+        --        settings = {
+        --            logLevel = 'trace',
+        --            logFile = '/tmp/rufflsp.log',
+        --            root_dir = "/home/mallinger/git/product-data/workflows",
+        --            rootDir = "/home/mallinger/git/product-data/workflows",
+        --            configuration = "/home/mallinger/git/product-data/workflows/pyproject.toml",
+        --            organizeImports = false,
+        --            organize_imports = false,
 
-                }
-            }
-        })
+        --        }
+        --    }
+        --})
         vim.lsp.set_log_level("debug")
 
         -- LSP status info
@@ -130,12 +130,12 @@ return {
 
         -- autoformat only .py file for now
         vim.api.nvim_create_augroup('AutoFormatting', {})
-        --vim.api.nvim_create_autocmd('BufWritePre', {
-        --    pattern = '*.py',
-        --    group = 'AutoFormatting',
-        --    callback = function()
-        --        vim.lsp.buf.format({ async = true })
-        --    end,
-        --})
+        vim.api.nvim_create_autocmd('BufWritePre', {
+            pattern = '*.py',
+            group = 'AutoFormatting',
+            callback = function()
+                vim.lsp.buf.format({ async = true })
+            end,
+        })
     end,
 }

@@ -42,6 +42,9 @@ vim.opt.wildmenu = true
 -- completion options (for nvim-cmp)
 vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
 
+
+vim.opt.ignorecase = true
+
 -- editing ---------------------------------------------------------------------
 
 -- Filetype
@@ -85,6 +88,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 -- line numbers (hybrid absolute + relative)
 vim.opt.number      = true
+vim.opt.relativenumber      = false
 
 -- tabs / indentation ----------------------------------------------------------
 

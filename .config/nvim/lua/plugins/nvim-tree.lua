@@ -30,7 +30,7 @@ return {
     config = function()
         require("nvim-tree").setup {
             view = {
-                width = 35,
+                width = 38,
             },
             renderer = {
                 highlight_opened_files = 'all',
@@ -43,15 +43,19 @@ return {
 
         vim.api.nvim_create_autocmd("VimEnter", {
             callback = function(data)
-                -- data.file = argument to `nvim XXX`
-                local is_dir = vim.fn.isdirectory(data.file) == 1
-                if not is_dir then
-                    return
-                end
-                -- change to that dir, then open the tree
-                vim.cmd.cd(data.file)
-                require("nvim-tree.api").tree.open()
-            end,
+              -- buffer is a directory
+              local directory = vim.fn.isdirectory(data.file) == 1
+
+              if not directory then
+                return
+              end
+
+              -- change to the directory
+              vim.cmd.cd(data.file)
+
+              -- open the tree
+              require("nvim-tree.api").tree.open()
+            end
         })
 
     end

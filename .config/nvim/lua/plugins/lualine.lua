@@ -46,8 +46,8 @@ return {
     },
     inactive_sections = {},
     winbar = {
-      lualine_a = { 'filename' },
-      lualine_b = { 'diff', 'diagnostics' },
+      lualine_a = { {'filename', path = 1} },
+      lualine_b = { 'diff', 'diagnostics'},
       lualine_c = {},
       lualine_x = { 'encoding', 'fileformat' },
       lualine_y = { 'filetype' },
@@ -62,6 +62,6 @@ return {
       lualine_z = { 'progress', 'location' },
     },
     tabline = {},
-    extensions = { 'oil', 'trouble' }
+    extensions = { 'trouble' }
   }
 }
