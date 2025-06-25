@@ -64,6 +64,24 @@ return {
             append_default_schemas = true,
             loader = 'json'
         })
+        
+        function on_attach(client, bufnr)
+          local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+          buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+        end
+
+
+        local global_capabilities = vim.lsp.protocol.make_client_capabilities()
+        global_capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+        lspconfig.util.default_config = vim.tbl_extend("force", lspconfig.util.default_config, {
+          capabilities = global_capabilities,
+        })
+
+        -- TODO: on_attach should be set via mason_lspconfig, but setup_handlers is gone
+        -- https://github.com/tamago324/nlsp-settings.nvim
+        -- however maybe it's just not necessary?
+        -- https://github.com/mason-org/mason-lspconfig.nvim/issues/545
 
         -- Setup Mason so it can manage external tooling
         local mason = require('mason')
@@ -71,15 +89,6 @@ return {
         local mason_lspconfig = require('mason-lspconfig')
         mason_lspconfig.setup {
             ensure_installed = vim.tbl_keys(servers),
-        }
-        mason_lspconfig.setup_handlers {
-            function(server_name)
-                lspconfig[server_name].setup {
-                    capabilities = capabilities,
-                    -- on_attach = on_attach,
-                    settings = servers[server_name],
-                }
-            end,
         }
 
         -- Manually set up sqls
@@ -103,7 +112,7 @@ return {
         --        }
         --    }
         --})
-        vim.lsp.set_log_level("debug")
+        -- vim.lsp.set_log_level("debug")
 
         -- LSP status info
         require("fidget").setup()

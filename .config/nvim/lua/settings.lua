@@ -120,9 +120,9 @@ vim.api.nvim_create_autocmd("FileType", {
 -- indicate columns
 vim.opt.colorcolumn = { 80, 88, 120 }
 -- text width 0, don't break lines automatically
-vim.opt.textwidth = 88
+--vim.opt.textwidth = 88
 -- wrap long lines
-vim.opt.wrap = true
+vim.opt.wrap = false
 -- word wrap
 vim.opt.linebreak = true
 -- characters that may cause a line break (for word wrap)
@@ -153,38 +153,4 @@ vim.keymap.set('n', '<Leader>p', [["+p]])
 
 vim.keymap.set('n', '<C-n>', ":n<CR>", {})
 vim.keymap.set('n', '<C-p>', ":prev<CR>", {})
-
-
-
-
---local function open_nvim_tree(data)
---    -- https://github.com/nvim-tree/nvim-tree.lua/wiki/Open-At-Startup
---    local directory = vim.fn.isdirectory(data.file) == 1
---    if directory then
---        vim.cmd.cd(data.file)
---        require("nvim-tree.api").tree.open()
---    end
---end
---vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
-
-
--- open nvim-tree when opening a directory
---vim.api.nvim_create_autocmd("VimEnter", {
---  callback = function(data)
---    -- `data.file` is the file/dir name passed in via `nvim … <args>`
---    local is_dir = vim.fn.isdirectory(data.file) == 1
---    if not is_dir then
---      return
---    end
---    -- switch to that directory
---    vim.cmd.cd(data.file)
---    -- open the tree
---    require("nvim-tree.api").tree.open()
---  end,
---})
-
-
---vim.cmd [[
---  autocmd VimEnter * if argc() == 1 && isdirectory(argv(1)) | NvimTreeToggle | endif
---]]
 

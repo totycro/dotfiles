@@ -9,8 +9,7 @@ export FLUX_FORWARD_NAMESPACE=flux
 
 alias cal="ncal -C"  # otherwise today is not highlighted?
 
-alias kbu="kubectl -n 0c0a0ef4-8d0d-4e70-b002-033c7cbb41fd"
-alias kbp="kubectl -n eb7fa88c-36a4-4b5f-959f-c7869d5acda8"
+alias gswmy="/home/mallinger/bin/switch-to-my-branch.sh"
 
 function kb-cycle() {
     set -x
@@ -296,6 +295,7 @@ prompt sorintotycro
 
 setopt prompt_subst # Enable parameter expansion, command substitution, and arithmetic expansion in the prompt
 #setopt transient_rprompt # only show the rprompt on the current prompt
+setopt PROMPT_SP  # preserve partial lines
 
 autoload -U compinit
 compinit

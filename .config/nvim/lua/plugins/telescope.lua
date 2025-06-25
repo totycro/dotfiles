@@ -21,6 +21,8 @@ return {
       { "<Leader>frb", builtin.current_buffer_fuzzy_find, desc = "Search in buffer" },
       -- Locations
       { "<Leader>fta", builtin.tags, desc = "Find tags (project)" },
+      { "<Leader>ftg", builtin.grep_string, desc = "Grep string under cursor (project)" },
+      { "<Leader>ftc", function() builtin.tags({ default_text = vim.fn.expand('<cword>') }) end, desc = "Find tag under cursor" },
       { "<Leader>ftb", builtin.current_buffer_tags, desc = "Find tags (buffer)" },
       { "<Leader>ftt", ':!rg --color=never --files | ctags -R --links=no -L -<CR>', desc = "Rebuild ctags" },
       { "<Leader>fm", builtin.marks, desc = "Marks" },

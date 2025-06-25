@@ -21,7 +21,7 @@
 [delta]
     line-numbers = true
     navigate = true    # use n and N to move between diff sections
-    hyperlinks = true
+    hyperlinks = false
     # this file link format doesn't work, but at least it doesn't
     # open a weird editor. would need to set it up to open a terminal
     # with nvim
