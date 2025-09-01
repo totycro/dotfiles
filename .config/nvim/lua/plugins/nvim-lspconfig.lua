@@ -98,22 +98,6 @@ return {
             end
         }
 
-        --lspconfig.ruff.setup({
-        --    init_options = {
-        --        settings = {
-        --            logLevel = 'trace',
-        --            logFile = '/tmp/rufflsp.log',
-        --            root_dir = "/home/mallinger/git/product-data/workflows",
-        --            rootDir = "/home/mallinger/git/product-data/workflows",
-        --            configuration = "/home/mallinger/git/product-data/workflows/pyproject.toml",
-        --            organizeImports = false,
-        --            organize_imports = false,
-
-        --        }
-        --    }
-        --})
-        -- vim.lsp.set_log_level("debug")
-
         -- LSP status info
         require("fidget").setup()
 
@@ -143,8 +127,24 @@ return {
             pattern = '*.py',
             group = 'AutoFormatting',
             callback = function()
-                vim.lsp.buf.format({ async = true })
+                vim.lsp.buf.format({ async = false })
             end,
         })
-    end,
+
+        -- highlight symbol under cursor
+        vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+            --buffer = 0,
+            pattern = '*.py',
+            callback = function()
+                vim.lsp.buf.document_highlight()
+            end,
+        })
+        vim.api.nvim_create_autocmd("CursorMoved", {
+            --buffer = 0,
+            pattern = '*.py',
+            callback = function()
+                vim.lsp.buf.clear_references()
+            end,
+        })
+        end,
 }

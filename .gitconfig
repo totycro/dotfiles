@@ -8,6 +8,7 @@
 
 [alias]
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+    pfusch = push --force-with-lease
 
 [push]
 	default = simple
@@ -27,13 +28,18 @@
     # with nvim
     # https://dandavison.github.io/delta/grep.html#grep
     hyperlinks-file-link-format = "file://{path}:{line}"
+    # side-by-side = true
+
+
+[interactive]
+    diffFilter = delta --color-only
 
 [rebase]
 	autosquash = true
 
 [core]
 	editor = nvim
-    pager = delta
+	pager = delta
 
 [init]
 	defaultBranch = main
