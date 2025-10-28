@@ -1,22 +1,13 @@
-! fluxbox-update_configs added '(workspace=[current])' to (Next|Prev)(Window|Group)
-! check lines marked by 'FBCV13' if they are correctly updated
-!mouse actions added by fluxbox-update_configs
-#OnTitlebar Mouse1 :MacroCmd {Focus} {Raise} {ActivateTab}
-!mouse actions added by fluxbox-update_configs
 OnTitlebar Move1 :StartMoving
 OnLeftGrip Move1 :StartResizing bottomleft
 OnRightGrip Move1 :StartResizing bottomright
 OnWindowBorder Move1 :StartMoving
 
-# In 1.1 versions of fluxbox:
 OnWindow Mod1 Mouse1 :MacroCmd {Raise} {Focus} {StartMoving}
-#OnWindow Mod1 Mouse3 :MacroCmd {Raise} {Focus} {StartResizing NearestCorner}
 OnWindow Mod1 Mouse3 :MacroCmd {Raise} {Focus} {StartResizing BottomRight}
 OnWindow Mod1 Mouse2 :WindowMenu
 OnTitlebar Control Mouse1 :StartTabbing
 OnTitlebar Double Mouse1 :Shade
-#OnTitlebar Mouse2 :Lower
-# this doesn't do anything
 OnTitlebar Mouse3 :WindowMenu
 
 OnDesktop Mouse1 :hideMenus
@@ -25,33 +16,11 @@ OnDesktop Mouse3 :rootMenu
 OnDesktop Mouse4 :NextWorkspace
 OnDesktop Mouse5 :PrevWorkspace
 
-Shift Mod4 K :Close
-Shift Mod1 Mod4 K :Kill
-
-#Mod1 F2 :ExecCommand fbrun
-
-# <apps>
-# 	<browser>
-#Shift Mod1 E 		:ExecCommand /usr/local/bin/find_app.sh /usr/bin/epiphany
-#Shift Mod1 R 		:ExecCommand /usr/local/bin/find_app.sh /usr/bin/chromium
-#Shift Mod1 J 		:ExecCommand quickfind
-#Shift Mod1 T 		:ExecCommand /usr/local/bin/find_app.sh aoss tuxguitar
-#Shift Mod1 F 		:ExecCommand /usr/bin/ogg123 /home/totycro/freude.ogg
-# 	</browser>
-# 	<shells>
-#Mod1 space 		:ExecCommand urxvt
-# Mod1 space 		:ExecCommand urxvt  -fn "xft:Dejavu Sans Mono:size=11:style=book" -fb "xft:Dejavu Sans Mono:size=11:style=bold"
 Control Mod1 space 		:ExecCommand kitty
 Mod1 space 		:ExecCommand wezterm
-Mod1 m 		:ExecCommand urxvt  -fn "xft:Dejavu Sans Mono:size=11:style=book" -fb "xft:Dejavu Sans Mono:size=11:style=bold"
-#Control space	:ExecCommand xterm
-# 	</shells>
 
-# </apps>
-
-# tabben
-Mod1 Tab 		:NextWindow (workspace=[current]) !! FBCV13 !!
-Mod1 Shift Tab 	:PrevWindow (workspace=[current]) !! FBCV13 !!
+Mod1 Tab :NextWindow (workspace=[current])
+Mod1 Shift Tab :PrevWindow (workspace=[current])
 None XF86Back :PrevWorkspace
 None XF86Forward :NextWorkspace
 Mod4 Tab :PrevWorkspace
@@ -62,7 +31,6 @@ Control Mod1 Left :NextWorkspace
 Shift Mod1 Right 	:TakeToNextWorkspace
 Shift Mod1 Left		:TakeToNextWorkspace
 
-#Mod1 1				 :SendToNextWorkspace
 Control Mod1 Tab :TakeToNextWorkspace
 
 # windowoperations
@@ -73,60 +41,15 @@ Control Mod1 A			:Fullscreen
 Control Mod1 d 			:ToggleDecor
 Control Mod1 E 			:MacroCmd { ToggleDecor } { ShadeWindow } { ToggleDecor }
 
-Control Mod1 R 			:ExecCommand /bin/sh /home/totycro/bin/toggle_resolution.sh
-
-
 Mod1 Shift E			:ExecCommand /bin/sh /home/totycro/bin/switch-xmodmap.sh
 
-# 			shades windows without decoration (needs to set decoration first to be able to shade, so decor has to be disabled when window is restored from shading)
-#Shift Control Mod1 Q 	:Close
-#Control Mod1 u :RaiseLayer
-#Control Mod1 l :LowerLayer
 
-Shift Control Mod1 A			:ExecCommand aws eks get-token --cluster-name eoxhub-v1 | jq .status.token -r | xclip
-
-# fbcommands
-Mod1 F9 				:Reconfigure
-Mod1 F10 				:Restart
-Mod1 F12				:Quit
-
-
-# cool new shit
+# Mod1 Left :ArrangeWindows
 Mod1 Left :FocusLeft
 Mod1 Right :FocusRight
 Mod1 Up :FocusUp
 Mod1 Down :FocusDown
 
-# newer, cooler shit
-#Mod1 FocusIn   :If {Matches (urxvt)} {Raise (urxvt)} {}
-#Mod1 MouseOver :If {Matches (shaded=yes)} {Shade} {}
-
-Control Mod1 Shift d :ToggleCmd {ShowDesktop} {DeIconify All}
-
-# open last downloaded pdf:
-#Mod4 v :ExecCommand xpdf "`ls -rt1 /home/totycro/tors/*pdf | tail -n1`"
-
-# vol
-#Mod4 KP_0		:ExecCommand aumix -v 00 
-#Mod4 KP_1		:ExecCommand aumix -v 10 
-#Mod4 KP_2		:ExecCommand aumix -v 20
-#Mod4 KP_3		:ExecCommand aumix -v 30
-#Mod4 KP_4		:ExecCommand aumix -v 40
-#Mod4 KP_5		:ExecCommand aumix -v 50
-#Mod4 KP_6		:ExecCommand aumix -v 60
-#Mod4 KP_7		:ExecCommand aumix -v 70
-#Mod4 KP_8		:ExecCommand aumix -v 80
-#Mod4 KP_9		:ExecCommand aumix -v 90
-#Mod4 KP_Enter	:ExecCommand aumix -v 100 
-#Mod4 KP_Add		:ExecCommand aumix -v +5
-#Mod4 KP_Subtract	:ExecCommand aumix -v -5
-
-# media
-#Shift Mod1 Q 	:ExecCommand mpc next
-#Shift Mod1 A	:ExecCommand mpc prev
-#Shift Mod1 W	:ExecCommand mpc vol +4
-#Shift Mod1 S	:ExecCommand mpc vol -4
-#Shift Mod1 Z	:ExecCommand mpc toggle
 Shift Mod1 Y	:ExecCommand /home/totycro/bin/kodi-cmd.sh play_youtube
 Shift Mod1 X	:ExecCommand /home/totycro/bin/dispatch_to_some_player.sh switch_player
 
@@ -136,32 +59,8 @@ Shift Mod1 W	:ExecCommand /home/totycro/bin/dispatch_to_some_player.sh vol +4
 Shift Mod1 S	:ExecCommand /home/totycro/bin/dispatch_to_some_player.sh vol -4
 Shift Mod1 Z	:ExecCommand /home/totycro/bin/dispatch_to_some_player.sh toggle
 
-Shift Mod1 X	:ExecCommand /home/mallinger/local/nerd-dictation/nerd-dictation begin --vosk-model-dir=/home/mallinger/local/nerd-dictation/model
-Shift Mod1 C	:ExecCommand /home/mallinger/local/nerd-dictation/nerd-dictation end
-
-#Shift Mod1 Q 	:ExecCommand /usr/local/bin/mcc.sh next
-#Shift Mod1 A	:ExecCommand /usr/local/bin/mcc.sh prev
-#Shift Mod1 W	:ExecCommand /usr/local/bin/mcc.sh vol +4
-#Shift Mod1 S	:ExecCommand /usr/local/bin/mcc.sh vol -4
-#Shift Mod1 Z	:ExecCommand /usr/local/bin/mcc.sh toggle
-#Shift Mod1 X	:ExecCommand /usr/local/bin/mcc.sh sh
-
-## window move
-## probly deprecated due to the ibm mouse replacement thingy
-#Control Mod1 k   :Move   0	-20 
-#Control Mod1 h   :Move  -20	0  
-#Control Mod1 l   :Move   20	0 
-#Control Mod1 j   :Move   0	20 
-#
-## window resize
-## see above
-#Shift Control Mod1 k   :Resize   0	-20 
-#Shift Control Mod1 h   :Resize  -20	0  
-#Shift Control Mod1 l   :Resize   20	0 
-#Shift Control Mod1 j   :Resize   0	20 
-#
-
+# Shift Mod1 X	:ExecCommand /home/mallinger/local/nerd-dictation/nerd-dictation begin --vosk-model-dir=/home/mallinger/local/nerd-dictation/model
+# Shift Mod1 C	:ExecCommand /home/mallinger/local/nerd-dictation/nerd-dictation end
 
 none XF86MonBrightnessUp :Exec xbacklight -inc 10%
 none XF86MonBrightnessDown :Exec xbacklight -dec 10%
-
