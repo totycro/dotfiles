@@ -19,6 +19,6 @@
     "pylsp.plugins.rope_autoimport.enabled": true,
     "pylsp.plugins.yapf.enabled": false,
     "pylsp.plugins.mypy.enabled": true,
-    "pylsp.plugins.jedi.extra_paths": ["/home/mallinger/git/product-data/schema/", "/home/mallinger/git/product-data/workflows/src/", "/home/mallinger/git/product-data/workflows/tests/", "/home/mallinger/git/product-data/cli"],
+    "pylsp.plugins.jedi.extra_paths": ["/home/mallinger/git/product-data/workflows/src/", "/home/mallinger/git/product-data/workflows/tests/"],
     "pylsp.plugins.mypy.live_mode": false
 }
