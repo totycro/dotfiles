@@ -144,5 +144,5 @@ $alignc$mpd_title
 $alignc$mpd_album
 
 ${mpd_bar 4}
-${exec /bin/cat /home/totycro/.config/dispatch_to_some_player/player}
+${exec /bin/cat /home/bernhard/.config/dispatch_to_some_player/player}
 ]];

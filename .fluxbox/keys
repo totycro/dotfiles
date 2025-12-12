@@ -58,15 +58,15 @@ Shift Mod1 W	:ExecCommand /home/totycro/bin/dispatch_to_some_player.sh vol +4
 Shift Mod1 S	:ExecCommand /home/totycro/bin/dispatch_to_some_player.sh vol -4
 Shift Mod1 Z	:ExecCommand /home/totycro/bin/dispatch_to_some_player.sh toggle
 
-Mod4  a        :ExecCommand /home/totycro/bin/dispatch_to_some_player.sh seek -10
-Mod4  s        :ExecCommand /home/totycro/bin/dispatch_to_some_player.sh seek -40
-Mod4  d        :ExecCommand /home/totycro/bin/dispatch_to_some_player.sh seek +40
-Mod4  f        :ExecCommand /home/totycro/bin/dispatch_to_some_player.sh seek +10
+Mod4  a        :ExecCommand /home/totycro/bin/dispatch_to_some_player.sh seek - 10
+Mod4  s        :ExecCommand /home/totycro/bin/dispatch_to_some_player.sh seek - 40
+Mod4  d        :ExecCommand /home/totycro/bin/dispatch_to_some_player.sh seek + 40
+Mod4  f        :ExecCommand /home/totycro/bin/dispatch_to_some_player.sh seek + 10
 
-Mod4  x        :ExecCommand /home/totycro/bin/dispatch_to_some_player.sh seek -10
-Mod4  c        :ExecCommand /home/totycro/bin/dispatch_to_some_player.sh seek -40
-Mod4  v        :ExecCommand /home/totycro/bin/dispatch_to_some_player.sh seek +40
-Mod4  b        :ExecCommand /home/totycro/bin/dispatch_to_some_player.sh seek +10
+Mod4  x        :ExecCommand /home/totycro/bin/dispatch_to_some_player.sh seek - 10
+Mod4  c        :ExecCommand /home/totycro/bin/dispatch_to_some_player.sh seek - 40
+Mod4  v        :ExecCommand /home/totycro/bin/dispatch_to_some_player.sh seek + 40
+Mod4  b        :ExecCommand /home/totycro/bin/dispatch_to_some_player.sh seek + 10
 
 
 
