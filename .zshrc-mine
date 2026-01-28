@@ -1,5 +1,7 @@
-export PATH="/usr/lib/ccache/bin:$PATH:/home/totycro/bin:/usr/sbin:/sbin:/usr/local/sbin:/usr/local/bin:/usr/bin:/sbin:/bin"
-export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH:/home/totycro/node_modules/.bin"
+
+export PATH="/usr/lib/ccache/bin:$PATH:${HOME}/bin:/usr/sbin:/sbin:/usr/local/sbin:/usr/local/bin:/usr/bin:/sbin:/bin"
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH:${HOME}/node_modules/.bin:${HOME}/.local/bin"
+export PATH="${PATH}:/home/totycro/bin"
 
 export MAVEN_OPTS="-Xmx1024M -Xss128M -XX:MaxPermSize=1024M -XX:+CMSClassUnloadingEnabled -XX:-UseGCOverheadLimit"
 
@@ -241,7 +243,7 @@ alias onescreen="setup_screens.sh onescreen"
 alias pav="pavucontrol"
 alias stream_youtube="kodi-cmd.sh play_youtube"
 alias ls="eza --oneline --icons --git"
-alias ll="eza -l --total-size --icons --git"
+alias ll="eza -l --icons --git"
 alias cat="batcat"
 
 alias vim="nvim"
@@ -268,7 +270,7 @@ setopt hashlistall # keep all commands in hash
 setopt nobgnice # run forked processes with same niceness 
 setopt nohup  # don't kill background jobs when exiting
 setopt completeinword # auto completition also starting from end of word
-setopt automenu # sounds good - doesn't work
+# setopt auto_menu # conficts with MENU_COMPLETE
 setopt auto_list # list ambiguous completition entries automatically
 setopt interactivecomments # allow comments with '#' in interactive shells
 setopt shortloops
@@ -276,6 +278,7 @@ setopt vi # no explanation...
 setopt append_history
 setopt BAD_PATTERN
 setopt EXTENDED_HISTORY
+setopt MENU_COMPLETE # autoselect first entry
 setopt HIST_FIND_NO_DUPS
 setopt INC_APPEND_HISTORY
 #setopt SHARE_HISTORY
@@ -326,7 +329,8 @@ zstyle ':completion:predict:*' completer _complete
 zstyle ':completion:predict:*' list always
 zstyle ':completion:predict:*' cursor key
 zstyle ':completion:predict:*' special-dirs yes
-zstyle ':completion:*:default' menu yes select
+#zstyle ':completion:*:default' menu yes select
+zstyle ':completion:*:default' menu 2
 zstyle ':completion:*:*:xdvi:*' file-sort time
 zstyle ':completion:*:rm:*' ignore-line yes
 zstyle ':completion:*:apt-get:*' ignore-line yes
