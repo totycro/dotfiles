@@ -83,7 +83,8 @@
   "default": "right",
   "jupyter-notebook": "left"
 },
-"workbench.colorTheme": "Default Light+",
+"workbench.colorTheme": "Solarized Light",
 "window.zoomLevel": 1,
-"editor.fontSize": 12
+"editor.fontSize": 11,
+"python.defaultInterpreterPath": "/bin/python3.13"
 }

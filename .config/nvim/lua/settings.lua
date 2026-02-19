@@ -153,4 +153,3 @@ vim.keymap.set('n', '<Leader>p', [["+p]])
 
 vim.keymap.set('n', '<C-n>', ":n<CR>", {})
 vim.keymap.set('n', '<C-p>', ":prev<CR>", {})
-

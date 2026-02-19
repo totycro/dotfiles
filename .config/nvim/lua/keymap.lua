@@ -134,3 +134,19 @@ vim.keymap.set("n", '<Leader>mp', '<CMD>!firefox %&<CR>', { desc = "Markdown: pr
 -- theme -----------------------------------------------------------------------
 vim.keymap.set("n", '<Leader>stl', ':set background=light<CR>', { desc = "Light theme" })
 vim.keymap.set("n", '<Leader>std', ':set background=dark<CR>', { desc = "Dark theme" })
+
+
+vim.yank_path = function(path, label)
+  local line = vim.fn.line('.')
+  local all = path .. ':' .. line
+  vim.fn.setreg('+', all)
+  print('Yanked ' .. label .. ': ' .. all)
+end
+
+vim.keymap.set('n', '<leader>ya', function()
+  vim.yank_path(vim.fn.expand '%:p', 'absolute')
+end, { desc = '[Y]ank [A]bsolute path to clipboard' })
+
+vim.keymap.set('n', '<leader>yr', function()
+  vim.yank_path(vim.fn.expand '%:.', 'relative')
+end, { desc = '[Y]ank [R]elative path to clipboard' })

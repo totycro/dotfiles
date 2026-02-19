@@ -20,12 +20,15 @@ return {
         "html",
         "json",
         "jsonc",
+        "javascript",
         "lua",
         "markdown",
         "python",
         "sh",
         "sql",
+        "typescript",
         "yaml",
+        "php",
     },
     config = function()
         -- Install LSP servers
@@ -50,7 +53,7 @@ return {
         }
 
         -- Language servers
-        local lspconfig = require('lspconfig')
+        --ocal lspconfig = require('lspconfig')
         local capabilities = vim.lsp.protocol.make_client_capabilities()
         capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
@@ -71,12 +74,12 @@ return {
         end
 
 
-        local global_capabilities = vim.lsp.protocol.make_client_capabilities()
-        global_capabilities.textDocument.completion.completionItem.snippetSupport = true
+        --local global_capabilities = vim.lsp.protocol.make_client_capabilities()
+        --global_capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-        lspconfig.util.default_config = vim.tbl_extend("force", lspconfig.util.default_config, {
-          capabilities = global_capabilities,
-        })
+        --lspconfig.util.default_config = vim.tbl_extend("force", lspconfig.util.default_config, {
+        --  capabilities = global_capabilities,
+        --})
 
         -- TODO: on_attach should be set via mason_lspconfig, but setup_handlers is gone
         -- https://github.com/tamago324/nlsp-settings.nvim
@@ -92,11 +95,11 @@ return {
         }
 
         -- Manually set up sqls
-        lspconfig.sqls.setup {
-            on_attach = function(client, bufnr)
-                require('sqls').on_attach(client, bufnr)
-            end
-        }
+        --lspconfig.sqls.setup {
+        --    on_attach = function(client, bufnr)
+        --        require('sqls').on_attach(client, bufnr)
+        --    end
+        --}
 
         -- LSP status info
         require("fidget").setup()

@@ -114,7 +114,13 @@ xcompmgr &
 /usr/bin/volumeicon &
 
 xfce4-power-manager &
-/home/totycro/bin/fix_stuff.sh&
+# /home/totycro/bin/fix_stuff.sh&
+
+# for services like xfce4-notifyd
+systemctl --user import-environment DISPLAY XAUTHORITY &
+
+# for firefox cli to be able to talk to running firefox
+export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$(id -u)/bus
 
 #exec /usr/bin/fluxbox
 # or if you want to keep a log:

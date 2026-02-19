@@ -9,7 +9,7 @@ alias pav=pavucontrol
 
 export FLUX_FORWARD_NAMESPACE=flux
 
-alias cal="ncal -C"  # otherwise today is not highlighted?
+alias cal="ncal -bM"
 
 alias gswmy="/home/mallinger/bin/switch-to-my-branch.sh"
 
@@ -246,7 +246,9 @@ alias ls="eza --oneline --icons --git"
 alias ll="eza -l --icons --git"
 alias cat="batcat"
 
-alias vim="nvim"
+
+# workaround weird issue where scrolling with split windows paints over other windows
+alias vim="TERM=wezterm nvim"
 
 alias dotfiles-git='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
