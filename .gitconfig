@@ -63,3 +63,7 @@
     conflictstyle = diff3
 [branch]
 	sort = committerdate
+[commit]
+	verbose = true
+[rerere]
+	enabled = true

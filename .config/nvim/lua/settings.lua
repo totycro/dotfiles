@@ -122,7 +122,7 @@ vim.opt.colorcolumn = { 80, 88, 120 }
 -- text width 0, don't break lines automatically
 --vim.opt.textwidth = 88
 -- wrap long lines
-vim.opt.wrap = false
+vim.opt.wrap = true
 -- word wrap
 vim.opt.linebreak = true
 -- characters that may cause a line break (for word wrap)
