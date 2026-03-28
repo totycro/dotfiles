@@ -19,9 +19,10 @@ return {
       -- Search / grep / fuzzy-find
       { "<Leader>fra", builtin.live_grep, desc = "Seach in cwd" },
       { "<Leader>frb", builtin.current_buffer_fuzzy_find, desc = "Search in buffer" },
+      { "<Leader>frc", builtin.grep_string, desc = "Grep string under cursor (project)" },
       -- Locations
       { "<Leader>fta", builtin.tags, desc = "Find tags (project)" },
-      { "<Leader>ftg", builtin.grep_string, desc = "Grep string under cursor (project)" },
+      { "<Leader>ftg", builtin.grep_string, desc = "Grep string under cursor (project)" }, -- deprecated, it should be "r", not "t", because it's not tags
       { "<Leader>ftc", function() builtin.tags({ default_text = vim.fn.expand('<cword>') }) end, desc = "Find tag under cursor" },
       { "<Leader>ftb", builtin.current_buffer_tags, desc = "Find tags (buffer)" },
       { "<Leader>ftt", ':!rg --color=never --files | ctags -R --links=no -L -<CR>', desc = "Rebuild ctags" },
