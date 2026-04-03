@@ -1,0 +1,24 @@
+// Custom user override for Austrian/German layout.
+// Includes the system de(basic) layout and adds level3 umlaut bindings
+// accessible via LSGT (the <> key) as level3 modifier.
+// LSGT itself is made a modifier via the lv3:lsgt_switch xkb option in kxkbrc.
+
+default
+xkb_symbols "basic" {
+    include "de(basic)"
+
+    name[Group1]="German (Austria, custom umlauts)";
+
+    // Override TLDE: use grave/tilde/degree instead of dead_circumflex
+    key <TLDE> { [ grave, asciitilde, degree ] };
+
+    // Level3 = LSGT held, Level4 = LSGT+Shift
+    key <AC01> { [ a, A, adiaeresis, Adiaeresis ], type[group1] = "FOUR_LEVEL_ALPHABETIC" };
+    key <AD07> { [ u, U, udiaeresis, Udiaeresis ], type[group1] = "FOUR_LEVEL_ALPHABETIC" };
+    key <AD09> { [ o, O, odiaeresis, Odiaeresis ], type[group1] = "FOUR_LEVEL_ALPHABETIC" };
+    key <AC02> { [ s, S, ssharp              ],    type[group1] = "FOUR_LEVEL_ALPHABETIC" };
+    key <AB03> { [ c, C, cent                ],    type[group1] = "FOUR_LEVEL_ALPHABETIC" };
+    key <AB06> { [ n, N, ntilde,  Ntilde      ],   type[group1] = "FOUR_LEVEL_ALPHABETIC" };
+    key <AD03> { [ e, E, eacute,  Eacute      ],   type[group1] = "FOUR_LEVEL_ALPHABETIC" };
+    key <AD08> { [ i, I, iacute,  Iacute      ],   type[group1] = "FOUR_LEVEL_ALPHABETIC" };
+};

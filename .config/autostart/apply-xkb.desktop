@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Apply XKB Keymap to XWayland
+Exec=sh -c 'sleep 3 && setxkbmap -layout at,us -variant , -option "caps:escape,lv3:lsgt_switch" -print | xkbcomp -I/home/bernhard/.config/xkb -w 0 - $DISPLAY'
+X-KDE-autostart-phase=2
+Hidden=false
+NoDisplay=true
+X-GNOME-Autostart-enabled=true
