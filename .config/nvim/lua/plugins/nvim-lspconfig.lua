@@ -35,10 +35,12 @@ return {
         local servers = {
             bashls = {},
             cssls = {},
-            dockerls = {},
+            docker_language_server = {},
             gopls = {},
+            terraformls = {},
             html = {},
-            jsonls = {},
+            --html = {},
+            --jsonls = {},
             lua_ls = {
                 Lua = {
                     workspace = { checkThirdParty = false },
@@ -46,7 +48,7 @@ return {
                     diagnostics = { globals = { 'vim' } },
                 },
             },
-            marksman = {},
+            -- marksman = {},
             pylsp = {},
             ruff = {},
             sqls = {},

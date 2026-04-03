@@ -1,4 +1,3 @@
-import = ["/home/mallinger/.config/alacritty/themes/themes/afterglow.toml"]
 #import = ["/home/mallinger/.config/alacritty/themes/themes/solarized_osaka.toml"]
 
 [font]
@@ -8,7 +7,7 @@ bold = { family = "terminal-font", style = "Bold" }
 italic = { family = "terminal-font", style = "Italic" }
 bold_italic = { family = "terminal-font", style = "Bold Italic" }
 
-[shell]
+[terminal.shell]
 program = "/usr/bin/zsh"
 
 [window]
@@ -19,3 +18,8 @@ opacity = 0.96
 [window.padding]
 x = 2
 y = 2
+
+[general]
+import = ["/home/mallinger/.config/alacritty/themes/themes/afterglow.toml"]
+
+[terminal]
