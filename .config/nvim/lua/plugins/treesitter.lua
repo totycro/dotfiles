@@ -8,51 +8,48 @@ return {
   },
   event = { "BufReadPre", "BufNewFile" },
   config = function()
-    local treesitter = require("nvim-treesitter.configs")
-    treesitter.setup({
-      ensure_installed = {
-        "bash",
-        "comment",
-        "css",
-        "dockerfile",
-        "git_config",
-        "git_rebase",
-        "gitcommit",
-        "gitignore",
-        "go",
-        "html",
-        "http",
-        "javascript",
-        "json",
-        -- "jsonc",
-        -- "latex",
-        "lua",
-        "make",
-        "markdown",
-        "markdown_inline",
-        "python",
-        "regex",
-        -- "rst",
-        "sql",
-        "toml",
-        -- "typescript",
-        -- "tsx",
-        "vim",
-        -- "yaml",
-      },
-      sync_install = false,
-      highlight = { enable = true },
-      indent = { enable = true },
-      -- incremental selection
-      incremental_selection = {
-        enable = true,
-        keymaps = {
-          init_selection = "<C-;>",
-          node_incremental = "<C-;>",
-          scope_incremental = false,
-          node_decremental = "<C-,>",
-        },
-      },
+    local treesitter = require("nvim-treesitter")
+    local ensure_installed = {
+      "bash",
+      "comment",
+      "css",
+      "dockerfile",
+      "git_config",
+      "git_rebase",
+      "gitcommit",
+      "gitignore",
+      "go",
+      "html",
+      "http",
+      "javascript",
+      "json",
+      -- "jsonc",
+      -- "latex",
+      "lua",
+      "make",
+      "markdown",
+      "markdown_inline",
+      "python",
+      "regex",
+      -- "rst",
+      "sql",
+      "toml",
+      -- "typescript",
+      -- "tsx",
+      "vim",
+      -- "yaml",
+    }
+
+    treesitter.install(ensure_installed)
+
+    vim.api.nvim_create_autocmd("FileType", {
+      group = vim.api.nvim_create_augroup("config-treesitter", { clear = true }),
+      callback = function(args)
+        local ok = pcall(vim.treesitter.start, args.buf)
+        if ok then
+          vim.bo[args.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+        end
+      end,
     })
   end
 }
