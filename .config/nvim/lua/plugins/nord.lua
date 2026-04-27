@@ -5,6 +5,12 @@ return {
   priority = 1000,
   opts = {},
   config = function ()
+    require('nord').setup({
+      plugins = {
+        all = false,
+        gitgutter = true,
+      },
+    })
     vim.cmd [[colorscheme nord]]
   end
 }

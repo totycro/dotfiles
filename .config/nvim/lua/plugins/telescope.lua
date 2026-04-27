@@ -7,26 +7,30 @@ return {
     {
 			'nvim-telescope/telescope-fzf-native.nvim',
 			build = 'make',
-		},
-    'nvim-telescope/telescope-ui-select.nvim'
+    },
+    'nvim-telescope/telescope-ui-select.nvim',
+    {
+        "nvim-telescope/telescope-live-grep-args.nvim" ,
+        version = "^1.0.0",  -- pinned to this major by default install instructions
+    }
   },
   keys = function(_, _)
     local builtin = require('telescope.builtin')
     return {
-      { "<Leader>bf", builtin.buffers, desc = "Find buffers" },
+      --{ "<Leader>bf", builtin.buffers, desc = "Find buffers" },
       -- Files
       { "<Leader>ff", builtin.find_files, desc = "Find files" },
       -- Search / grep / fuzzy-find
-      { "<Leader>fra", builtin.live_grep, desc = "Seach in cwd" },
-      { "<Leader>frb", builtin.current_buffer_fuzzy_find, desc = "Search in buffer" },
-      { "<Leader>frc", builtin.grep_string, desc = "Grep string under cursor (project)" },
+      { "<Leader>fra", function() require('telescope').extensions.live_grep_args.live_grep_args() end, desc = "Live grep with args" },
+      --{ "<Leader>frb", builtin.current_buffer_fuzzy_find, desc = "Search in buffer" },
+      { "<Leader>frc", function() require('telescope').extensions.live_grep_args.live_grep_args({ default_text = vim.fn.expand('<cword>') }) end, desc = "Grep string under cursor (project)" },
       -- Locations
       { "<Leader>fta", builtin.tags, desc = "Find tags (project)" },
-      { "<Leader>ftg", builtin.grep_string, desc = "Grep string under cursor (project)" }, -- deprecated, it should be "r", not "t", because it's not tags
+      --{ "<Leader>ftg", builtin.grep_string, desc = "Grep string under cursor (project)" }, -- deprecated, it should be "r", not "t", because it's not tags
       { "<Leader>ftc", function() builtin.tags({ default_text = vim.fn.expand('<cword>') }) end, desc = "Find tag under cursor" },
-      { "<Leader>ftb", builtin.current_buffer_tags, desc = "Find tags (buffer)" },
+      --{ "<Leader>ftb", builtin.current_buffer_tags, desc = "Find tags (buffer)" },
       { "<Leader>ftt", ':!rg --color=never --files | ctags -R --links=no -L -<CR>', desc = "Rebuild ctags" },
-      { "<Leader>fm", builtin.marks, desc = "Marks" },
+      --{ "<Leader>fm", builtin.marks, desc = "Marks" },
       { "<Leader>fq", builtin.quickfix, desc = "Quickfix list" },
       { "<Leader>fo", builtin.loclist, desc = "Location list" },
       { "<Leader>fj", builtin.jumplist, desc = "Jumplist" },
@@ -34,7 +38,7 @@ return {
       -- Help tags
       { "<Leader>f1", builtin.help_tags, desc = "Help tags" },
       -- Filetypes
-      { "<Leader>fty", builtin.filetypes, desc = "File types" },
+      --{ "<Leader>fty", builtin.filetypes, desc = "File types" },
       -- Spelling suggestions
       { "<Leader>fz", builtin.spell_suggest, desc = "Spellings suggestions" },
       -- Key mappings
@@ -109,5 +113,6 @@ return {
 
 		telescope.load_extension('fzf')
 		telescope.load_extension('ui-select')
+        telescope.load_extension('live_grep_args')
   end,
 }
