@@ -23,6 +23,7 @@ return {
         "javascript",
         "lua",
         "markdown",
+        "terraform",
         "perl",
         "python",
         "sh",
@@ -39,6 +40,7 @@ return {
             docker_language_server = {},
             gopls = {},
             terraformls = {},
+            ansiblels = {},
             html = {},
             --html = {},
             --jsonls = {},
@@ -130,13 +132,22 @@ return {
 
         -- autoformat only .py file for now
         vim.api.nvim_create_augroup('AutoFormatting', {})
+        -- vim.api.nvim_create_autocmd('BufWritePre', {
+        --     pattern = '*.py',
+        --     group = 'AutoFormatting',
+        --     callback = function()
+        --         vim.lsp.buf.format({ async = false })
+        --     end,
+        -- })
         vim.api.nvim_create_autocmd('BufWritePre', {
-            pattern = '*.py',
+            pattern = '*.go',
             group = 'AutoFormatting',
             callback = function()
                 vim.lsp.buf.format({ async = false })
             end,
         })
+
+
 
         -- highlight symbol under cursor
         vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
@@ -153,5 +164,22 @@ return {
                 vim.lsp.buf.clear_references()
             end,
         })
+
+        -- highlight symbol under cursor
+        vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+            --buffer = 0,
+            pattern = '*.go',
+            callback = function()
+                vim.lsp.buf.document_highlight()
+            end,
+        })
+        vim.api.nvim_create_autocmd("CursorMoved", {
+            --buffer = 0,
+            pattern = '*.go',
+            callback = function()
+                vim.lsp.buf.clear_references()
+            end,
+        })
         end,
+
 }
