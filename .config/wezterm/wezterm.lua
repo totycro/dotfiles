@@ -2,9 +2,9 @@ local wezterm = require 'wezterm'
 local config = {}
 
 config.font = wezterm.font 'DejaVu Sans Mono'
-config.font = wezterm.font 'Ubuntu Mono'
+-- config.font = wezterm.font 'Ubuntu Mono'
 config.font = wezterm.font 'JetBrains Mono'
-config.font_size = 9
+config.font_size = 10
 config.default_prog = { '/usr/bin/zsh' }
 config.enable_tab_bar = false
 config.window_padding = {
@@ -33,4 +33,18 @@ config.color_scheme = 'Ocean (base16)'
 config.color_scheme = 'nord-light'
 config.color_scheme = 'Solarized (dark) (terminal.sexy)'
 config.color_scheme = 'Afterglow (Gogh)' -- bg dark
+
+config.foreground_text_hsb = {
+    hue = 1.0,
+    saturation = 1.0,
+    brightness = 1.4,  -- increase above 1.0 to brighten
+}
+
+
+
+config.initial_cols = 110
+config.initial_rows = 30
+
+config.audible_bell = "Disabled"
+
 return config

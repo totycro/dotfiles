@@ -9,9 +9,17 @@ alias pav=pavucontrol
 
 export FLUX_FORWARD_NAMESPACE=flux
 
-alias cal="ncal -bM"
+# alias cal="ncal -bM"
 
 alias gswmy="/home/mallinger/bin/switch-to-my-branch.sh"
+
+# quick and dirty override to check if agent is running
+alias gpl="if ! ssh-add -l &>/dev/null ; then eval \$(ssh-agent) ; ssh-add ; fi; git pull"
+alias gpu="if ! ssh-add -l &>/dev/null ; then eval \$(ssh-agent) ; ssh-add ; fi; git push"
+alias gf="if ! ssh-add -l &>/dev/null ; then eval \$(ssh-agent) ; ssh-add ; fi; git fetch -p"
+alias gfp="if ! ssh-add -l &>/dev/null ; then eval \$(ssh-agent) ; ssh-add ; fi; git fetch -p"
+
+alias aivm="cd ~/git/cursor && vagrant ssh"
 
 function kb-cycle() {
     set -x

@@ -151,5 +151,12 @@ vim.keymap.set('n', '<Leader>y', [["+y]])
 vim.keymap.set('n', '<Leader>p', [["+p]])
 
 
+-- work around xsel not working?!?
+if vim.env.WAYLAND_DISPLAY and vim.env.WAYLAND_DISPLAY ~= "" then
+  -- leave unset; Neovim picks wl-copy
+else
+  vim.g.clipboard = "xclip"
+end
+
 vim.keymap.set('n', '<C-n>', ":n<CR>", {})
 vim.keymap.set('n', '<C-p>', ":prev<CR>", {})

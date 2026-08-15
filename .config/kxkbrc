@@ -1,6 +1,6 @@
 [Layout]
 DisplayNames=,
-LayoutList=at,us
+LayoutList=us,at
 Options=caps:escape,lv3:lsgt_switch
 ResetOldOptions=true
 Use=true
