@@ -1,0 +1,4 @@
+
+[colors.darkmode]
+# in kitty the results_selection_bg was the same as the font color, so change
+results_selection_fg = "white"
