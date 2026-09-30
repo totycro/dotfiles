@@ -118,7 +118,7 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 -- indicate columns
-vim.opt.colorcolumn = { 80, 88, 120 }
+-- vim.opt.colorcolumn = { 80, 88, 120 }
 -- text width 0, don't break lines automatically
 --vim.opt.textwidth = 88
 -- wrap long lines
