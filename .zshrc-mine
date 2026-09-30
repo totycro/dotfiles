@@ -19,7 +19,7 @@ alias gpu="if ! ssh-add -l &>/dev/null ; then eval \$(ssh-agent) ; ssh-add ; fi;
 alias gf="if ! ssh-add -l &>/dev/null ; then eval \$(ssh-agent) ; ssh-add ; fi; git fetch -p"
 alias gfp="if ! ssh-add -l &>/dev/null ; then eval \$(ssh-agent) ; ssh-add ; fi; git fetch -p"
 
-alias aivm="cd ~/git/cursor && vagrant ssh"
+alias aivm="(cd ~/git/llm && vagrant ssh)"
 
 function kb-cycle() {
     set -x
@@ -607,13 +607,17 @@ zle -N self-insert url-quote-magic
 
 #/usr/bin/virtualenvwrapper.sh
 
+# zprezto fzf module is ancient
+source <(fzf --zsh)
 
 export MCFLY_KEY_SCHEME=vim
 # export MCFLY_FUZZY=true
 export MCFLY_RESULTS=45
 export MCFLY_INTERFACE_VIEW=BOTTOM
+
+# eval "$(stern --completion zsh)"
+
+
 eval "$(mcfly init zsh)"
 
 eval "$(zoxide init zsh)"
-
-eval "$(stern --completion zsh)"

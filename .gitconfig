@@ -29,6 +29,9 @@
     # https://dandavison.github.io/delta/grep.html#grep
     hyperlinks-file-link-format = "file://{path}:{line}"
     # side-by-side = true
+#
+     max-line-length = 0 # stop delta from truncating very long lines before they reach the pager
+     pager = "less -R -X -z-4 -+S" # override line chomping (-S)
 
 
 [interactive]

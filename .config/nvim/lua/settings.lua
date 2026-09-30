@@ -160,3 +160,6 @@ end
 
 vim.keymap.set('n', '<C-n>', ":n<CR>", {})
 vim.keymap.set('n', '<C-p>', ":prev<CR>", {})
+
+-- make nvim show warning when opening files open in other instances
+vim.cmd('autocmd! nvim.swapfile')

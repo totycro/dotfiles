@@ -12,6 +12,7 @@ syntax match journardBanner /^[=]\{3,}\s*$/
 syntax match journardTitle  /^=\s.\+$/
 
 " Status tags: [DONE], [WAIT], [WAITING for …], etc.
+" NOTE: this also works for checkboxes: [ ] todo this
 syntax match journardStatus /\[[^\]]\+\]/ contained
 
 " Status-tagged item: de-emphasized (parked / not actionable now)
@@ -22,7 +23,8 @@ syntax match journardStatusLine /^\s*\[[^\]]\+\].*$/ contains=journardStatus,jou
 
 " Bullets and decision arrows
 syntax match journardBullet /^\s*\zs\*\ze\s/
-syntax match journardBullet  /^\s-\zs->\ze\s/
+syntax match journardBullet  /^\s*\zs-\ze\s/
+syntax match journardBullet  /^\s*\zs+\ze\s/
 syntax match journardArrow  /^\s*\zs->\ze\s/
 
 highlight default link journardBanner     Comment
